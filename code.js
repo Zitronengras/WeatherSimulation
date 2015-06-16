@@ -1,3 +1,7 @@
+/**
+ * Created by Caro on 10.06.2015.
+ */
+
 function init(){
     var renderer = new THREE.WebGLRenderer();
     renderer.setClearColor(new THREE.Color(0x000000));
@@ -6,9 +10,9 @@ function init(){
 
     var scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
     camera.position.set(-60, 30, 15);
-    camera.lookAt(scene.position);
+    //camera.lookAt(scene.position);
 
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
@@ -20,11 +24,21 @@ function init(){
 
 
 
-    document.getElementById("output").appendChild(renderer.domElement);
+    var elem = document.getElementById("output");
+        elem.appendChild(renderer.domElement);
+
+
+    var controls = new THREE.OrbitControls( camera );
+    controls.damping = 0.2;
+    controls.addEventListener( 'change', render );
+        //controls.target.set(0, 0, 0);
+    //new THREE.MouseControls(camera);
+
     callback = function(){
         renderer.render(scene, camera);
     };
     requestAnimationFrame(render);
+    controls.update();
 };
 
 var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
