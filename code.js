@@ -2,9 +2,11 @@
  * Created by Caro on 10.06.2015.
  */
 
+
 function init(){
+
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x000000));
+    renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
 
@@ -14,28 +16,46 @@ function init(){
     camera.position.set(-150, 60, 15);
     //camera.lookAt(scene.position);
 
-    var spotLight = new THREE.SpotLight(0xffffff);
+    //light
+    var spotLight = new THREE.SpotLight(0xffffff, 3);
     spotLight.castShadow = true;
-    spotLight.position.set(-20, 35, 200);
+    spotLight.position.set(-20, 35, 300);
     scene.add(spotLight);
 
+    //plane
     var plane = doGround(doGroundGeometry(150, 150, 60, 60));
     scene.add(plane);
 
+    //manager
+    var manager = new THREE.LoadingManager();
+    manager.onProgress = function ( item, loaded, total ) {
+        console.log( item, loaded, total );
+    };
     //objLoader
-    /*var loader = new THREE.OBJLoader( manager );
-    loader.load( 'obj/male02/male02.obj', function ( object ) {
-        console.log('obj loaded!');
+    var texture = new THREE.Texture();
+    var onProgress = function ( xhr ) {
+        if ( xhr.lengthComputable ) {
+            var percentComplete = xhr.loaded / xhr.total * 100;
+            console.log( Math.round(percentComplete, 2) + '% downloaded' );
+        }
+    };
+    var onError = function ( xhr ) {
+    };
+    var loader = new THREE.OBJLoader( manager );
+    //load tree
+    loader.load( 'first_tree_obj.obj', function ( object ) {
         object.traverse( function ( child ) {
             if ( child instanceof THREE.Mesh ) {
                 child.material.map = texture;
+                console.log('obj loaded!');
             }
         } );
-
-        object.position.y = - 80;
+        object.position.set = (0, 0, 0);
         scene.add( object );
 
-    }, onProgress, onError );*/
+    }, onProgress, onError );
+
+
 
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
@@ -43,14 +63,20 @@ function init(){
     var controls = new THREE.OrbitControls( camera );
     controls.damping = 0.2;
     controls.addEventListener( 'change', render );
-        //controls.target.set(0, 0, 0);
-    //new THREE.MouseControls(camera);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+    }
+    window.addEventListener( 'resize', onWindowResize, false );
 
     callback = function(){
         renderer.render(scene, camera);
     };
     requestAnimationFrame(render);
     controls.update();
+
 };
 
 var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
