@@ -19,7 +19,7 @@ function init(){
     spotLight.position.set(-20, 35, 40);
     scene.add(spotLight);
 
-    var plane = doGround(doGroundGeometry(50, 50, 20, 20));
+    var plane = doGround(doGroundGeometry(150, 150, 60, 60));
     scene.add(plane);
 
 
