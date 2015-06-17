@@ -11,22 +11,19 @@ function init(){
     var scene = new THREE.Scene();
 
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
-    camera.position.set(-60, 30, 15);
+    camera.position.set(-150, 60, 15);
     //camera.lookAt(scene.position);
 
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
-    spotLight.position.set(-20, 35, 40);
+    spotLight.position.set(-20, 35, 200);
     scene.add(spotLight);
 
     var plane = doGround(doGroundGeometry(150, 150, 60, 60));
     scene.add(plane);
 
-
-
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
-
 
     var controls = new THREE.OrbitControls( camera );
     controls.damping = 0.2;
