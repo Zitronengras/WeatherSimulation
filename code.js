@@ -1,74 +1,92 @@
-/**
- * Created by Caro on 10.06.2015.
- */
+   //Karo
 
-function init(){
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x000000));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.shadowMapEnabled = true;
-
-    var scene = new THREE.Scene();
-
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
-    camera.position.set(-60, 30, 15);
-    //camera.lookAt(scene.position);
-
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.castShadow = true;
-    spotLight.position.set(-20, 35, 40);
-    scene.add(spotLight);
-
-    var plane = doGround(doGroundGeometry(150, 150, 60, 60));
-    scene.add(plane);
-
-
-
-    var elem = document.getElementById("output");
-        elem.appendChild(renderer.domElement);
-
-
-    var controls = new THREE.OrbitControls( camera );
-    controls.damping = 0.2;
-    controls.addEventListener( 'change', render );
-        //controls.target.set(0, 0, 0);
-    //new THREE.MouseControls(camera);
-
-    callback = function(){
-        renderer.render(scene, camera);
-    };
-    requestAnimationFrame(render);
-    controls.update();
-};
-
-var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
-    var groundGeometry = new THREE.PlaneGeometry(width, height, 10, 20);
-
-    for (var i = 0; i < groundGeometry.vertices.length; i++) {
-        groundGeometry.vertices[i].x += Math.random() * 5;
-        groundGeometry.vertices[i].y += Math.random() * 2;
-        groundGeometry.vertices[i].z += Math.random() * 2;
-    }
-
-    groundGeometry.dynamic = true;
-    groundGeometry.computeFaceNormals();
-    groundGeometry.computeVertexNormals();
-    groundGeometry.normalsNeedUpdate = true;
-    return groundGeometry;
-};
-
-var doGround = function(groundGeometry) {
-    var groundMaterial = new THREE.MeshLambertMaterial({color: 0x91D94A, shading: THREE.FlatShading});
-    var ground = new THREE.Mesh(groundGeometry, groundMaterial);
-    ground.rotation.x = -0.5*Math.PI;
-    //ground.receiveShadow = true;
-    return ground;
-};
-
-
-function render(){
-    callback();
-    requestAnimationFrame(render);
+function randomInt (min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
-window.onload = init;
+function random (min, max) {
+  return Math.random() * (max - min) + min;
+}
+//Karo eNDE
+   
+   
+   
+   // Karo
+    
+    var texture = THREE.ImageUtils.loadTexture(
+    "snow.png", {},
+    function () { requestAnimationFrame(render); }
+  );
+
+  var geometry = new THREE.Geometry();
+  var materialSnow = new THREE.PointCloudMaterial({
+    size: 1,
+    map: texture,
+    //vertexColors: true,
+    transparent: true
+  });
+  for (var i = 0; i < 400; i++) {
+    geometry.vertices.push(new THREE.Vector3(
+      randomInt(-50, 50),
+      randomInt(20, 50),
+      randomInt(-100, 100)));
+    geometry.colors.push(
+      new THREE.Color(0xffffff)
+    );
+  }
+    
+// Partikelsystem
+  
+  var system = new THREE.PointCloud(geometry, materialSnow);
+  scene.add(system);
+
+  var sortParticles = function () {
+    var m = new THREE.Matrix4();
+    m.multiplyMatrices(
+      camera.projectionMatrix,
+      camera.matrixWorldInverse
+    );
+    var v = new THREE.Vector3(), s = [];
+    for (i = 0; i < 100; i++) {
+      var vertex = geometry.vertices[i];
+      v.copy(vertex);
+			v.applyProjection(m);
+      s.push([v.z, vertex, geometry.colors[i]]);
+    }
+    s.sort(function (a, b) {
+      if (a[0] < b[0])
+        return 1;
+      else if (a[0] > b[0])
+        return -1;
+      else
+        return 0;
+    });
+    for (i = 0; i < 100; i++) {
+      geometry.vertices[i] = s[i][1];
+      geometry.colors[i] = s[i][2];
+    }
+  }
+
+// Geschwindigkeit
+  var vz = 0.5;
+
+    // Karo Ende
+    
+     // Karo
+    
+     var redraw = function() {
+    system.geometry.vertices.forEach(function (child) {
+      child.y -= vz;
+      if (child.z > 150)
+        child.z = -500;
+        
+    });
+    sortParticles();
+    geometry.verticesNeedUpdate = true;
+    geometry.colorsNeedUpdate = true;
+    renderer.render(scene, camera);
+  };
+  setInterval(redraw, 50);
+
+
+    // Karo Ende
