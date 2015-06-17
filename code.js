@@ -22,6 +22,21 @@ function init(){
     var plane = doGround(doGroundGeometry(150, 150, 60, 60));
     scene.add(plane);
 
+    //objLoader
+    /*var loader = new THREE.OBJLoader( manager );
+    loader.load( 'obj/male02/male02.obj', function ( object ) {
+        console.log('obj loaded!');
+        object.traverse( function ( child ) {
+            if ( child instanceof THREE.Mesh ) {
+                child.material.map = texture;
+            }
+        } );
+
+        object.position.y = - 80;
+        scene.add( object );
+
+    }, onProgress, onError );*/
+
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
 
