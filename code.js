@@ -24,7 +24,7 @@ function init(){
 
     //plane
     var plane = doGround(doGroundGeometry(150, 150, 60, 60));
-    scene.add(plane);
+    //scene.add(plane);
 
     //manager
     var manager = new THREE.LoadingManager();
@@ -32,7 +32,7 @@ function init(){
         console.log( item, loaded, total );
     };
     //objLoader
-    var texture = new THREE.Texture();
+    //var texture = new THREE.Texture();
     var onProgress = function ( xhr ) {
         if ( xhr.lengthComputable ) {
             var percentComplete = xhr.loaded / xhr.total * 100;
@@ -41,7 +41,8 @@ function init(){
     };
     var onError = function ( xhr ) {
     };
-    var loader = new THREE.OBJLoader( manager );
+    //OBJLoader
+    /* var loader = new THREE.OBJLoader( manager );
     //load tree
     loader.load( 'first_tree_obj.obj', function ( object ) {
         object.traverse( function ( child ) {
@@ -53,7 +54,18 @@ function init(){
         object.position.set = (0, 0, 0);
         scene.add( object );
 
+    }, onProgress, onError );*/
+
+    THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+    //OBJMTLLoader
+    var loader = new THREE.OBJMTLLoader();
+    loader.load( 'boat.obj', 'boat.mtl', function ( object ) {
+        console.log('obj loaded!');
+        //object.position.y = - 80;
+        scene.add( object );
     }, onProgress, onError );
+
 
 
 
