@@ -19,7 +19,9 @@ function init(){
     spotLight.position.set(-20, 35, 200);
     scene.add(spotLight);
 
-    var plane = doGround(doGroundGeometry(150, 150, 60, 60));
+    //var plane = doGround(doGroundGeometry(150, 150, 60, 60));
+    //snow
+    var plane = doSnowGround(doGroundGeometry(150, 150, 60, 60));
     scene.add(plane);
 
     var elem = document.getElementById("output");
@@ -28,8 +30,6 @@ function init(){
     var controls = new THREE.OrbitControls( camera );
     controls.damping = 0.2;
     controls.addEventListener( 'change', render );
-        //controls.target.set(0, 0, 0);
-    //new THREE.MouseControls(camera);
 
     callback = function(){
         renderer.render(scene, camera);
@@ -62,10 +62,17 @@ var doGround = function(groundGeometry) {
     return ground;
 };
 
+var doSnowGround = function(groundGeometry){
+    var snowGroundMaterial = new THREE.MeshLambertMaterial({color: 0xF8FFFF, shading: THREE.FlatShading});
+    var snowGround = new THREE.Mesh(groundGeometry, snowGroundMaterial);
+    snowGround.rotation.x = -0.5*Math.PI;
+    return snowGround;
+};
+
 
 function render(){
     callback();
     requestAnimationFrame(render);
-}
+};
 
 window.onload = init;
