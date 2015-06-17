@@ -39,7 +39,7 @@ function init(){
 };
 
 var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
-    var groundGeometry = new THREE.PlaneGeometry(width, height, 10, 20);
+    var groundGeometry = new THREE.PlaneGeometry(width, height, 20, 40);
 
     for (var i = 0; i < groundGeometry.vertices.length; i++) {
         groundGeometry.vertices[i].x += Math.random() * 5;
