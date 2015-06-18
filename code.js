@@ -28,16 +28,15 @@ function init(){
     spotLight.position.set(-20, 100, 600);
     scene.add(spotLight);
 
-    //plane
-    var plane = doGround(doGroundGeometry(500, 500, 300, 300));
-    scene.add(plane);
+    //defaultGround
+    var defaultGround = doGround(doGroundGeometry(500, 500, 300, 300));
+    scene.add(defaultGround);
 
     //manager
     var manager = new THREE.LoadingManager();
     manager.onProgress = function ( item, loaded, total ) {
         console.log( item, loaded, total );
     };
-
     //loader
     var onProgress = function ( xhr ) {
         if ( xhr.lengthComputable ) {
@@ -47,9 +46,7 @@ function init(){
     };
     var onError = function ( xhr ) {
     };
-
     THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-
     var loader = new THREE.OBJMTLLoader();
     loader.load( 'obj/male02.obj', 'obj/male02.mtl', function ( object ) {
         console.log('obj loaded!');
@@ -60,9 +57,9 @@ function init(){
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
 
-    var controls = new THREE.OrbitControls( camera );
-    controls.damping = 0.2;
-    controls.addEventListener( 'change', render );
+    var orbitControls = new THREE.OrbitControls(camera);
+    orbitControls.damping = 0.2;
+    orbitControls.addEventListener('change', render );
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -75,7 +72,7 @@ function init(){
         renderer.render(scene, camera);
     };
     requestAnimationFrame(render);
-    controls.update();
+    orbitControls.update();
 
 };
 
