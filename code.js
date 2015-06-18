@@ -18,17 +18,18 @@ function init(){
     camera.position.z = 200;
     //camera.lookAt(scene.position);
 
-    var axes = new THREE.AxisHelper(2);
-    scene.add(axes);
+    //AxesHelper
+    /*var axes = new THREE.AxisHelper(2);
+    scene.add(axes);*/
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff, 3);
     spotLight.castShadow = true;
-    spotLight.position.set(-20, 35, 300);
+    spotLight.position.set(-20, 100, 600);
     scene.add(spotLight);
 
     //plane
-    var plane = doGround(doGroundGeometry(150, 150, 60, 60));
+    var plane = doGround(doGroundGeometry(500, 500, 300, 300));
     scene.add(plane);
 
     //manager
@@ -79,7 +80,7 @@ function init(){
 };
 
 var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
-    var groundGeometry = new THREE.PlaneGeometry(width, height, 20, 40);
+    var groundGeometry = new THREE.PlaneGeometry(width, height, 100, 60);
 
     for (var i = 0; i < groundGeometry.vertices.length; i++) {
         groundGeometry.vertices[i].x += Math.random() * 5;
