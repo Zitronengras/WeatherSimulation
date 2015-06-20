@@ -6,7 +6,7 @@
 function init(){
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0xffffff));
+    renderer.setClearColor(new THREE.Color(0x000000));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
 
@@ -19,14 +19,19 @@ function init(){
     //camera.lookAt(scene.position);
 
     //AxesHelper
-    /*var axes = new THREE.AxisHelper(2);
-    scene.add(axes);*/
+    var axes = new THREE.AxisHelper(500);
+    scene.add(axes);
 
     //light
-    var spotLight = new THREE.SpotLight(0xffffff, 3);
+    var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
     spotLight.position.set(-20, 100, 600);
+    spotLight.intensity = 3;
     scene.add(spotLight);
+
+    /*var ambientLight = new THREE.AmbientLight(0x222222);
+    scene.add(ambientLight);*/
+
 
     //defaultGround
     var defaultGround = doGround(doGroundGeometry(500, 500, 300, 300));
@@ -38,21 +43,18 @@ function init(){
         console.log( item, loaded, total );
     };
     //loader
-    var onProgress = function ( xhr ) {
-        if ( xhr.lengthComputable ) {
-            var percentComplete = xhr.loaded / xhr.total * 100;
-            console.log( Math.round(percentComplete, 2) + '% downloaded' );
-        }
-    };
-    var onError = function ( xhr ) {
-    };
-    THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-    var loader = new THREE.OBJMTLLoader();
-    loader.load( 'obj/male02.obj', 'obj/male02.mtl', function ( object ) {
-        console.log('obj loaded!');
-        object.position.y = 0;
-        scene.add( object );
-    }, onProgress, onError );
+
+
+    var dae;
+    var loader = new THREE.ColladaLoader();
+    loader.options.convertUpAxis = true;
+    loader.load('dae/wolken.dae', function(collada){
+        dae = collada.scene;
+        console.log('obj loaded');
+        dae.scale.x = dae.scale.y = dae.scale.z = 5;
+        dae.updateMatrix();
+        scene.add(dae);
+    });
 
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
@@ -72,8 +74,8 @@ function init(){
         renderer.render(scene, camera);
     };
     requestAnimationFrame(render);
-    orbitControls.update();
 
+    orbitControls.update();
 };
 
 var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
@@ -99,7 +101,6 @@ var doGround = function(groundGeometry) {
     //ground.receiveShadow = true;
     return ground;
 };
-
 
 function render(){
     callback();
