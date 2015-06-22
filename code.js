@@ -70,7 +70,7 @@ function init(){
         console.log('grassStalk loaded');
         grassStalk.castShadow = true;
         //grassStalk.scale.x = cloud.scale.y = cloud.scale.z = 5;
-        //grassStalk.position.set(1, 1, 1);
+        grassStalk.position.set(1, 1, 1);
         grassStalk.updateMatrix();
         scene.add(grassStalk);
     });
