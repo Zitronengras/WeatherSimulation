@@ -48,18 +48,31 @@ function init(){
     manager.onProgress = function ( item, loaded, total ) {
         console.log( item, loaded, total );
     };
-    //loader
+    //cloud loader
     var cloud;
-    var loader = new THREE.ColladaLoader();
-    loader.options.convertUpAxis = true;
-    loader.load('dae/wolken.dae', function(collada){
+    var cloudLoader = new THREE.ColladaLoader();
+    cloudLoader.options.convertUpAxis = true;
+    cloudLoader.load('dae/Wolken.dae', function(collada){
         cloud = collada.scene;
-        //console.log('obj loaded');
+        console.log('cloud loaded');
         cloud.castShadow = true;
         cloud.scale.x = cloud.scale.y = cloud.scale.z = 1;
         cloud.position.set(1, 80, 1);
         cloud.updateMatrix();
         scene.add(cloud);
+    });
+    //grass loader
+    var grassStalk;
+    var grassStalkLoader = new THREE.ColladaLoader();
+    grassStalkLoader.options.convertUpAxis = true;
+    grassStalkLoader.load('dae/Grashalm.dae', function(collada){
+        grassStalk = collada.scene;
+        console.log('grassStalk loaded');
+        grassStalk.castShadow = true;
+        //grassStalk.scale.x = cloud.scale.y = cloud.scale.z = 5;
+        //grassStalk.position.set(1, 1, 1);
+        grassStalk.updateMatrix();
+        scene.add(grassStalk);
     });
 
     var elem = document.getElementById("output");
