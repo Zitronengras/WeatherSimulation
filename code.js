@@ -56,7 +56,7 @@ function init(){
         cloud = collada.scene;
         console.log('cloud loaded');
         cloud.castShadow = true;
-        cloud.scale.x = cloud.scale.y = cloud.scale.z = 1;
+        cloud.scale.x = cloud.scale.y = cloud.scale.z = 0.5;
         cloud.position.set(1, 150, 1);
         cloud.updateMatrix();
         scene.add(cloud);
@@ -83,7 +83,7 @@ function init(){
         twistedTree = collada.scene;
         console.log('twistedTree loaded');
         twistedTree.castShadow = true;
-        twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.2;
+        twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
         
         // SHADOW
         twistedTree.traverse(function (child){
@@ -91,7 +91,7 @@ function init(){
 					e.castShadow = true;
 					})});
         //
-        twistedTree.position.set(10, 50, 80);
+        twistedTree.position.set(10, 20, 80);
        twistedTree.updateMatrix();
         scene.add(twistedTree);
     });
@@ -104,8 +104,8 @@ function init(){
         twistedTree2 = collada.scene;
         console.log('twistedTree 2 loaded');
         twistedTree2.castShadow = true;
-        twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.2;
-        twistedTree2.position.set(20, 50, 120);
+        twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
+        twistedTree2.position.set(20, 20, 120);
         twistedTree2.updateMatrix();
         scene.add(twistedTree2);
     });
@@ -118,8 +118,8 @@ function init(){
         longTree = collada.scene;
         console.log('longtree loaded');
         longTree.castShadow = true;
-        longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.1;
-        longTree.position.set(10, 5, -100);
+        longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
+        longTree.position.set(10, 20, -100);
         longTree.updateMatrix();
         scene.add(longTree);
     });
