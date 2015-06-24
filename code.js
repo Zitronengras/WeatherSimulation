@@ -18,6 +18,35 @@ function init(){
     camera.position.z = 300;
     //camera.lookAt(scene.position);
 
+    var seasons = function() {
+        //this.displayOutline = false;
+
+        this.spring = function() {
+            var spring = new Spring();
+            spring.load();
+        };
+        this.summer = function() {
+            var summer = new Summer();
+            summer.load();
+        };
+        this.autumn = function() {
+            var autumn = new Autumn();
+            autumn.load();
+        };
+        this.winter = function() {
+            var winter = new Winter();
+            winter.load();
+        };
+        // Define render logic ...
+    };
+
+    var seasonsGUI = new seasons();
+    var gui = new dat.GUI();
+    gui.add(seasonsGUI, 'spring');
+    gui.add(seasonsGUI, 'summer');
+    gui.add(seasonsGUI, 'autumn');
+    gui.add(seasonsGUI, 'winter');
+
     //AxesHelper
     var axes = new THREE.AxisHelper(500);
     scene.add(axes);
@@ -170,6 +199,6 @@ var doGround = function(groundGeometry) {
 function render(){
     callback();
     requestAnimationFrame(render);
-}
+};
 
 window.onload = init;
