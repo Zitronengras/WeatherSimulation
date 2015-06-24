@@ -18,42 +18,27 @@ function init(){
     camera.position.z = 300;
     //camera.lookAt(scene.position);
 
-    /*var spring  = function() {
-        console.log('spring!!!!!!!');
-    };
-    var summer  = function() {
-            console.log('summer!!!!!!!');
-    };
-    var autumn  = function() {
-        console.log('autumn!!!!!!!');
-    };
-    var winter  = function() {
-        console.log('winter!!!!!!!');
-    };*/
-    /*var springFunction = new spring ();
-    var summerFunction = new summer ();
-    var autumnFunction = new autumn ();
-    var winterFunction = new winter ();*/
-
     var seasons = function() {
-        //this.message = 'dat.gui';
-        this.displayOutline = false;
+        //this.displayOutline = false;
 
         this.spring = function() {
-            console.log('spring');
+            var spring = new Spring();
+            spring.load();
         };
         this.summer = function() {
-            console.log('summer');
+            var summer = new Summer();
+            summer.load();
         };
         this.autumn = function() {
-            console.log('autumn');
+            var autumn = new Autumn();
+            autumn.load();
         };
         this.winter = function() {
-            console.log('winter');
+            var winter = new Winter();
+            winter.load();
         };
         // Define render logic ...
     };
-
 
     var seasonsGUI = new seasons();
     var gui = new dat.GUI();
@@ -61,11 +46,6 @@ function init(){
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
-/*
-    gui.add(text, 'SPRING');
-    gui.add(summer, 'SUMMER');
-    gui.add(autumn, 'AUTUMN');
-    gui.add(winter, 'winter');*/
 
     //AxesHelper
     var axes = new THREE.AxisHelper(500);
@@ -219,6 +199,6 @@ var doGround = function(groundGeometry) {
 function render(){
     callback();
     requestAnimationFrame(render);
-}
+};
 
 window.onload = init;
