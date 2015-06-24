@@ -70,11 +70,11 @@ function init(){
         grassStalk = collada.scene;
 
         //store mesh
-        refObject = collada.scene.children[0];
+        var piece = collada.scene.children[0];
        // for (var i = 0; i < 10; i++) {
             var newPiece = new THREE.Object3D();
-            for (var j = 0; j < refObject.children.length; j++) {
-                newPiece.add(new THREE.Mesh(refObject.children[j].geometry, refObject.children[j].material));
+            for (var j = 0; j < piece.children.length; j++) {
+                newPiece.add(new THREE.Mesh(piece.children[j].geometry, piece.children[j].material));
             }
             newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.02;
             newPiece.position.set(0, 0, 0);
