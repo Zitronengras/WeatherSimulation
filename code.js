@@ -37,7 +37,7 @@ function init(){
 
     //defaultGround
     var defaultGround = doGround(doGroundGeometry(500, 500));
-    scene.add(defaultGround);
+    //scene.add(defaultGround);
 
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
@@ -57,24 +57,44 @@ function init(){
         console.log('cloud loaded');
         cloud.castShadow = true;
         cloud.scale.x = cloud.scale.y = cloud.scale.z = 1;
-        cloud.position.set(1, 150, 1);
+        cloud.position.set(0, 150, 0);
         cloud.updateMatrix();
         scene.add(cloud);
     });
     //grass loader
+    var refObject;
     var grassStalk;
     var grassStalkLoader = new THREE.ColladaLoader();
     grassStalkLoader.options.convertUpAxis = true;
     grassStalkLoader.load('dae/Grashalm.dae', function(collada){
         grassStalk = collada.scene;
-        console.log('grassStalk loaded');
+
+        //store mesh
+        refObject = collada.scene.children[0];
+       // for (var i = 0; i < 10; i++) {
+            var newPiece = new THREE.Object3D();
+            for (var j = 0; j < refObject.children.length; j++) {
+                newPiece.add(new THREE.Mesh(refObject.children[j].geometry, refObject.children[j].material));
+            }
+            newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.02;
+            newPiece.position.set(0, 0, 0);
+            scene.add(newPiece);
+       // }
+
+        console.log('grassStalk loaded' + grassStalk);
         grassStalk.castShadow = true;
         //grassStalk.scale.x = cloud.scale.y = cloud.scale.z = 5;
-        grassStalk.position.set(1, 1, 1);
+        grassStalk.position.set(0, 0, 0);
         grassStalk.updateMatrix();
         scene.add(grassStalk);
+
+        /*var clone = new THREE.Mesh(refObject.geometry, refObject.material);
+        clone.position.set(1, 1, 1);
+        console.log('clone added');
+        scene.add(clone);*/
+
     });
-    
+
         //twisted tree loader
     var twistedTree;
     var twistedTreeLoader = new THREE.ColladaLoader();
