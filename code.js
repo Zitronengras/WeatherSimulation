@@ -79,7 +79,7 @@ function init(){
     var twistedTree;
     var twistedTreeLoader = new THREE.ColladaLoader();
     twistedTreeLoader.options.convertUpAxis = true;
-   twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
+    twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
         twistedTree = collada.scene;
         console.log('twistedTree loaded');
         twistedTree.castShadow = true;
@@ -93,13 +93,13 @@ function init(){
     var twistedTree2;
     var twistedTree2Loader = new THREE.ColladaLoader();
     twistedTree2Loader.options.convertUpAxis = true;
-   twistedTree2Loader.load('dae/twisted_tree.dae', function(collada){
+    twistedTree2Loader.load('dae/twisted_tree.dae', function(collada){
         twistedTree2 = collada.scene;
         console.log('twistedTree 2 loaded');
         twistedTree2.castShadow = true;
         twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.2;
         twistedTree2.position.set(20, 50, 120);
-       twistedTree2.updateMatrix();
+        twistedTree2.updateMatrix();
         scene.add(twistedTree2);
     });
 
@@ -107,13 +107,13 @@ function init(){
     var longTree;
     var longTreeLoader = new THREE.ColladaLoader();
     longTreeLoader.options.convertUpAxis = true;
-  longTreeLoader.load('dae/long_tree.dae', function(collada){
+    longTreeLoader.load('dae/long_tree.dae', function(collada){
         longTree = collada.scene;
         console.log('longtree loaded');
         longTree.castShadow = true;
         longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.1;
-       longTree.position.set(10, 5, -100);
-       longTree.updateMatrix();
+        longTree.position.set(10, 5, -100);
+        longTree.updateMatrix();
         scene.add(longTree);
     });
     var elem = document.getElementById("output");
