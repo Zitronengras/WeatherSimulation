@@ -79,11 +79,11 @@ function init(){
     var twistedTree;
     var twistedTreeLoader = new THREE.ColladaLoader();
     twistedTreeLoader.options.convertUpAxis = true;
-   twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
+   twistedTreeLoader.load('dae/twistedTree.dae', function(collada){
         twistedTree = collada.scene;
         console.log('twistedTree loaded');
         twistedTree.castShadow = true;
-        twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.2;
+        twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 1;
         twistedTree.position.set(10, 50, 80);
        twistedTree.updateMatrix();
         scene.add(twistedTree);
