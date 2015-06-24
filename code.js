@@ -84,6 +84,13 @@ function init(){
         console.log('twistedTree loaded');
         twistedTree.castShadow = true;
         twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.2;
+        
+        // SHADOW
+        twistedTree.traverse(function (child){
+				child.traverse(function(e){
+					e.castShadow = true;
+					})});
+        //
         twistedTree.position.set(10, 50, 80);
        twistedTree.updateMatrix();
         scene.add(twistedTree);
