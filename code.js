@@ -18,6 +18,55 @@ function init(){
     camera.position.z = 300;
     //camera.lookAt(scene.position);
 
+    /*var spring  = function() {
+        console.log('spring!!!!!!!');
+    };
+    var summer  = function() {
+            console.log('summer!!!!!!!');
+    };
+    var autumn  = function() {
+        console.log('autumn!!!!!!!');
+    };
+    var winter  = function() {
+        console.log('winter!!!!!!!');
+    };*/
+    /*var springFunction = new spring ();
+    var summerFunction = new summer ();
+    var autumnFunction = new autumn ();
+    var winterFunction = new winter ();*/
+
+    var seasons = function() {
+        //this.message = 'dat.gui';
+        this.displayOutline = false;
+
+        this.spring = function() {
+            console.log('spring');
+        };
+        this.summer = function() {
+            console.log('summer');
+        };
+        this.autumn = function() {
+            console.log('autumn');
+        };
+        this.winter = function() {
+            console.log('winter');
+        };
+        // Define render logic ...
+    };
+
+
+    var seasonsGUI = new seasons();
+    var gui = new dat.GUI();
+    gui.add(seasonsGUI, 'spring');
+    gui.add(seasonsGUI, 'summer');
+    gui.add(seasonsGUI, 'autumn');
+    gui.add(seasonsGUI, 'winter');
+/*
+    gui.add(text, 'SPRING');
+    gui.add(summer, 'SUMMER');
+    gui.add(autumn, 'AUTUMN');
+    gui.add(winter, 'winter');*/
+
     //AxesHelper
     var axes = new THREE.AxisHelper(500);
     scene.add(axes);
