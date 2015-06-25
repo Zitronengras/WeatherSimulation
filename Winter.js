@@ -3,7 +3,15 @@
  */
 
 function Winter() {
-    this.load = function(){
+
+    var ground =new Ground();
+
+    this.load = function(scene){
         console.log('winter');
+
+        //winterGround
+        var winterGroundColor = "#F8FFFF";
+        var winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
+        scene.add(winterGround);
     };
 }
