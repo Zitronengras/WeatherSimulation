@@ -42,7 +42,7 @@ function Summer() {
             scene.add(grassStalk);
         });
 
-        //twisted tree loader
+        /*//twisted tree loader
         var twistedTree;
         var twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
@@ -62,7 +62,7 @@ function Summer() {
             twistedTree.position.set(10, 20, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
-        });
+        });*/
 
         //second twisted tree loader
         var twistedTree2;
