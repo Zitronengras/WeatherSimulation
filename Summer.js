@@ -5,18 +5,28 @@
 function Summer() {
 
     var ground = new Ground();
+    var summerGround;
+    var summerGroundColor= "#91D94A";
+    var cloud;
+    var cloudLoader;
+    var grassStalk;
+    var grassStalkLoader;
+    var twistedTree;
+    var twistedTreeLoader;
+    var twistedTree2;
+    var twistedTree2Loader;
+    var longTree;
+    var longTreeLoader;
 
     this.load = function(scene){
         console.log('summer');
 
         //summerGround
-        var summerGroundColor= "#91D94A";
-        var summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
+        summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
         //cloud loader
-        var cloud;
-        var cloudLoader = new THREE.ColladaLoader();
+        cloudLoader = new THREE.ColladaLoader();
         cloudLoader.options.convertUpAxis = true;
         cloudLoader.load('dae/Wolken.dae', function(collada){
             cloud = collada.scene;
@@ -29,8 +39,7 @@ function Summer() {
         });
 
         //grass loader
-        var grassStalk;
-        var grassStalkLoader = new THREE.ColladaLoader();
+        grassStalkLoader = new THREE.ColladaLoader();
         grassStalkLoader.options.convertUpAxis = true;
         grassStalkLoader.load('dae/Grashalm.dae', function(collada){
             grassStalk = collada.scene;
@@ -43,15 +52,13 @@ function Summer() {
         });
 
         //twisted tree loader
-        var twistedTree;
-        var twistedTreeLoader = new THREE.ColladaLoader();
+        twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
         twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-
             // SHADOW
             twistedTree.traverse(function (child){
                 child.traverse(function(e){
@@ -65,8 +72,7 @@ function Summer() {
         });
 
         //second twisted tree loader
-        var twistedTree2;
-        var twistedTree2Loader = new THREE.ColladaLoader();
+        twistedTree2Loader = new THREE.ColladaLoader();
         twistedTree2Loader.options.convertUpAxis = true;
         twistedTree2Loader.load('dae/twisted_tree.dae', function(collada){
             twistedTree2 = collada.scene;
@@ -79,8 +85,7 @@ function Summer() {
         });
 
         //big/long tree loader
-        var longTree;
-        var longTreeLoader = new THREE.ColladaLoader();
+        longTreeLoader = new THREE.ColladaLoader();
         longTreeLoader.options.convertUpAxis = true;
         longTreeLoader.load('dae/long_tree.dae', function(collada){
             longTree = collada.scene;
@@ -91,5 +96,21 @@ function Summer() {
             longTree.updateMatrix();
             scene.add(longTree);
         });
+    };
+
+    this.remove = function(scene){
+        scene.remove(summerGround);
+        scene.remove(cloudLoader);
+        scene.remove(cloud);
+        scene.remove(grassStalk);
+        scene.remove(grassStalkLoader);
+        scene.remove(twistedTree);
+        scene.remove(twistedTreeLoader);
+        scene.remove(twistedTree2);
+        scene.remove(twistedTree2Loader);
+        scene.remove(longTree);
+        scene.remove(longTreeLoader);
+
+        console.log('removed summer');
     };
 }

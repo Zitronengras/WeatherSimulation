@@ -5,12 +5,19 @@
 function Spring() {
 
     var ground = new Ground();
+    var springGround;
     var springGroundColor = "#91D94A";
 
     this.load = function(scene){
         console.log('spring');
         //springGround
-        var springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
+        springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
         scene.add(springGround);
+    };
+
+    this.remove = function(scene){
+        scene.remove(springGround);
+
+        console.log('removed spring');
     };
 }
