@@ -2,7 +2,6 @@
  * Created by Caro on 10.06.2015.
  */
 
-
 function init(){
 
     var renderer = new THREE.WebGLRenderer();
@@ -66,7 +65,6 @@ function init(){
             seasonObject = new Winter();
             seasonObject.load(scene);
         };
-        // Define render logic ...
     };
 
     var seasonsGUI = new seasons();
