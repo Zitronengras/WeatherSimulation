@@ -4,7 +4,7 @@
 
 function Autumn() {
     var ground = new Ground();
-    var autumnGroundColor = "#91D94A";
+    var autumnGroundColor = "#6C6632";
 
     this.load = function(scene){
         console.log('Autumn');
