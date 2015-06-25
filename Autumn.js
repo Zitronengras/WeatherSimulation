@@ -3,7 +3,13 @@
  */
 
 function Autumn() {
-    this.load = function(){
+    var ground = new Ground();
+    var autumnGroundColor = "#91D94A";
+
+    this.load = function(scene){
         console.log('Autumn');
+        //autumnGround
+        var autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
+        scene.add(autumnGround);
     };
 }
