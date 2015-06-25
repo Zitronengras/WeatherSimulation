@@ -22,7 +22,7 @@ function init(){
     var seasons = function() {
         this.spring = function() {
             var spring = new Spring();
-            spring.load();
+            spring.load(scene);
         };
         this.summer = function() {
             var summer = new Summer();
@@ -30,11 +30,11 @@ function init(){
         };
         this.autumn = function() {
             var autumn = new Autumn();
-            autumn.load();
+            autumn.load(scene);
         };
         this.winter = function() {
             var winter = new Winter();
-            winter.load();
+            winter.load(scene);
         };
         // Define render logic ...
     };

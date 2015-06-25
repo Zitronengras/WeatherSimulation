@@ -3,6 +3,7 @@
  */
 
 function Summer() {
+
     var ground = new Ground();
 
     this.load = function(scene){
