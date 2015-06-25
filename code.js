@@ -60,18 +60,6 @@ function init(){
     spotLight.intensity = 1.2;
     scene.add(spotLight);
 
-    /*var ambientLight = new THREE.AmbientLight(0x222222);
-    scene.add(ambientLight);*/
-
-
-    //defaultGround
-    var defaultGround = doGround(doGroundGeometry(500, 500));
-    scene.add(defaultGround);
-
-    //shows vertexNormals
-    //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
-    //scene.add(edges);
-
     //manager
     var manager = new THREE.LoadingManager();
     manager.onProgress = function ( item, loaded, total ) {
@@ -104,7 +92,7 @@ function init(){
         scene.add(grassStalk);
     });
     
-        //twisted tree loader
+    //twisted tree loader
     var twistedTree;
     var twistedTreeLoader = new THREE.ColladaLoader();
     twistedTreeLoader.options.convertUpAxis = true;
@@ -118,7 +106,8 @@ function init(){
         twistedTree.traverse(function (child){
 				child.traverse(function(e){
 					e.castShadow = true;
-					})});
+					})
+        });
         //
         twistedTree.position.set(10, 20, 80);
        twistedTree.updateMatrix();
