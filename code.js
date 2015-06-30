@@ -37,7 +37,7 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Winter();
+    seasonObject = new Spring();
     seasonObject.load(scene);
 
     //GUI
