@@ -107,4 +107,9 @@ function init(){
     orbitControls.update();
 };
 
+function render () {
+    callback();
+    requestAnimationFrame(render);
+}
+
 window.onload = init;
