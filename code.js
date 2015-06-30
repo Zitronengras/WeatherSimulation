@@ -23,12 +23,9 @@ function init() {
     spotLight.position.x = 900; //red axis
     spotLight.position.y = 700; //green axis
     spotLight.position.z = 1;
-    spotLight.intensity = 1.4;
+    spotLight.intensity = 1.2;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
-
-    /*var ambientLight = new THREE.AmbientLight(0x222222);
-     scene.add(ambientLight);*/
 
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
