@@ -44,17 +44,17 @@ function Summer() {
         grassStalkLoader.load('dae/Grashalm.dae', function(collada){
             grassStalk = collada.scene;
 
-            /*store mesh
+            //store mesh
             var piece = collada.scene.children[0];
-            // for (var i = 0; i < 10; i++) {
-            var newPiece = new THREE.Object3D();
-            for (var j = 0; j < piece.children.length; j++) {
-                newPiece.add(new THREE.Mesh(piece.children[j].geometry, piece.children[j].material));
-            }
-            newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.02;
+            for (var i = 0; i < 10; i++) {
+                var newPiece = new THREE.Object3D();
+                for (var j = 0; j < piece.children.length; j++) {
+                    newPiece.add(new THREE.Mesh(piece.children[j].geometry, piece.children[j].material));
+                }
+            newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.1;
             newPiece.position.set(0, 0, 0);
             scene.add(newPiece);
-            }*/
+            }
 
             console.log('grassStalk loaded');
             grassStalk.castShadow = true;
