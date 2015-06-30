@@ -15,7 +15,7 @@ function init(){
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
     camera.position.x = 300;
     camera.position.y = 300;
-    camera.position.z = 300;
+    camera.position.z = 299;
     //camera.lookAt(scene.position);
 
     //AxesHelper
@@ -181,6 +181,11 @@ var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
     return groundGeometry;
 };
 
+function render(){
+    callback();
+    requestAnimationFrame(render);
+}
+
 var doGround = function(groundGeometry) {
     var groundMaterial = new THREE.MeshLambertMaterial({color: 0x91D94A, shading: THREE.FlatShading});
     var ground = new THREE.Mesh(groundGeometry, groundMaterial);
@@ -189,9 +194,7 @@ var doGround = function(groundGeometry) {
     return ground;
 };
 
-function render(){
-    callback();
-    requestAnimationFrame(render);
-}
+
+
 
 window.onload = init;
