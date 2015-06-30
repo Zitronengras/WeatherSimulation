@@ -37,7 +37,7 @@ function init(){
 
     //defaultGround
     var defaultGround = doGround(doGroundGeometry(500, 500));
-   // scene.add(defaultGround);
+    scene.add(defaultGround);
 
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
@@ -59,7 +59,7 @@ function init(){
         cloud.scale.x = cloud.scale.y = cloud.scale.z = 1;
         cloud.position.set(1, 150, 1);
         cloud.updateMatrix();
-     //   scene.add(cloud);
+        scene.add(cloud);
     });
     //grass loader
     var grassStalk;
@@ -72,7 +72,7 @@ function init(){
         //grassStalk.scale.x = cloud.scale.y = cloud.scale.z = 5;
         grassStalk.position.set(1, 1, 1);
         grassStalk.updateMatrix();
-   //     scene.add(grassStalk);
+        scene.add(grassStalk);
     });
     
         //twisted tree loader
@@ -86,7 +86,7 @@ function init(){
         twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.2;
         twistedTree.position.set(10, 50, 80);
        twistedTree.updateMatrix();
-      //  scene.add(twistedTree);
+        scene.add(twistedTree);
     });
     
         //second twisted tree loader
@@ -100,7 +100,7 @@ function init(){
         twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.2;
         twistedTree2.position.set(20, 50, 120);
         twistedTree2.updateMatrix();
-    //    scene.add(twistedTree2);
+       scene.add(twistedTree2);
     });
 
      //big/long tree loader
@@ -114,7 +114,7 @@ function init(){
         longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.1;
         longTree.position.set(10, 5, -100);
         longTree.updateMatrix();
-      //  scene.add(longTree);
+        scene.add(longTree);
     });
     
         
@@ -122,29 +122,28 @@ function init(){
     var mountain;
     var mountainLoader = new THREE.ColladaLoader();
     mountainLoader.options.convertUpAxis = true;
-   mountainLoader.load('dae/mountain.dae', function(collada){
+    mountainLoader.load('dae/mountain.dae', function(collada){
         mountain = collada.scene;
         console.log('mountain loaded');
         mountain.castShadow = true;
-        mountain.scale.x = mountain.scale.y = mountain.scale.z = 0.8;
-        mountain.position.set(0, 0, 0);
-       mountain.updateMatrix();
-        scene.add(mountain);
+        mountain.position.set(-80, 2, 160);
+        mountain.updateMatrix();
+       scene.add(mountain);
     });
     
     //seaCoast loader
     var seaCoast;
     var seaCoastLoader = new THREE.ColladaLoader();
     seaCoastLoader.options.convertUpAxis = true;
-   seaCoastLoader.load('dae/seaCoast.dae', function(collada){
+   seaCoastLoader.load('dae/SeaCoastIced.dae', function(collada){
         seaCoast = collada.scene;
         console.log('seaCoast loaded');
         seaCoast.castShadow = true;
-        //seaCoast.scale.x = seaCoast.scale.y = seaCoast.z = 0.1;
-        seaCoast.position.set(10, 5, 0);
-       seaCoast.updateMatrix();
+        seaCoast.position.set(50, 10, -450);
+        seaCoast.updateMatrix();
         scene.add(seaCoast);
     });
+    
     
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
