@@ -2,16 +2,16 @@
  * Created by Caro on 10.06.2015.
  */
 
-function init(){
+function init() {
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x8DC0F4));
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.shadowMapEnabled = true;
 
     var scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1500);
     camera.position.x = 300;
     camera.position.y = 300;
     camera.position.z = 300;
@@ -105,7 +105,7 @@ function init(){
     requestAnimationFrame(render);
 
     orbitControls.update();
-};
+}
 
 function render () {
     callback();
