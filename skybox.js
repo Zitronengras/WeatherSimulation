@@ -22,7 +22,7 @@ function Skybox(){
                 cubePagesI += 1;
             }
         }
-        var skyGeometry = new THREE.BoxGeometry(500, 500, 1500);
+        var skyGeometry = new THREE.BoxGeometry(500, 500, 2500);
         var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
         var skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
         scene.add( skyBox );

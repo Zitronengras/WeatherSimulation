@@ -15,12 +15,8 @@ function Winter() {
         //skybox
         winterSkybox.load(scene, skyboxImagePrefix);
 
-        //ambientLight
-        /*var ambientLight = new THREE.AmbientLight(0x21454C);
-        scene.add(ambientLight);*/
-
         //winterLight
-        var winterSpotLight = new THREE.SpotLight(0x4C7DFF);//ffffff);
+        var winterSpotLight = new THREE.SpotLight(0x4C7DFF);
         winterSpotLight.castShadow = true;
         winterSpotLight.position.x = 900; //red axis
         winterSpotLight.position.y = 700; //green axis
@@ -28,7 +24,6 @@ function Winter() {
         winterSpotLight.intensity = 0.3; //1.2;
         winterSpotLight.lookAt(0, 0, 0);
         scene.add(winterSpotLight);
-
 
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
