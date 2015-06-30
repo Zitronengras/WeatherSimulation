@@ -3,6 +3,9 @@
  */
 
 function Skybox(){
+
+    var skyBox;
+
     this.load = function(scene, imagePrefix){
         var cubePages = ["right", "left", "top", "back", "front"];
         var imageSuffix = ".png";
@@ -23,7 +26,10 @@ function Skybox(){
         }
         var skyGeometry = new THREE.BoxGeometry(500, 500, 2500);
         var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
-        var skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
+        skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
         scene.add( skyBox );
-    }
+    };
+    this.remove = function(scene){
+        scene.remove(skyBox);
+    };
 }
