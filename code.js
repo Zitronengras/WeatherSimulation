@@ -45,6 +45,10 @@ function init(){
 
     //GUI
     var seasons = function() {
+
+        var mountain = new Mountain();
+        mountain.load(scene);
+
         this.spring = function() {
             seasonObject.remove(scene);
             seasonObject = new Spring();

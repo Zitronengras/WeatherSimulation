@@ -13,10 +13,13 @@ function Spring() {
         //springGround
         springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
         scene.add(springGround);
+
     };
 
     this.remove = function(scene){
+        scene.remove(ground);
         scene.remove(springGround);
+        scene.remove(springGroundColor);
 
         console.log('removed spring');
     };
