@@ -27,33 +27,6 @@ function init() {
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-
-    //skybox
-    var imagePrefix = "images/skybox-";
-    var cubePages = ["right", "left", "top", "back", "front"];
-    var imageSuffix = ".png";
-
-    var materialArray = [];
-    var cubePagesI = 0;
-    for (var i = 0; i < 6; i++){
-        if (i == 3) {
-            materialArray.push(new THREE.MeshBasicMaterial({transparent: true, opacity: 0}));
-        }
-        else {
-            materialArray.push(new THREE.MeshBasicMaterial({
-                map: THREE.ImageUtils.loadTexture(imagePrefix + cubePages[cubePagesI] + imageSuffix),
-                side: THREE.BackSide
-            }));
-            cubePagesI += 1;
-        }
-    }
-    var skyGeometry = new THREE.BoxGeometry( 500, 500, 1500);
-    var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
-    var skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
-    //skyBox.rotation.x += Math.PI / 2;
-    scene.add( skyBox );
-
-
     /*var ambientLight = new THREE.AmbientLight(0x222222);
      scene.add(ambientLight);*/
 
