@@ -9,7 +9,7 @@ function Ground() {
     scene.add(summerGround);*/
 
     this.doGroundGeometry = function(widthSegments, heightSegments) {
-        var groundGeometry = new THREE.PlaneGeometry(500, 500, 60, 50);
+        var groundGeometry = new THREE.PlaneGeometry(500, 800, 60, 80);
         for (var i = 0; i < groundGeometry.vertices.length; i++) {
             groundGeometry.vertices[i].x += Math.random() * 3; //red axis
             groundGeometry.vertices[i].y += Math.random() * 2; //blue axis

@@ -18,7 +18,7 @@ function Mountain() {
             mountain = collada.scene;
             console.log('mountain loaded');
             mountain.castShadow = true;
-            mountain.position.set(-80, 2, 160);
+            mountain.position.set(-80, 2, 470);
             mountain.updateMatrix();
             scene.add(mountain);
         });
@@ -31,7 +31,7 @@ function Mountain() {
             seaCoast = collada.scene;
             console.log('seaCoast loaded');
             seaCoast.castShadow = true;
-            seaCoast.position.set(50, 10, -450);
+            seaCoast.position.set(50, 15, -650);
             seaCoast.updateMatrix();
             scene.add(seaCoast);
         });

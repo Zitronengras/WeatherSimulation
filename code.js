@@ -23,7 +23,7 @@ function init(){
     spotLight.position.x = 900; //red axis
     spotLight.position.y = 700; //green axis
     spotLight.position.z = 1;
-    spotLight.intensity = 1.2;
+    spotLight.intensity = 1.4;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
