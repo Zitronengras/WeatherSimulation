@@ -29,7 +29,6 @@ function init() {
 
 
     //skybox
-
     var imagePrefix = "images/skybox-";
     var cubePages = ["right", "left", "top", "back", "front"];
     var imageSuffix = ".png";
@@ -53,38 +52,6 @@ function init() {
     var skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
     //skyBox.rotation.x += Math.PI / 2;
     scene.add( skyBox );
-
-
-
-    /*var materialLoader = new THREE.TextureLoader();
-    materialLoader.load( 'winter.jpg', function ( texture ) {
-        var sphereGeometry = new THREE.SphereGeometry(100, 30, 30);
-        var sphereMaterial = new THREE.MeshBasicMaterial( {map: texture} );
-        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        scene.add(sphere);
-    } );*/
-
-
-
-    /*// Load the background texture
-    var texture = THREE.ImageUtils.loadTexture( 'winter.jpg' );
-    var backgroundMesh = new THREE.Mesh(
-        new THREE.PlaneGeometry(2, 2, 0),
-        new THREE.MeshBasicMaterial({
-            map: texture
-        }));
-
-    //backgroundMesh.material.depthTest = false;
-    //backgroundMesh.material.depthWrite = false;
-
-    // Create your background scene
-    var backgroundScene = new THREE.Scene();
-    var backgroundCamera = new THREE.Camera();
-    backgroundScene.add(backgroundCamera);
-    backgroundScene.add(backgroundMesh);*/
-
-
-
 
 
     /*var ambientLight = new THREE.AmbientLight(0x222222);
