@@ -7,13 +7,13 @@ function Winter() {
     var ground = new Ground();
     var winterGround;
     var winterGroundColor = "#F8FFFF";
-    var skybox = new Skybox();
+    var winterSkybox = new Skybox();
     var skyboxImagePrefix = "images/winter/skybox-";
 
     this.load = function(scene){
 
         //skybox
-        skybox.load(scene, skyboxImagePrefix);
+        winterSkybox.load(scene, skyboxImagePrefix);
 
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
@@ -25,7 +25,7 @@ function Winter() {
     this.remove = function(scene){
         scene.remove(ground);
         scene.remove(winterGround);
-        scene.remove(skybox);
+        scene.remove(winterSkybox);
 
         console.log('removed winter');
     };
