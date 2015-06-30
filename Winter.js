@@ -36,8 +36,10 @@ function Winter() {
     this.remove = function(scene){
         scene.remove(ground);
         scene.remove(winterGround);
-        scene.remove(winterSkybox);
         scene.remove(winterSpotLight);
+        scene.remove(winterSkybox);
+
+        winterSkybox.remove(scene);
 
         console.log('removed winter');
     };
