@@ -2,16 +2,16 @@
  * Created by Caro on 10.06.2015.
  */
 
-function init(){
+function init() {
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x8DC0F4));
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.shadowMapEnabled = true;
 
     var scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1500);
     camera.position.x = 300;
     camera.position.y = 300;
     camera.position.z = 300;
@@ -26,6 +26,66 @@ function init(){
     spotLight.intensity = 1.4;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
+
+
+    //skybox
+
+    var imagePrefix = "images/skybox-";
+    var cubePages = ["right", "left", "top", "back", "front"];
+    var imageSuffix = ".png";
+
+    var materialArray = [];
+    var cubePagesI = 0;
+    for (var i = 0; i < 6; i++){
+        if (i == 3) {
+            materialArray.push(new THREE.MeshBasicMaterial({transparent: true, opacity: 0}));
+        }
+        else {
+            materialArray.push(new THREE.MeshBasicMaterial({
+                map: THREE.ImageUtils.loadTexture(imagePrefix + cubePages[cubePagesI] + imageSuffix),
+                side: THREE.BackSide
+            }));
+            cubePagesI += 1;
+        }
+    }
+    var skyGeometry = new THREE.BoxGeometry( 500, 500, 1500);
+    var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+    var skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
+    //skyBox.rotation.x += Math.PI / 2;
+    scene.add( skyBox );
+
+
+
+    /*var materialLoader = new THREE.TextureLoader();
+    materialLoader.load( 'winter.jpg', function ( texture ) {
+        var sphereGeometry = new THREE.SphereGeometry(100, 30, 30);
+        var sphereMaterial = new THREE.MeshBasicMaterial( {map: texture} );
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        scene.add(sphere);
+    } );*/
+
+
+
+    /*// Load the background texture
+    var texture = THREE.ImageUtils.loadTexture( 'winter.jpg' );
+    var backgroundMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(2, 2, 0),
+        new THREE.MeshBasicMaterial({
+            map: texture
+        }));
+
+    //backgroundMesh.material.depthTest = false;
+    //backgroundMesh.material.depthWrite = false;
+
+    // Create your background scene
+    var backgroundScene = new THREE.Scene();
+    var backgroundCamera = new THREE.Camera();
+    backgroundScene.add(backgroundCamera);
+    backgroundScene.add(backgroundMesh);*/
+
+
+
+
 
     /*var ambientLight = new THREE.AmbientLight(0x222222);
      scene.add(ambientLight);*/
@@ -105,7 +165,7 @@ function init(){
     requestAnimationFrame(render);
 
     orbitControls.update();
-};
+}
 
 function render () {
     callback();
