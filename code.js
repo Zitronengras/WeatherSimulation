@@ -14,7 +14,7 @@ function init(){
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
     camera.position.x = 300;
     camera.position.y = 300;
-    camera.position.z = 299;
+    camera.position.z = 300;
     //camera.lookAt(scene.position);
 
     //light
