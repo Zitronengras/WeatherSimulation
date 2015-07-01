@@ -11,13 +11,14 @@ function Summer() {
     var cloudLoader;
     var grassStalk;
     var grassStalkLoader;
-    var newGrassStalk;
+    var grassArray;
     var twistedTree;
     var twistedTreeLoader;
     var twistedTree2;
     var twistedTree2Loader;
     var longTree;
     var longTreeLoader;
+    var i;
 
     this.load = function(scene){
         console.log('summer');
@@ -42,11 +43,12 @@ function Summer() {
         //grass loader
         grassStalkLoader = new THREE.ColladaLoader();
         grassStalkLoader.options.convertUpAxis = true;
+        grassArray = [];
         grassStalkLoader.load('dae/Grashalm.dae', function(collada){
             grassStalk = collada.scene;
             //store mesh
             var colladaObj = collada.scene.children[0];
-            for (var i = 0; i < 20; i++) {
+            for (i = 0; i < 20; i++) {
                 newGrassStalk = new THREE.Object3D();
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
@@ -64,6 +66,7 @@ function Summer() {
 
                 newGrassStalk.position.set((i*3), 5, (i*3));
                 newGrassStalk.updateMatrix();
+                grassArray.push(newGrassStalk);
                 scene.add(newGrassStalk);
             }
             console.log('grassStalk loaded');
@@ -126,7 +129,9 @@ function Summer() {
         scene.remove(cloud);
         scene.remove(grassStalk);
         scene.remove(grassStalkLoader);
-        //need to remove newGrassStalk
+        for(i = 0; i < grassArray.length; i++){
+            scene.remove(grassArray[i]);
+        }
         scene.remove(twistedTree);
         scene.remove(twistedTreeLoader);
         scene.remove(twistedTree2);
