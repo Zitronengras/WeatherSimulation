@@ -1,5 +1,6 @@
 /**
  * Created by Caro on 24.06.2015.
+ Edit by Karo on 01.07.2015
  */
 
 function Winter() {
@@ -31,6 +32,26 @@ function Winter() {
         scene.add(winterGround);
 
         console.log('winter');
+        
+        //twisted snow tree 1
+        twistedTreeLoader = new THREE.ColladaLoader();
+        twistedTreeLoader.options.convertUpAxis = true;
+        twistedTreeLoader.load('dae/winter/trees/twisted-snow1.dae', function(collada){
+            twistedTree = collada.scene;
+            console.log('twistedTree loaded');
+            twistedTree.castShadow = true;
+            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
+            // SHADOW
+            twistedTree.traverse(function (child){
+                child.traverse(function(e){
+                    e.castShadow = true;
+                })
+            });
+            twistedTree.position.set(10, 20, 80);
+            twistedTree.updateMatrix();
+            scene.add(twistedTree);
+        });
+        
     };
 
     this.remove = function(scene){

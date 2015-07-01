@@ -1,5 +1,6 @@
 /**
  * Created by Caro on 24.06.2015.
+Edit by Karo
  */
 
 function Summer() {
