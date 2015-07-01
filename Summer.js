@@ -12,12 +12,14 @@ function Summer() {
     var cloudLoader;
     var grassStalk;
     var grassStalkLoader;
+    var grassArray;
     var twistedTree;
     var twistedTreeLoader;
     var twistedTree2;
     var twistedTree2Loader;
     var longTree;
     var longTreeLoader;
+    var i;
 
     this.load = function(scene){
         console.log('summer');
@@ -42,27 +44,35 @@ function Summer() {
         //grass loader
         grassStalkLoader = new THREE.ColladaLoader();
         grassStalkLoader.options.convertUpAxis = true;
+        grassArray = [];
         grassStalkLoader.load('dae/Grashalm.dae', function(collada){
             grassStalk = collada.scene;
-
             //store mesh
-            var piece = collada.scene.children[0];
-            //for (var i = 0; i < 10; i++) {
-                var newPiece = new THREE.Object3D();
-                for (var j = 0; j < piece.children.length; j++) {
-                    newPiece.add(new THREE.Mesh(piece.children[j].geometry, piece.children[j].material));
+            var colladaObj = collada.scene.children[0];
+            for (i = 0; i < 20; i++) {
+                newGrassStalk = new THREE.Object3D();
+                for (var j = 0; j < colladaObj.children.length; j++) {
+                    newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
                 }
-            //newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.1;
-            newPiece.rotation.z = -0.5*Math.PI;
-            newPiece.rotation.x = -0.15*Math.PI;
-            newPiece.position.set(0, 0, 0);
-            //scene.add(newPiece);
-            //}
+                newGrassStalk.castShadow = true;
+                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.01;
+                newGrassStalk.position.set(0,0,0);
 
+                newGrassStalk.rotation.x = -90*Math.PI/180;
+                newGrassStalk.rotation.y = 65*Math.PI/180;
+
+                //rotate own axis to make every grassStalk individual
+                newGrassStalk.rotation.z = ((getRandomArbitrary(0, 2)*30)*Math.PI/180);
+                newGrassStalk.rotation.x = 240*Math.PI/180;
+
+                newGrassStalk.position.set((i*3), 5, (i*3));
+                newGrassStalk.updateMatrix();
+                grassArray.push(newGrassStalk);
+                scene.add(newGrassStalk);
+            }
             console.log('grassStalk loaded');
             grassStalk.castShadow = true;
-            grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.05;
-            grassStalk.position.set(1, 1, 1);
+            grassStalk.position.set(-3, 5, -3);
             grassStalk.updateMatrix();
             scene.add(grassStalk);
         });
@@ -120,6 +130,9 @@ function Summer() {
         scene.remove(cloud);
         scene.remove(grassStalk);
         scene.remove(grassStalkLoader);
+        for(i = 0; i < grassArray.length; i++){
+            scene.remove(grassArray[i]);
+        }
         scene.remove(twistedTree);
         scene.remove(twistedTreeLoader);
         scene.remove(twistedTree2);
@@ -129,4 +142,8 @@ function Summer() {
 
         console.log('removed summer');
     };
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 }
