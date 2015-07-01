@@ -61,20 +61,20 @@ function Summer() {
                     newPiece.add(new THREE.Mesh(piece.children[j].geometry, piece.children[j].material));
                 }
                 newPiece.castShadow = true;
-                newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.25;
+                newPiece.scale.x = newPiece.scale.y = newPiece.scale.z = 0.01;
+                newPiece.position.set(0,0,0); //(i*15), 0, (i*15));
+
                 newPiece.useQuaternion = true;
 
                 /*var quaternion = new THREE.Quaternion(); //.setFromAxisAngle();
                 quaternion.setFromAxisAngle(new THREE.Vector3(0,1,0), 63*Math.PI/180);
                 newPiece.setRotationFromQuaternion(quaternion);
 
-                var xQuaternion = new THREE.Quaternion(); //.setFromAxisAngle();
+
+
+                /*var quaternion = new THREE.Quaternion(); //.setFromAxisAngle();
                 quaternion.setFromAxisAngle(new THREE.Vector3(1,0,0), -90*Math.PI/180);
                 newPiece.setRotationFromQuaternion(quaternion);*/
-
-                var quaternion = new THREE.Quaternion(); //.setFromAxisAngle();
-                quaternion.setFromAxisAngle(new THREE.Vector3(0,1,0), -28*Math.PI/180);
-                newPiece.setRotationFromQuaternion(quaternion);
 
                 //newPiece.applyQuaternion(quaternion);
                 //newPiece.rotation = new THREE.Euler().setFromQuaternion( quaternion );
@@ -82,14 +82,25 @@ function Summer() {
             //newPiece.rotateOnAxis(new THREE.Vector3(0,1,0), -26 * Math.PI/180);
                 //newPiece.rotateOnAxis(new THREE.Vector3(1,0,0), -135 * Math.PI/180);
 
-            //newPiece.eulerOrder = 'YZX';
+                //newPiece.eulerOrder = 'ZXY';
                 //rotateAroundWorldAxis(newPiece, new THREE.Vector3(0,1,0), 45 * Math.PI/180);
                 //newPiece.rotation.x = 0.2*Math.PI;
-                /*newPiece.rotation.y = -150*Math.PI/180;//(Math.random() * Math.PI);
-                newPiece.rotation.z = -60*Math.PI/180;
-                newPiece.rotation.x = -85*Math.PI/180;*/
 
-                newPiece.position.set(0,0,0); //(i*15), 0, (i*15));
+                newPiece.rotation.x = -90*Math.PI/180;//(Math.random() * Math.PI);
+                newPiece.rotation.y = 65*Math.PI/180;
+                //rotate own axis
+                newPiece.rotation.z = 30*Math.PI/180;
+                newPiece.rotation.x = 240*Math.PI/180;
+
+
+
+
+            /*var quaternion = new THREE.Quaternion(); //.setFromAxisAngle();
+            quaternion.setFromAxisAngle(new THREE.Vector3(0,0,1), -20*Math.PI/180);
+            newPiece.setRotationFromQuaternion(quaternion);*/
+
+            /*newPiece.rotation.x = -85*Math.PI/180;*/
+
                 newPiece.updateMatrix();
                 scene.add(newPiece);
             //}
@@ -101,7 +112,7 @@ function Summer() {
             //newPiece.rotation.y = 0.1 * Math.PI;
             //newPiece.updateMatrix();
 
-            grassStalk.position.set(0, 0, 0);
+            grassStalk.position.set(10, 0, 10);
             grassStalk.updateMatrix();
             //scene.add(grassStalk);
         });
