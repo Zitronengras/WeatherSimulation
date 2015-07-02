@@ -26,7 +26,7 @@ function Spring() {
         scene.remove(ground);
         scene.remove(springGround);
         scene.remove(springGroundColor);
-
+        scene.remove(springSkybox);
         console.log('removed spring');
     };
 }

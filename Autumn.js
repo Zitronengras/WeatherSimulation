@@ -45,6 +45,7 @@ function Autumn() {
     this.remove = function(scene){
         scene.remove(autumnGround);
         scene.remove(twistedTree);
+        scene.remove(autumnSkybox);
         console.log('removed autumn');
     };
 }
