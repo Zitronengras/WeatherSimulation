@@ -41,7 +41,8 @@ function Winter() {
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-            // SHADOW
+
+            // shadow
             twistedTree.traverse(function (child){
                 child.traverse(function(e){
                     e.castShadow = true;
@@ -59,7 +60,7 @@ function Winter() {
         scene.remove(winterGround);
         scene.remove(winterSpotLight);
         scene.remove(winterSkybox);
-
+        scene.remove(twistedTree);
         winterSkybox.remove(scene);
 
         console.log('removed winter');
