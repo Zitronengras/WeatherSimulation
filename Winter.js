@@ -27,6 +27,9 @@ function Winter() {
         winterSpotLight.lookAt(0, 0, 0);
         scene.add(winterSpotLight);
 
+        //fog (just in winter)
+         scene.fog = new THREE.FogExp2( 0xffffff, 0.0020 );
+
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
         scene.add(winterGround);
