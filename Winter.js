@@ -65,7 +65,8 @@ function Winter() {
         scene.remove(winterSkybox);
         scene.remove(twistedTree);
         winterSkybox.remove(scene);
-
+        scene.fog = null;
+        
         console.log('removed winter');
     };
 }
