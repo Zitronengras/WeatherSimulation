@@ -5,10 +5,17 @@
 function Autumn() {
     var ground = new Ground();
     var autumnGround;
-    var autumnGroundColor = "#6C6632";
+    //var autumnGroundColor = "#6C6632";
+    var autumnGroundColor = "#FDD25C";
+    var autumnSkybox = new Skybox();
+    var skyboxImagePrefix = "images/autumn/skybox-";
 
     this.load = function(scene){
         console.log('Autumn');
+        
+        //skybox
+        autumnSkybox.load(scene, skyboxImagePrefix);
+        
         //autumnGround
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
