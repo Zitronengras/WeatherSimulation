@@ -45,6 +45,10 @@ function init() {
 
         var mountain = new Mountain();
         mountain.load(scene);
+        
+// SCHNEE TEST
+       /* var snow = new Snow();
+       snow.load(scene);*/
 
         this.spring = function() {
             seasonObject.remove(scene);
@@ -67,6 +71,7 @@ function init() {
             seasonObject.load(scene);
         };
     };
+    
 
     var seasonsGUI = new seasons();
     var gui = new dat.GUI();

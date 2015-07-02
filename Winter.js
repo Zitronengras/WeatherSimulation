@@ -27,6 +27,9 @@ function Winter() {
         winterSpotLight.lookAt(0, 0, 0);
         scene.add(winterSpotLight);
 
+        //fog (just in winter)
+         scene.fog = new THREE.FogExp2( 0xffffff, 0.0020 );
+
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
         scene.add(winterGround);
@@ -41,7 +44,8 @@ function Winter() {
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-            // SHADOW
+
+            // shadow
             twistedTree.traverse(function (child){
                 child.traverse(function(e){
                     e.castShadow = true;
@@ -59,9 +63,10 @@ function Winter() {
         scene.remove(winterGround);
         scene.remove(winterSpotLight);
         scene.remove(winterSkybox);
-
+        scene.remove(twistedTree);
         winterSkybox.remove(scene);
-
+        scene.fog = null;
+        
         console.log('removed winter');
     };
 }
