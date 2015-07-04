@@ -2,20 +2,23 @@
  * Created by Caro on 10.06.2015.
  */
 
+
+var redraw, camera;;
+
 function init() {
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(new THREE.Color(0xffffff));
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
 
     var scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1500);
-    camera.position.x = 300;
-    camera.position.y = 300;
-    camera.position.z = 300;
-    //camera.lookAt(scene.position);
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
+    //camera.position.x = 300;
+    //camera.position.y = 50;
+    //camera.position.z = 300;
+    camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
@@ -90,9 +93,12 @@ function init() {
         elem.appendChild(renderer.domElement);
 
     //mouse Control
-    var orbitControls = new THREE.OrbitControls(camera);
-    orbitControls.damping = 0.2;
-    orbitControls.addEventListener('change', render );
+    //var orbitControls = new THREE.OrbitControls(camera);
+    //orbitControls.damping = 0.2;
+    //orbitControls.addEventListener('change', render );
+
+
+
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -101,17 +107,26 @@ function init() {
     }
     window.addEventListener( 'resize', onWindowResize, false );
 
-    callback = function(){
-        renderer.render(scene, camera);
+    redraw = function(){
+        requestAnimationFrame(function(){
+            renderer.render(scene, camera);
+        });
     };
-    requestAnimationFrame(render);
+    redraw();
 
-    orbitControls.update();
+    //cubemapControl
+    var cubemapControl = new CubemapControl(camera, redraw);
+
+
+    //orbitControls.update();
 }
 
-function render () {
+/*function render () {
     callback();
     requestAnimationFrame(render);
-}
+}*/
+
+
 
 window.onload = init;
+
