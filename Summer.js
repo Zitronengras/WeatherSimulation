@@ -29,8 +29,8 @@ function Summer() {
         summerSpotLight = new THREE.SpotLight(0xF5CB03);
         summerSpotLight.castShadow = true;
         summerSpotLight.position.x = 900; //red axis
-        summerSpotLight.position.y = 700; //green axis
-        summerSpotLight.position.z = 1;
+        summerSpotLight.position.y = 900; //green axis
+        summerSpotLight.position.z = -1500;
         summerSpotLight.intensity = 0.5; //1.2;
         summerSpotLight.lookAt(0, 0, 0);
         scene.add(summerSpotLight);

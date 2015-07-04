@@ -21,9 +21,9 @@ function init() {
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
     spotLight.position.x = 900; //red axis
-    spotLight.position.y = 700; //green axis
-    spotLight.position.z = 1;
-    spotLight.intensity = 1.2;
+    spotLight.position.y = 900; //green axis
+    spotLight.position.z = -1500;
+    spotLight.intensity = 1.3;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
