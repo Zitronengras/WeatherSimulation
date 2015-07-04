@@ -1,0 +1,2 @@
+- jedes hinzugefügte Objekt, dass nur in einer Jahreszeit zu sehen sein soll, muss am Ende entfernt werden -> remove-function
+- jedes hinzugefügte Objekt, dass einen Schatten werfen soll, benötigt die Funktion shadow.addShadow("hier das Objekt") aus der Klasse Shadow
