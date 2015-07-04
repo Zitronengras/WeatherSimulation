@@ -11,6 +11,7 @@ function Winter() {
     var winterSkybox = new Skybox();
     var skyboxImagePrefix = "images/winter/skybox-";
     var winterSpotLight;
+    var shadow = new Shadow();
 
     this.load = function(scene){
 
@@ -19,7 +20,7 @@ function Winter() {
 
         //winterLight
         winterSpotLight = new THREE.SpotLight(0x0058CC);
-        winterSpotLight.castShadow = true;
+        shadow.addShadow(winterSpotLight);
         winterSpotLight.position.x = 900; //red axis
         winterSpotLight.position.y = 900; //green axis
         winterSpotLight.position.z = -1500;
@@ -28,7 +29,7 @@ function Winter() {
         scene.add(winterSpotLight);
 
         //fog (just in winter)
-        // scene.fog = new THREE.FogExp2( 0xffffff, 0.0020 );
+        scene.fog = new THREE.FogExp2( 0xffffff, 0.0020 );
 
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
@@ -42,7 +43,7 @@ function Winter() {
         twistedTreeLoader.load('dae/winter/trees/twisted-snow1.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
-            twistedTree.castShadow = true;
+            shadow.addShadow(twistedTree);
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
 
             // shadow
@@ -66,6 +67,7 @@ function Winter() {
         scene.remove(twistedTree);
         winterSkybox.remove(scene);
         scene.fog = null;
+        scene.remove(shadow);
         
         console.log('removed winter');
     };
