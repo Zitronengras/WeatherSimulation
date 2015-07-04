@@ -5,6 +5,7 @@
 function Skybox(){
 
     var skyBox;
+    var materialVar;
 
     this.load = function(scene, imagePrefix){
         var cubePages = ["right", "left", "top", "back", "front"];
@@ -17,7 +18,8 @@ function Skybox(){
                 materialArray.push(new THREE.MeshBasicMaterial({transparent: true, opacity: 0}));
             }
             else {
-                materialArray.push(new THREE.MeshBasicMaterial({
+                materialArray.push(
+                    materialVar = new THREE.MeshBasicMaterial({
                     map: THREE.ImageUtils.loadTexture(imagePrefix + cubePages[cubePagesI] + imageSuffix),
                     side: THREE.BackSide
                 }));
@@ -26,7 +28,9 @@ function Skybox(){
         }
         var skyGeometry = new THREE.BoxGeometry(500, 500, 2500);
         var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
-        skyBox = new THREE.Mesh(skyGeometry, skyMaterial );
+        skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
+        skyMaterial.needsUpdate = true;
+
         scene.add( skyBox );
     };
     this.remove = function(scene){
