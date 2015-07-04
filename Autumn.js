@@ -9,6 +9,7 @@ function Autumn() {
     var autumnGroundColor = "#FDD25C";
     var autumnSkybox = new Skybox();
     var skyboxImagePrefix = "images/autumn/skybox-";
+    var shadow = new Shadow();
 
     this.load = function(scene){
         console.log('Autumn');
@@ -29,13 +30,7 @@ function Autumn() {
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-            // SHADOW
-            twistedTree.traverse(function (child){
-                child.traverse(function(e){
-                    e.castShadow = true;
-                })
-            });
-            //
+            shadow.addShadow(twistedTree);
             twistedTree.position.set(10, 10, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
@@ -46,6 +41,8 @@ function Autumn() {
         scene.remove(autumnGround);
         scene.remove(twistedTree);
         scene.remove(autumnSkybox);
+        scene.remove(shadow);
+
         console.log('removed autumn');
     };
 }

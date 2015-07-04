@@ -9,6 +9,7 @@ function Spring() {
     var springGroundColor = "#91D94A";
     var springSkybox = new Skybox();
     var skyboxImagePrefix = "images/spring/skybox-";
+    var shadow = new Shadow();
 
     this.load = function(scene){
         console.log('spring');
@@ -27,6 +28,7 @@ function Spring() {
         scene.remove(springGround);
         scene.remove(springGroundColor);
         scene.remove(springSkybox);
+        scene.remove(shadow);
         console.log('removed spring');
     };
 }
