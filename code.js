@@ -3,7 +3,10 @@
  */
 
 
-var redraw, camera;;
+var redraw, camera;
+var orbitControls;
+var orbitControlsActive = false;
+var cubemapControl;
 
 function init() {
 
@@ -15,10 +18,6 @@ function init() {
     var scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
-    //camera.position.x = 300;
-    //camera.position.y = 50;
-    //camera.position.z = 300;
-    camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
@@ -73,6 +72,24 @@ function init() {
             seasonObject = new Winter();
             seasonObject.load(scene);
         };
+        this.orbitControl = function(){
+            //mouse Control
+            orbitControlsActive = true;
+            camera.position.x = 300;
+            camera.position.y = 500;
+            camera.position.z = 300;
+            orbitControls = new THREE.OrbitControls(camera);
+            orbitControls.damping = 0.2;
+            orbitControls.addEventListener('change', redraw );
+            console.log('orbitControls');
+        };
+        //cubemapControl
+        this.cubemapControl = function(){
+            orbitControlsActive = false;
+            camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
+            cubemapControl = new CubemapControl(camera, redraw);
+            console.log('cubemapControl');
+        };
     };
     
 
@@ -82,6 +99,9 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
+    gui.add(seasonsGUI, 'orbitControl');
+    gui.add(seasonsGUI, 'cubemapControl');
+
 
     //manager
     var manager = new THREE.LoadingManager();
@@ -91,14 +111,6 @@ function init() {
 
     var elem = document.getElementById("output");
         elem.appendChild(renderer.domElement);
-
-    //mouse Control
-    //var orbitControls = new THREE.OrbitControls(camera);
-    //orbitControls.damping = 0.2;
-    //orbitControls.addEventListener('change', render );
-
-
-
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -114,11 +126,9 @@ function init() {
     };
     redraw();
 
-    //cubemapControl
-    var cubemapControl = new CubemapControl(camera, redraw);
-
-
-    //orbitControls.update();
+    if(orbitControlsActive){
+        orbitControls.update();
+    }
 }
 
 /*function render () {
