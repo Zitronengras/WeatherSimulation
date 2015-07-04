@@ -20,9 +20,20 @@ function Summer() {
     var longTree;
     var longTreeLoader;
     var i;
+    var summerSpotLight;
 
     this.load = function(scene){
         console.log('summer');
+
+        //winterLight
+        summerSpotLight = new THREE.SpotLight(0xF5CB03);
+        summerSpotLight.castShadow = true;
+        summerSpotLight.position.x = 900; //red axis
+        summerSpotLight.position.y = 700; //green axis
+        summerSpotLight.position.z = 1;
+        summerSpotLight.intensity = 0.5; //1.2;
+        summerSpotLight.lookAt(0, 0, 0);
+        scene.add(summerSpotLight);
 
         //summerGround
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
@@ -139,6 +150,7 @@ function Summer() {
         scene.remove(twistedTree2Loader);
         scene.remove(longTree);
         scene.remove(longTreeLoader);
+        scene.remove(summerSpotLight);
 
         console.log('removed summer');
     };
