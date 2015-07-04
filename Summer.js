@@ -21,6 +21,7 @@ function Summer() {
     var longTreeLoader;
     var i;
     var summerSpotLight;
+    var shadow = new Shadow();
 
     this.load = function(scene){
         console.log('summer');
@@ -48,6 +49,7 @@ function Summer() {
             cloud.castShadow = true;
             cloud.scale.x = cloud.scale.y = cloud.scale.z = 0.5;
             cloud.position.set(1, 150, 1);
+            shadow.addShadow(cloud);
             cloud.updateMatrix();
             scene.add(cloud);
         });
@@ -96,13 +98,7 @@ function Summer() {
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-            // SHADOW
-            twistedTree.traverse(function (child){
-                child.traverse(function(e){
-                    e.castShadow = true;
-                })
-            });
-            //
+            shadow.addShadow(twistedTree);
             twistedTree.position.set(10, 20, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
