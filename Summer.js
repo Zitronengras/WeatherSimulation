@@ -66,7 +66,7 @@ function Summer() {
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
                 }
-                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 1;
+                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.01;
                 newGrassStalk.position.set(0,0,0);
 
                 newGrassStalk.rotation.x = -90*Math.PI/180;
