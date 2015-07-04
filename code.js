@@ -3,7 +3,7 @@
  */
 
 
-var redraw, camera;
+//var callback, camera;
 var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
@@ -18,6 +18,8 @@ function init() {
     var scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
+
+    camera.position.y = 50;
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
@@ -72,7 +74,7 @@ function init() {
             seasonObject = new Winter();
             seasonObject.load(scene);
         };
-        this.orbitControl = function(){
+        /*this.orbitControl = function(){
             //mouse Control
             orbitControlsActive = true;
             camera.position.x = 300;
@@ -80,16 +82,21 @@ function init() {
             camera.position.z = 300;
             orbitControls = new THREE.OrbitControls(camera);
             orbitControls.damping = 0.2;
-            orbitControls.addEventListener('change', redraw );
+            orbitControls.addEventListener('change', callback);
             console.log('orbitControls');
         };
         //cubemapControl
-        this.cubemapControl = function(){
-            orbitControlsActive = false;
-            camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
-            cubemapControl = new CubemapControl(camera, redraw);
+        this.cubemapControlGUI = function(){
+            //remove orbitControls
+            if(orbitControlsActive){
+                orbitControls.removeEventListener('change', callback);
+                orbitControlsActive = false;
+            }
+
+            camera.lookAt(new THREE.Vector3(0,0,1)); //ändern!!!
+            cubemapControl = new CubemapControl(camera, callback);
             console.log('cubemapControl');
-        };
+        };*/
     };
     
 
@@ -99,8 +106,8 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
-    gui.add(seasonsGUI, 'orbitControl');
-    gui.add(seasonsGUI, 'cubemapControl');
+    //gui.add(seasonsGUI, 'orbitControl');
+    //gui.add(seasonsGUI, 'cubemapControlGUI');
 
 
     //manager
@@ -109,32 +116,41 @@ function init() {
         console.log( item, loaded, total );
     };
 
-    var elem = document.getElementById("output");
-        elem.appendChild(renderer.domElement);
+
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
-    window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
 
-    redraw = function(){
+    /*redraw = function(){
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
+            redraw();
+
         });
     };
-    redraw();
+    redraw();*/
+    var elem = document.getElementById("output");
+    elem.appendChild(renderer.domElement);
+
+    callback = function() {
+        renderer.render(scene, camera);
+    };
+    requestAnimationFrame(render);
+
 
     if(orbitControlsActive){
         orbitControls.update();
     }
 }
 
-/*function render () {
+function render () {
     callback();
     requestAnimationFrame(render);
-}*/
+}
 
 
 
