@@ -46,7 +46,6 @@ function Summer() {
         cloudLoader.load('dae/Wolken.dae', function(collada){
             cloud = collada.scene;
             console.log('cloud loaded');
-            cloud.castShadow = true;
             cloud.scale.x = cloud.scale.y = cloud.scale.z = 0.5;
             cloud.position.set(1, 150, 1);
             shadow.addShadow(cloud);
@@ -67,8 +66,7 @@ function Summer() {
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
                 }
-                newGrassStalk.castShadow = true;
-                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.01;
+                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 1;
                 newGrassStalk.position.set(0,0,0);
 
                 newGrassStalk.rotation.x = -90*Math.PI/180;
@@ -79,13 +77,14 @@ function Summer() {
                 newGrassStalk.rotation.x = 240*Math.PI/180;
 
                 newGrassStalk.position.set((i*3), 5, (i*3));
+                shadow.addShadow(newGrassStalk);
                 newGrassStalk.updateMatrix();
                 grassArray.push(newGrassStalk);
                 scene.add(newGrassStalk);
             }
             console.log('grassStalk loaded');
-            grassStalk.castShadow = true;
             grassStalk.position.set(-3, 5, -3);
+            shadow.addShadow(grassStalk);
             grassStalk.updateMatrix();
             scene.add(grassStalk);
         });
@@ -96,7 +95,6 @@ function Summer() {
         twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
-            twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
             shadow.addShadow(twistedTree);
             twistedTree.position.set(10, 20, 80);
@@ -110,7 +108,7 @@ function Summer() {
         twistedTree2Loader.load('dae/twisted_tree.dae', function(collada){
             twistedTree2 = collada.scene;
             console.log('twistedTree 2 loaded');
-            twistedTree2.castShadow = true;
+            shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
             twistedTree2.position.set(20, 20, 120);
             twistedTree2.updateMatrix();
@@ -123,7 +121,7 @@ function Summer() {
         longTreeLoader.load('dae/long_tree.dae', function(collada){
             longTree = collada.scene;
             console.log('longtree loaded');
-            longTree.castShadow = true;
+            shadow.addShadow(longTree);
             longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
             longTree.position.set(10, 20, -100);
             longTree.updateMatrix();
@@ -147,6 +145,7 @@ function Summer() {
         scene.remove(longTree);
         scene.remove(longTreeLoader);
         scene.remove(summerSpotLight);
+        scene.remove(shadow);
 
         console.log('removed summer');
     };
