@@ -7,7 +7,7 @@ function Summer() {
 
     var ground = new Ground();
     var summerGround;
-    var summerGroundColor= "#91D94A";
+    var summerGroundColor= "#D2D92C";
     var cloud;
     var cloudLoader;
     var grassStalk;
