@@ -2,7 +2,7 @@
  * Created by Caro on 10.06.2015.
  */
 
-
+var redraw;
 //var callback, camera;
 var orbitControls;
 var orbitControlsActive = false;
@@ -17,9 +17,11 @@ function init() {
 
     var scene = new THREE.Scene();
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
 
-    camera.position.y = 50;
+    camera.position.x = 300;
+    camera.position.y = 100;
+    camera.position.z = 300;
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
@@ -63,6 +65,7 @@ function init() {
             seasonObject.remove(scene);
             seasonObject = new Summer();
             seasonObject.load(scene);
+            redraw();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
@@ -75,30 +78,30 @@ function init() {
             seasonObject.load(scene);
         };
         /*this.orbitControl = function(){
-            //mouse Control
-            orbitControlsActive = true;
-            camera.position.x = 300;
-            camera.position.y = 500;
-            camera.position.z = 300;
-            orbitControls = new THREE.OrbitControls(camera);
-            orbitControls.damping = 0.2;
-            orbitControls.addEventListener('change', callback);
-            console.log('orbitControls');
-        };
-        //cubemapControl
-        this.cubemapControlGUI = function(){
-            //remove orbitControls
-            if(orbitControlsActive){
-                orbitControls.removeEventListener('change', callback);
-                orbitControlsActive = false;
-            }
+         //mouse Control
+         orbitControlsActive = true;
+         camera.position.x = 300;
+         camera.position.y = 500;
+         camera.position.z = 300;
+         orbitControls = new THREE.OrbitControls(camera);
+         orbitControls.damping = 0.2;
+         orbitControls.addEventListener('change', callback);
+         console.log('orbitControls');
+         };
+         //cubemapControl
+         this.cubemapControlGUI = function(){
+         //remove orbitControls
+         if(orbitControlsActive){
+         orbitControls.removeEventListener('change', callback);
+         orbitControlsActive = false;
+         }
 
-            camera.lookAt(new THREE.Vector3(0,0,1)); //ändern!!!
-            cubemapControl = new CubemapControl(camera, callback);
-            console.log('cubemapControl');
-        };*/
+         camera.lookAt(new THREE.Vector3(0,0,1)); //ändern!!!
+         cubemapControl = new CubemapControl(camera, callback);
+         console.log('cubemapControl');
+         };*/
     };
-    
+
 
     var seasonsGUI = new seasons();
     var gui = new dat.GUI();
@@ -109,14 +112,11 @@ function init() {
     //gui.add(seasonsGUI, 'orbitControl');
     //gui.add(seasonsGUI, 'cubemapControlGUI');
 
-
     //manager
     var manager = new THREE.LoadingManager();
-    manager.onProgress = function ( item, loaded, total ) {
-        console.log( item, loaded, total );
+    manager.onProgress = function (item, loaded, total) {
+        console.log(item, loaded, total);
     };
-
-
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -125,34 +125,42 @@ function init() {
     }
     window.addEventListener('resize', onWindowResize, false);
 
-    /*redraw = function(){
-        requestAnimationFrame(function(){
-            renderer.render(scene, camera);
-            redraw();
-
-        });
-    };
-    redraw();*/
     var elem = document.getElementById("output");
     elem.appendChild(renderer.domElement);
 
-    callback = function() {
+    /*redraw = function(){
+        //requestAnimationFrame(function(){
+            renderer.render(scene, camera);
+        //});
+    };
+    redraw();*/
+
+    var render = function(){
+        requestAnimationFrame(function(){
+            renderer.render(scene, camera);
+        });
+    };
+    setInterval(render, 20);
+
+    //mouse Control
+    var orbitControls = new THREE.OrbitControls(camera);
+    orbitControls.damping = 0.2;
+    orbitControls.addEventListener('change', render);
+
+
+    //setInterval(redraw, 25);
+    //console.log('redraw');
+    /*callback = function(){
         renderer.render(scene, camera);
     };
-    requestAnimationFrame(render);
+    requestAnimationFrame(render);*/
 
+    //orbitControls.update();
+};
 
-    if(orbitControlsActive){
-        orbitControls.update();
-    }
-}
-
-function render () {
+/*function render () {
     callback();
     requestAnimationFrame(render);
-}
-
-
+}*/
 
 window.onload = init;
-

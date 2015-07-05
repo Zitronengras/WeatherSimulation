@@ -2,7 +2,7 @@
  * Created by Caro on 04.07.2015.
  */
 
-function CubemapControl(camera, callback){
+function CubemapControl(camera, redraw){
 
     var mouseIsDown = false;
     var lastMouseX, lastMouseY;
@@ -35,7 +35,7 @@ function CubemapControl(camera, callback){
             lookAt.y = Math.sin(newAngle2);
             lookAt.z = Math.cos(newAngle2) * Math.cos(newAngle1);
             camera.lookAt(lookAt);
-            callback();
+            redraw();
             return [newAngle1, newAngle2];
         }
     }
