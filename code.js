@@ -10,10 +10,7 @@ var cubemapControl;
 
 function init() {
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0xffffff));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.shadowMapEnabled = true;
+
 
     var scene = new THREE.Scene();
 
@@ -25,7 +22,7 @@ function init() {
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.castShadow = true;
+    spotLight.castShadow = false;
     spotLight.position.x = 900; //red axis
     spotLight.position.y = 900; //green axis
     spotLight.position.z = -1500;
@@ -65,7 +62,6 @@ function init() {
             seasonObject.remove(scene);
             seasonObject = new Summer();
             seasonObject.load(scene);
-            redraw();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
@@ -77,7 +73,7 @@ function init() {
             seasonObject = new Winter();
             seasonObject.load(scene);
         };
-        /*this.orbitControl = function(){
+        /*this.orbitControlGUI = function(){
          //mouse Control
          orbitControlsActive = true;
          camera.position.x = 300;
@@ -85,7 +81,7 @@ function init() {
          camera.position.z = 300;
          orbitControls = new THREE.OrbitControls(camera);
          orbitControls.damping = 0.2;
-         orbitControls.addEventListener('change', callback);
+         orbitControls.addEventListener('change', render);
          console.log('orbitControls');
          };
          //cubemapControl
@@ -109,7 +105,7 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
-    //gui.add(seasonsGUI, 'orbitControl');
+    //gui.add(seasonsGUI, 'orbitControlGUI');
     //gui.add(seasonsGUI, 'cubemapControlGUI');
 
     //manager
@@ -125,8 +121,15 @@ function init() {
     }
     window.addEventListener('resize', onWindowResize, false);
 
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(new THREE.Color(0xffffff));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMapEnabled = true;
+
     var elem = document.getElementById("output");
     elem.appendChild(renderer.domElement);
+
 
     /*redraw = function(){
         //requestAnimationFrame(function(){
@@ -137,7 +140,7 @@ function init() {
 
     var render = function(){
         requestAnimationFrame(function(){
-            renderer.render(scene, camera);
+        renderer.render(scene, camera);
         });
     };
     setInterval(render, 20);
@@ -147,6 +150,8 @@ function init() {
     orbitControls.damping = 0.2;
     orbitControls.addEventListener('change', render);
 
+    //orbitControls.update();
+
 
     //setInterval(redraw, 25);
     //console.log('redraw');
@@ -154,8 +159,9 @@ function init() {
         renderer.render(scene, camera);
     };
     requestAnimationFrame(render);*/
-
-    //orbitControls.update();
+    /*if(orbitControlsActive){
+        orbitControls.update();
+    }*/
 };
 
 /*function render () {
