@@ -22,7 +22,7 @@ function init() {
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.castShadow = false;
+    spotLight.castShadow = true;
     spotLight.position.x = 900; //red axis
     spotLight.position.y = 900; //green axis
     spotLight.position.z = -1500;
