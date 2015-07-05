@@ -97,17 +97,12 @@ function init() {
              orbitControlsActive = false;
              console.log('remove orbitControl');
          }
-
-         /*camera.position.x = 0;
-         camera.position.y = 50;
-         camera.position.z = 0;*/
          camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
          //camera.position.y = 50;
          cubemapControl = new CubemapControl(camera, render);
          console.log('cubemapControl');
          };
     };
-
 
     var seasonsGUI = new seasons();
     var gui = new dat.GUI();
@@ -131,19 +126,8 @@ function init() {
     }
     window.addEventListener('resize', onWindowResize, false);
 
-
-
-
     var elem = document.getElementById("output");
     elem.appendChild(renderer.domElement);
-
-
-    /*redraw = function(){
-        //requestAnimationFrame(function(){
-            renderer.render(scene, camera);
-        //});
-    };
-    redraw();*/
 
     var render = function(){
         requestAnimationFrame(function(){
@@ -152,29 +136,7 @@ function init() {
     };
     setInterval(render, 20);
 
-
-    //mouse Control
-    /*var orbitControls = new THREE.OrbitControls(camera);
-    orbitControls.damping = 0.2;
-    orbitControls.addEventListener('change', render);*/
-
-    //orbitControls.update();
-
-
-    //setInterval(redraw, 25);
-    //console.log('redraw');
-    /*callback = function(){
-        renderer.render(scene, camera);
-    };
-    requestAnimationFrame(render);*/
-    /*if(orbitControlsActive){
-        orbitControls.update();
-    }*/
 };
 
-/*function render () {
-    callback();
-    requestAnimationFrame(render);
-}*/
 
 window.onload = init;
