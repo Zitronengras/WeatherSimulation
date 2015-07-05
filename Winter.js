@@ -3,9 +3,9 @@
  Edit by Karo on 01.07.2015
  */
 
-function Winter() {
+function Winter(yOffset) {
 
-    var ground = new Ground();
+    var ground = new Ground(yOffset);
     var winterGround;
     var winterGroundColor = "#F8FFFF";
     var winterSkybox = new Skybox();
@@ -23,7 +23,7 @@ function Winter() {
         shadow.addShadow(winterSpotLight);
         winterSpotLight.position.x = 900; //red axis
         winterSpotLight.position.y = 900; //green axis
-        winterSpotLight.position.z = -1500;
+        winterSpotLight.position.z = -1500 + yOffset;
         winterSpotLight.intensity = 0.5; //1.2;
         winterSpotLight.lookAt(0, 0, 0);
         scene.add(winterSpotLight);
@@ -52,7 +52,7 @@ function Winter() {
                     e.castShadow = true;
                 })
             });
-            twistedTree.position.set(10, 20, 80);
+            twistedTree.position.set(10, 20+yOffset, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });

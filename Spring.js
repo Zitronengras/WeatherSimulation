@@ -2,9 +2,9 @@
  * Created by Caro on 24.06.2015.
  */
 
-function Spring() {
+function Spring(yOffset) {
 
-    var ground = new Ground();
+    var ground = new Ground(yOffset);
     var springGround;
     var springGroundColor = "#91D94A";
     var springSkybox = new Skybox();

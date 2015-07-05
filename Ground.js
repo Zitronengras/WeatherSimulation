@@ -2,7 +2,8 @@
  * Created by Caro on 25.06.2015.
  */
 
-function Ground() {
+
+function Ground(yOffset) {
     /*var summerGroundColor= "#ff0000";
     //summerGround
     var summerGround = doGround(doGroundGeometry(500, 500), summerGroundColor);
@@ -25,6 +26,7 @@ function Ground() {
         var groundMaterial = new THREE.MeshLambertMaterial({color: color, shading: THREE.FlatShading}); //color: 0x91D94A
         var ground = new THREE.Mesh(groundGeometry, groundMaterial);
         ground.rotation.x = -0.5*Math.PI;
+        ground.position.y = yOffset;
         ground.receiveShadow = true;
         return ground;
     };

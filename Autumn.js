@@ -2,8 +2,8 @@
  * Created by Caro on 24.06.2015.
  */
 
-function Autumn() {
-    var ground = new Ground();
+function Autumn(yOffset) {
+    var ground = new Ground(yOffset);
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
@@ -31,7 +31,7 @@ function Autumn() {
             twistedTree.castShadow = true;
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
             shadow.addShadow(twistedTree);
-            twistedTree.position.set(10, 10, 80);
+            twistedTree.position.set(10, 10+yOffset, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });

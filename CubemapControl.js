@@ -1,5 +1,7 @@
 /**
  * Created by Caro on 04.07.2015.
+ *
+ * code from Edmund Weitz
  */
 
 function CubemapControl(camera, render){

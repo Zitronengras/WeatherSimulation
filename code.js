@@ -6,6 +6,7 @@
 var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
+var yOffset = -100;
 
 function init() {
 
@@ -15,11 +16,16 @@ function init() {
     renderer.shadowMapEnabled = true;
 
     var scene = new THREE.Scene();
+    scene.position.set(0,0,0);
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
     //camera.position.set(0,100,0);
-    //camera.up = new THREE.Vector3(0,0,1);
-    scene.add(camera);
+    camera.lookAt(new THREE.Vector3(0,0,-1));
+    //camera.position.set(0,50,0);
+    //camera.up = new THREE.Vector3(0,1,0);
+    //scene.add(camera);
+    //var cameraPerspectiveHelper = new THREE.CameraHelper( camera );
+    //scene.add( cameraPerspectiveHelper );
 
     /*camera.position.x = 300;
     camera.position.y = 100;
@@ -45,13 +51,13 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Summer();
+    seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
 
     //GUI
     var seasons = function() {
 
-        var mountain = new Mountain();
+        var mountain = new Mountain(yOffset);
         mountain.load(scene);
         
 // SCHNEE TEST
@@ -60,22 +66,22 @@ function init() {
 
         this.spring = function() {
             seasonObject.remove(scene);
-            seasonObject = new Spring();
+            seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
         };
         this.summer = function() {
             seasonObject.remove(scene);
-            seasonObject = new Summer();
+            seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
         };
         this.autumn = function() {
             seasonObject.remove(scene);
-            seasonObject = new Autumn();
+            seasonObject = new Autumn(yOffset);
             seasonObject.load(scene);
         };
         this.winter = function() {
             seasonObject.remove(scene);
-            seasonObject = new Winter();
+            seasonObject = new Winter(yOffset);
             seasonObject.load(scene);
         };
         this.orbitControlGUI = function(){
