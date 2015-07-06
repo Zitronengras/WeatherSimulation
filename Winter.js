@@ -13,7 +13,7 @@ function Winter(yOffset) {
     var winterSpotLight;
     var shadow = new Shadow();
     var audio = new Audio();
-    var audioURL = 'music/wind-artic-cold.wav';
+    var audioURL = 'music/wind-and-trees-and-snow.wav';
 
     this.load = function(scene){
 
