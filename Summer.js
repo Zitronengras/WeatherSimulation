@@ -22,8 +22,10 @@ function Summer(yOffset) {
     var i;
     var summerSpotLight;
     var shadow = new Shadow();
+    var audio;
+    var audioURL = 'music/03 Something I need.mp3';
 
-    this.load = function(scene){
+    this.load = function(scene, camera){
         console.log('summer');
 
         //winterLight
@@ -127,6 +129,12 @@ function Summer(yOffset) {
             longTree.updateMatrix();
             scene.add(longTree);
         });
+
+
+        //audio
+        audio = new Audio(camera);
+        audio.playTrack(audioURL, scene);
+        //audio.remove();
     };
 
     this.remove = function(scene){
@@ -146,6 +154,7 @@ function Summer(yOffset) {
         scene.remove(longTreeLoader);
         scene.remove(summerSpotLight);
         scene.remove(shadow);
+        audio.stopTrack();
 
         console.log('removed summer');
     };

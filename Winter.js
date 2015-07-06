@@ -13,6 +13,7 @@ function Winter(yOffset) {
     var winterSpotLight;
     var shadow = new Shadow();
     var audio;
+    var audioURL = 'music/wind-artic-cold.wav';
 
     this.load = function(scene, camera){
 
@@ -58,9 +59,11 @@ function Winter(yOffset) {
             scene.add(twistedTree);
         });
         //audio
-        audio = new Audio(camera,scene);
-        audio.play();
-        
+        audio = new Audio(camera);
+        audio.playTrack(audioURL, scene);
+        //audio.remove();
+
+
     };
 
     this.remove = function(scene){
@@ -72,7 +75,7 @@ function Winter(yOffset) {
         winterSkybox.remove(scene);
         scene.fog = null;
         scene.remove(shadow);
-        scene.remove(audio);
+        //audio.remove();
         
         console.log('removed winter');
     };

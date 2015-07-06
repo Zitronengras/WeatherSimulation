@@ -2,17 +2,31 @@
  * Created by Caro on 06.07.2015.
  */
 
-function Audio(camera, scene){
+function Audio(camera){
 
-    var listener = new THREE.AudioListener();
-    camera.add( listener );
+    var audio;
+    var listener;
 
-    var audio = new THREE.Audio( listener );
-    audio.load('music/wind-artic-cold.wav');
+    this.playTrack = function(audioURL, scene){
+        listener = new THREE.AudioListener();
+        camera.add(listener);
 
-    this.play = function(){
-        audio.setRefDistance(20);
-        audio.autoplay = true;
+        audio = new THREE.Audio(listener);
+        audio.load(audioURL);
+        //audio.autoplay = true;
+        //audio.setLoop(2);
         scene.add(audio);
+
+        audio.play();
+        console.log('add audio');
+    };
+
+    this.stopTrack = function(){
+        //audio.autoplay = false;
+        //scene.remove(audio);
+        audio.stop();
+
+        console.log('remove audio');
+
     };
 }
