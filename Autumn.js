@@ -11,7 +11,7 @@ function Autumn(yOffset) {
     var skyboxImagePrefix = "images/autumn/skybox-";
     var shadow = new Shadow();
     var audio = new Audio();
-    var audioURL = 'music/wind-and-trees-and-snow.wav';
+    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
 
     this.load = function(scene){
         console.log('Autumn');
