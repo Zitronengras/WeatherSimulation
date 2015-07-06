@@ -10,6 +10,8 @@ function Spring(yOffset) {
     var springSkybox = new Skybox();
     var skyboxImagePrefix = "images/spring/skybox-";
     var shadow = new Shadow();
+    var audio = new Audio();
+    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
 
     this.load = function(scene){
         console.log('spring');
@@ -21,6 +23,9 @@ function Spring(yOffset) {
         springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
         scene.add(springGround);
 
+
+        //audio
+        audio.playTrack(audioURL, scene);
     };
 
     this.remove = function(scene){
@@ -29,6 +34,8 @@ function Spring(yOffset) {
         scene.remove(springGroundColor);
         scene.remove(springSkybox);
         scene.remove(shadow);
+        audio.stopTrack();
+
         console.log('removed spring');
     };
 }

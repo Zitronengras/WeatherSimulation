@@ -22,6 +22,8 @@ function Summer(yOffset) {
     var i;
     var summerSpotLight;
     var shadow = new Shadow();
+    var audio = new Audio();
+    var audioURL = 'music/09 What You Wanted.mp3';
 
     this.load = function(scene){
         console.log('summer');
@@ -127,6 +129,9 @@ function Summer(yOffset) {
             longTree.updateMatrix();
             scene.add(longTree);
         });
+
+        //audio
+        audio.playTrack(audioURL, scene);
     };
 
     this.remove = function(scene){
@@ -146,6 +151,7 @@ function Summer(yOffset) {
         scene.remove(longTreeLoader);
         scene.remove(summerSpotLight);
         scene.remove(shadow);
+        audio.stopTrack();
 
         console.log('removed summer');
     };

@@ -10,6 +10,8 @@ function Autumn(yOffset) {
     var autumnSkybox = new Skybox();
     var skyboxImagePrefix = "images/autumn/skybox-";
     var shadow = new Shadow();
+    var audio = new Audio();
+    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
 
     this.load = function(scene){
         console.log('Autumn');
@@ -35,6 +37,9 @@ function Autumn(yOffset) {
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
+
+        //audio
+        audio.playTrack(audioURL, scene);
     };
 
     this.remove = function(scene){
@@ -42,6 +47,7 @@ function Autumn(yOffset) {
         scene.remove(twistedTree);
         scene.remove(autumnSkybox);
         scene.remove(shadow);
+        audio.stopTrack();
 
         console.log('removed autumn');
     };

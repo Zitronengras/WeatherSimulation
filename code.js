@@ -132,10 +132,11 @@ function init() {
     }
     window.addEventListener('resize', onWindowResize, false);
 
+
     var elem = document.getElementById("output");
     elem.appendChild(renderer.domElement);
 
-    var render = function(){
+    render = function(){
         requestAnimationFrame(function(){
         renderer.render(scene, camera);
         });

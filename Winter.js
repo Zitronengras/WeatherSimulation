@@ -12,6 +12,8 @@ function Winter(yOffset) {
     var skyboxImagePrefix = "images/winter/skybox-";
     var winterSpotLight;
     var shadow = new Shadow();
+    var audio = new Audio();
+    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
 
     this.load = function(scene){
 
@@ -56,7 +58,9 @@ function Winter(yOffset) {
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
-        
+
+        //audio
+        audio.playTrack(audioURL, scene);
     };
 
     this.remove = function(scene){
@@ -68,7 +72,7 @@ function Winter(yOffset) {
         winterSkybox.remove(scene);
         scene.fog = null;
         scene.remove(shadow);
-        
+        audio.stopTrack();
         console.log('removed winter');
     };
 }
