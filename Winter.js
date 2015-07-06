@@ -12,10 +12,10 @@ function Winter(yOffset) {
     var skyboxImagePrefix = "images/winter/skybox-";
     var winterSpotLight;
     var shadow = new Shadow();
-    var audio;
+    var audio = new Audio();
     var audioURL = 'music/wind-artic-cold.wav';
 
-    this.load = function(scene, camera){
+    this.load = function(scene){
 
         //skybox
         winterSkybox.load(scene, skyboxImagePrefix);
@@ -58,12 +58,9 @@ function Winter(yOffset) {
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
+
         //audio
-        audio = new Audio(camera);
         audio.playTrack(audioURL, scene);
-        //audio.remove();
-
-
     };
 
     this.remove = function(scene){
@@ -75,8 +72,7 @@ function Winter(yOffset) {
         winterSkybox.remove(scene);
         scene.fog = null;
         scene.remove(shadow);
-        //audio.remove();
-        
+        audio.stopTrack();
         console.log('removed winter');
     };
 }

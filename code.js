@@ -52,7 +52,7 @@ function init() {
     //defaultSeason = Spring
     var seasonObject;
     seasonObject = new Summer(yOffset);
-    seasonObject.load(scene, camera);
+    seasonObject.load(scene);
 
     //GUI
     var seasons = function() {
@@ -72,7 +72,7 @@ function init() {
         this.summer = function() {
             seasonObject.remove(scene);
             seasonObject = new Summer(yOffset);
-            seasonObject.load(scene, camera);
+            seasonObject.load(scene);
         };
         this.autumn = function() {
             seasonObject.remove(scene);
@@ -82,7 +82,7 @@ function init() {
         this.winter = function() {
             seasonObject.remove(scene);
             seasonObject = new Winter(yOffset);
-            seasonObject.load(scene, camera);
+            seasonObject.load(scene);
         };
         this.orbitControlGUI = function(){
          //mouse Control
