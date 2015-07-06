@@ -4,24 +4,26 @@
 
 function Audio(){
 
-    var audio;
+    var track;
     var listener;
 
     this.playTrack = function(audioURL, scene){
         listener = new THREE.AudioListener();
         scene.add(listener);
 
-        audio = new THREE.Audio(listener);
-        audio.load(audioURL);
-        audio.setLoop(3); //?
-        scene.add(audio);
-        audio.play();
+        track = new THREE.Audio(listener);
+        //audio.context
+        track.load(audioURL);
+        track.setLoop(3); //?
+
+        //scene.add(audio);
+        //track.play();
 
         console.log('add audio');
     };
 
     this.stopTrack = function(){
-        audio.stop();
+        track.stop();
         console.log('stop audio');
     };
 }

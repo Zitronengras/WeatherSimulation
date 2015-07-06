@@ -22,7 +22,7 @@ function Summer(yOffset) {
     var i;
     var summerSpotLight;
     var shadow = new Shadow();
-    var audio = new Audio();
+    //var audio = new Audio();
     var audioURL = 'music/09 What You Wanted.mp3';
 
     this.load = function(scene){
@@ -131,7 +131,7 @@ function Summer(yOffset) {
         });
 
         //audio
-        audio.playTrack(audioURL, scene);
+        //audio.playTrack(audioURL, scene);
     };
 
     this.remove = function(scene){
