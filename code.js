@@ -82,7 +82,7 @@ function init() {
         this.winter = function() {
             seasonObject.remove(scene);
             seasonObject = new Winter(yOffset);
-            seasonObject.load(scene);
+            seasonObject.load(scene, camera);
         };
         this.orbitControlGUI = function(){
          //mouse Control

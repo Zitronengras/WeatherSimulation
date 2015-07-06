@@ -12,8 +12,9 @@ function Winter(yOffset) {
     var skyboxImagePrefix = "images/winter/skybox-";
     var winterSpotLight;
     var shadow = new Shadow();
+    var audio;
 
-    this.load = function(scene){
+    this.load = function(scene, camera){
 
         //skybox
         winterSkybox.load(scene, skyboxImagePrefix);
@@ -56,6 +57,9 @@ function Winter(yOffset) {
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
+        //audio
+        audio = new Audio(camera,scene);
+        audio.play();
         
     };
 
@@ -68,6 +72,7 @@ function Winter(yOffset) {
         winterSkybox.remove(scene);
         scene.fog = null;
         scene.remove(shadow);
+        scene.remove(audio);
         
         console.log('removed winter');
     };
