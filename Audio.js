@@ -17,7 +17,7 @@ function Audio(){
         track.setLoop(3); //?
 
         //scene.add(audio);
-        //track.play();
+        track.play();
 
         console.log('add audio');
     };

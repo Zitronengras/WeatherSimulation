@@ -78,11 +78,11 @@ function CubemapControl(camera, render){
     }*/
 
     //for Firefox
-    posX = null;
-    posY = null;
+    var posX = null;
+    var posY = null;
 
     whereAmI = function() {
-        alert(posX + '\n' + poxY);
+        alert(posX + '\n' + posY);
     };
 
     document.onmousemove = function(evt) {
