@@ -11,10 +11,41 @@ function Ground(yOffset) {
 
     this.doGroundGeometry = function(widthSegments, heightSegments) {
         var groundGeometry = new THREE.PlaneGeometry(500, 800, 60, 80);
+        var heightI = 1;
         for (var i = 0; i < groundGeometry.vertices.length; i++) {
-            groundGeometry.vertices[i].x += Math.random() * 3; //red axis
-            groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-            groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
+            if(i > 3500){
+                groundGeometry.vertices[i].x += Math.random() * 3; //red axis
+                groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
+                groundGeometry.vertices[i].z += Math.random() * 11; //green axis: height
+            }
+            else if(i > 2000){
+                groundGeometry.vertices[i].x += Math.random() * 3; //red axis
+                groundGeometry.vertices[i].y += Math.random() * 6; //blue axis
+                groundGeometry.vertices[i].z += Math.random() * 9; //green axis: height
+            }
+            else{
+                groundGeometry.vertices[i].x += Math.random() * 3; //red axis
+                groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
+                groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
+            }
+            //height
+            if(i > 2500 && i <= 3500){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.01;
+            }
+            else if(i > 3500 && i <= 4000){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.035;
+            }
+            else if(i > 4000 && i <= 5500){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.02;
+            }
+            else if(i > 5500){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.01;
+            }
+
         }
         groundGeometry.dynamic = true;
         groundGeometry.computeFaceNormals();

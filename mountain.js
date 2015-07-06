@@ -18,7 +18,7 @@ function Mountain(yOffset) {
             mountain = collada.scene;
             console.log('mountain loaded');
             mountain.castShadow = true;
-            mountain.position.set(-80, 2+yOffset, 470);
+            mountain.position.set(-80, 24+yOffset, 470);
             mountain.updateMatrix();
             scene.add(mountain);
         });
