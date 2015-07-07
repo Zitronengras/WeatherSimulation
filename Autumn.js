@@ -46,6 +46,7 @@ function Autumn(yOffset) {
         scene.remove(autumnGround);
         scene.remove(twistedTree);
         scene.remove(autumnSkybox);
+        autumnSkybox.remove(scene);
         scene.remove(shadow);
         audio.stopTrack();
 
