@@ -31,7 +31,7 @@ function Summer(yOffset) {
         console.log('summer');
 
         //skybox
-        springSkybox.load(scene, skyboxImagePrefix);
+        //springSkybox.load(scene, skyboxImagePrefix);
 
         //winterLight
         summerSpotLight = new THREE.SpotLight(0xF5CB03);
