@@ -6,7 +6,7 @@
 var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
-var yOffset = -100;
+var yOffset = -30;
 
 function init() {
 
