@@ -41,6 +41,9 @@ function init() {
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
+    var daytime = new Daytime(scene);
+
+
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
     //scene.add(edges);
@@ -137,8 +140,9 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
+        daytime.moveSun(spotLight, seasonObject.getSeasonSpotlight());
         requestAnimationFrame(function(){
-        renderer.render(scene, camera);
+            renderer.render(scene, camera);
         });
     };
     setInterval(render, 20);
