@@ -33,7 +33,7 @@ function Spring(yOffset) {
         scene.remove(springGround);
         scene.remove(springGroundColor);
         scene.remove(springSkybox);
-        springskyBox.remove(scene);
+        springSkybox.remove(scene);
         scene.remove(shadow);
         audio.stopTrack();
 
