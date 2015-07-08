@@ -6,6 +6,7 @@
 function Winter(yOffset) {
 
     var ground = new Ground(yOffset);
+    var snow = new LetItSnow();
     var winterGround;
     var winterGroundColor = "#F8FFFF";
     var winterSkybox = new Skybox();
@@ -104,6 +105,10 @@ function Winter(yOffset) {
             scene.add(twistedTree3);
           	shadow.addShadow(twistedTree3);
         });
+        
+        // snow
+        
+        snow.load(scene);
 
         //audio
         audio.playTrack(audioURL, scene);
@@ -118,6 +123,7 @@ function Winter(yOffset) {
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);
         winterSkybox.remove(scene);
+        snow.remove(scene);
         scene.fog = null;
         scene.remove(shadow);
         audio.stopTrack();

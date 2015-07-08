@@ -101,7 +101,7 @@ function Autumn(yOffset) {
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
 
-        scene.remove(twistedTree1);
+        scene.remove(twistedTree);
 
         scene.remove(twistedTree2);
          scene.remove(twistedTree3);
