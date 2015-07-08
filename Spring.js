@@ -19,6 +19,16 @@ function Spring(yOffset) {
         //skybox
         springSkybox.load(scene, skyboxImagePrefix);
         
+        //springLight
+        springSpotLight = new THREE.SpotLight(0xbdd7cb);
+        shadow.addShadow(springSpotLight);
+        springSpotLight.position.x = 900; //red axis
+        springSpotLight.position.y = 900; //green axis
+        springSpotLight.position.z = -1500 + yOffset;
+        springSpotLight.intensity = 0.6;
+        springSpotLight.lookAt(0, 0, 0);
+        scene.add(springSpotLight);
+        
         //springGround
         springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
         scene.add(springGround);
@@ -30,6 +40,7 @@ function Spring(yOffset) {
 
     this.remove = function(scene){
         scene.remove(ground);
+        scene.remove(springSpotLight);
         scene.remove(springGround);
         scene.remove(springGroundColor);
         scene.remove(springSkybox);
