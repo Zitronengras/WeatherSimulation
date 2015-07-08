@@ -26,7 +26,7 @@ function Skybox(){
                 cubePagesI += 1;
             }
         }
-        var skyGeometry = new THREE.BoxGeometry(500, 500, 2500);
+        var skyGeometry = new THREE.BoxGeometry(500, 550, 2500);
         var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
         skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
         skyMaterial.needsUpdate = true;
