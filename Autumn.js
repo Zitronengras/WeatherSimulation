@@ -19,6 +19,16 @@ function Autumn(yOffset) {
         //skybox
         autumnSkybox.load(scene, skyboxImagePrefix);
         
+         //autumnLight
+        autumnSpotLight = new THREE.SpotLight(0xe3c8aa);
+        shadow.addShadow(autumnSpotLight);
+        autumnSpotLight.position.x = 900; //red axis
+        autumnSpotLight.position.y = 900; //green axis
+        autumnSpotLight.position.z = -1500 + yOffset;
+        autumnSpotLight.intensity = 0.7;
+        autumnSpotLight.lookAt(0, 0, 0);
+        scene.add(autumnSpotLight);
+        
         //autumnGround
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
@@ -44,6 +54,7 @@ function Autumn(yOffset) {
 
     this.remove = function(scene){
         scene.remove(autumnGround);
+        scene.remove(autumnSpotLight);
         scene.remove(twistedTree);
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
