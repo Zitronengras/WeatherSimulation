@@ -56,6 +56,8 @@ function init() {
     var seasonObject;
     seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
+    var optSpotlight = seasonObject.getSeasonSpotlight();
+
 
     //GUI
     var seasons = function() {
@@ -71,21 +73,25 @@ function init() {
             seasonObject.remove(scene);
             seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
             seasonObject.remove(scene);
             seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
             seasonObject = new Autumn(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
             seasonObject.remove(scene);
             seasonObject = new Winter(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.orbitControlGUI = function(){
          //mouse Control
@@ -140,7 +146,7 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
-        daytime.moveSun(spotLight, seasonObject.getSeasonSpotlight());
+        daytime.moveSun(spotLight, optSpotlight);
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
         });
