@@ -6,40 +6,40 @@
 function Ground(yOffset) {
 
     this.doGroundGeometry = function() {
-        var groundGeometry = new THREE.PlaneGeometry(500, 800, 60, 80);
+        var groundGeometry = new THREE.PlaneGeometry(500, 800, 160, 200);
         var heightI = 1;
         for (var i = 0; i < groundGeometry.vertices.length; i++) {
-            if(i > 3500){
+            if(i > 13000 && i < 20900){
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 11; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 7; //green axis: height 11
             }
-            else if(i > 2000){
+            else if(i > 20900){
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 6; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 9; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 9; //green axis: height 9
             }
             else{
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 5; //green axis: height 8
             }
             //height
-            if(i > 2500 && i <= 3500){
+            if(i > 18000 && i <= 21000){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.01;
+                heightI += 0.0015;
             }
-            else if(i > 3500 && i <= 4000){
+            else if(i > 21000 && i <= 25000){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.035;
+                heightI += 0.0036;
             }
-            else if(i > 4000 && i <= 5500){
+            else if(i > 25000 && i <= 26000) {
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.02;
+                heightI += 0.003;
             }
-            else if(i > 5500){
+            else if(i > 26000){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.01;
+                heightI += 0.0015;
             }
 
         }
