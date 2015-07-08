@@ -27,6 +27,7 @@ function Summer(yOffset) {
     var audio = new Audio();
     var audioURL = 'music/09 What You Wanted.mp3';
 
+
     this.load = function(scene){
         console.log('summer');
 
@@ -137,6 +138,9 @@ function Summer(yOffset) {
 
         //audio
         audio.playTrack(audioURL, scene);
+    };
+    this.getSeasonSpotlight = function(){
+        return summerSpotLight;
     };
 
     this.remove = function(scene){

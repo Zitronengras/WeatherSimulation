@@ -16,74 +16,13 @@ function CubemapControl(camera, render){
     // direction; Math.PI/2 is up, -Math.PI/2 is down
     var angle2 = 0;
 
-
-
-    /*var mouse;
-    function storeMouse(e){
-        if(!e) e = window.event;
-        mouse = {clientX: e.clientX, clientY: e.clientY};
-    }
-    storeMouse();
-    /*function test(e){
-        alert(mouse.clientX);
-    }*/
-
-    /*document.onmousemove=function(e) {
-        var e=e||window.event,
-            coordX=null,
-            coordY=null;
-        if(typeof(e.pageX)!=undefined) {
-            coordX=e.pageX;
-            coordY=e.pageY;
-        } else if(typeof(e.clientX)!=undefined) {
-            coordX=e.clientX+document.body.scrollLeft;
-            coordY=e.clientY+document.body.scrollTop;
-        }
-    };*/
-
-
-    /*document.onmousemove=function(e) {
-        var e = e ||window.event,
-        coordX = e.pageX||e.clientX+document.body.scrollLeft,
-        coordY = e.pageY||e.clientY+document.body.scrollTop;
-
-
-        //alert(coordX+" "+coordY);
-    };*/
-
-    /*var posx;
-    var posy;
-    function getMouse(e){
-        posx=0;
-        posy=0;
-        var ev=(!e)?window.event:e;//IE:Moz
-        if (ev.pageX){//Moz
-            posx=ev.pageX+window.pageXOffset;
-            posy=ev.pageY+window.pageYOffset;
-        }
-        else if(ev.clientX){//IE
-
-            if(document.documentElement){//IE 6+ strict mode
-                posx = ev.clientX + document.documentElement.scrollLeft;
-                posy = ev.clientY + document.documentElement.scrollTop;
-            }
-            else if(document.body){//Other IE
-                posx = ev.clientX + document.body.scrollLeft;
-                posy = ev.clientY + document.body.scrollTop;
-            }
-        }
-        else{return false}//old browsers
-        console.log('X='+posx+' Y='+posy);
-        alert('X='+posx+' Y='+posy) ;
-    }*/
-
     //for Firefox
     var posX = null;
     var posY = null;
 
-    whereAmI = function() {
+    /*whereAmI = function() {
         alert(posX + '\n' + posY);
-    };
+    };*/
 
     document.onmousemove = function(evt) {
         if (typeof evt == 'undefined') {
@@ -95,9 +34,9 @@ function CubemapControl(camera, render){
         posY = myEvent.clientY;
     };
 
-    window.onbeforeunload = function() {
+    /*window.onbeforeunload = function() {
         whereAmI();
-    };
+    };*/
 
     // get X position of mouse and return it as a value between -1 and 1
     function mouseX () {
