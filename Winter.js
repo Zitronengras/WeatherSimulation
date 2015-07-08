@@ -31,7 +31,7 @@ function Winter(yOffset) {
         scene.add(winterSpotLight);
 
         //fog (just in winter)
-        scene.fog = new THREE.FogExp2( 0xffffff, 0.0020 );
+        scene.fog = new THREE.FogExp2( 0xffffff, 0.0029 );
 
         //winterGround
         winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
