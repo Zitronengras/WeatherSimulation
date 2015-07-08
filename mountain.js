@@ -7,6 +7,8 @@
 
 function Mountain(yOffset) {
 
+    var shadow = new Shadow();
+
     this.load = function(scene) {
         console.log('mountain');
 
@@ -32,6 +34,7 @@ function Mountain(yOffset) {
             console.log('seaCoast loaded');
             seaCoast.castShadow = true;
             seaCoast.position.set(50, 10+yOffset, -650);
+            shadow.addShadow(seaCoast);
             seaCoast.updateMatrix();
             scene.add(seaCoast);
         });
