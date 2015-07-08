@@ -114,7 +114,9 @@ function Winter(yOffset) {
         scene.remove(winterGround);
         scene.remove(winterSpotLight);
         scene.remove(winterSkybox);
-        scene.remove(twistedTree);
+        scene.remove(twistedTree1);
+        scene.remove(twistedTree2);
+        scene.remove(twistedTree3);
         winterSkybox.remove(scene);
         scene.fog = null;
         scene.remove(shadow);

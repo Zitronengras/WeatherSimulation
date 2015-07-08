@@ -34,18 +34,19 @@ function Autumn(yOffset) {
         scene.add(autumnGround);
         
         
-        //twisted tree loader
-        twistedTreeLoader = new THREE.ColladaLoader();
-        twistedTreeLoader.options.convertUpAxis = true;
-        twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
-            twistedTree = collada.scene;
+     	//Twisted Tree 1 (red/orange)
+        twistedTreeLoader1 = new THREE.ColladaLoader();
+        twistedTreeLoader1.options.convertUpAxis = true;
+        twistedTreeLoader1.load('dae/winter/trees/twisted-autumn1.dae', function(collada){
+            twistedTree1 = collada.scene;
             console.log('twistedTree loaded');
-            twistedTree.castShadow = true;
-            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
-            shadow.addShadow(twistedTree);
-            twistedTree.position.set(10, 10+yOffset, 80);
-            twistedTree.updateMatrix();
-            scene.add(twistedTree);
+            shadow.addShadow(twistedTree1);
+            twistedTree1.scale.x = twistedTree1.scale.y = twistedTree1.scale.z = 1;
+			
+			twistedTree1.position.set(10, 100+yOffset, 80);
+            twistedTree1.updateMatrix();
+            scene.add(twistedTree1);
+          	shadow.addShadow(twistedTree1);
         });
 
         //audio
