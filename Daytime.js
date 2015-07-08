@@ -18,8 +18,6 @@ function Daytime(scene){
 
     this.moveSun = function(mainSpotlight, optSpotlight){
 
-        //mainSpotlight.velocity = direction;
-        //optSpotlight.velocity = direction;
         if(sunHigh == 0){
             direction = new THREE.Vector3(0,1,0);//ändern
             sunGoesDown = +1;
@@ -28,11 +26,9 @@ function Daytime(scene){
             direction = new THREE.Vector3(0,-1,0);//ändern
             sunGoesDown = -1;
         }
-        //if(sunGoesDown > 0){
-
-            mainSpotlight.position.add(direction);
-            optSpotlight.position.add(direction);
-            console.log('move');
-        //}
+        mainSpotlight.position.add(direction);
+        optSpotlight.position.add(direction);
+        sunHigh += sunGoesDown;
+        //console.log('move' + sunHigh);
     }
 }
