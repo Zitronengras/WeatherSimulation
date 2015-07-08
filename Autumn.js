@@ -97,6 +97,11 @@ function Autumn(yOffset) {
         audio.playTrack(audioURL, scene);
     };
 
+    this.getSeasonSpotlight = function(){
+        return autumnSpotLight;
+    };
+
+
     this.remove = function(scene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
