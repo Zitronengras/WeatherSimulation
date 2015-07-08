@@ -7,13 +7,6 @@ function Daytime(scene){
     var direction;
     var sunHigh = 900;
     var sunGoesDown = -1;
-    var sphereGeometry = new THREE.SphereGeometry(20);
-    var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00});
-    var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    sphere.position.x = 0;
-    sphere.position.y = 0;
-    sphere.position.z = 0;
-    scene.add(sphere);
     console.log('DAYTIME');
 
     this.moveSun = function(mainSpotlight, optSpotlight){
@@ -29,6 +22,6 @@ function Daytime(scene){
         mainSpotlight.position.add(direction);
         optSpotlight.position.add(direction);
         sunHigh += sunGoesDown;
-        //console.log('move' + sunHigh);
+        console.log('move' + sunHigh);
     }
 }
