@@ -37,7 +37,7 @@ function Autumn(yOffset) {
         //twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
-        twistedTreeLoader.load('dae/autumn/trees/twisted_red.dae', function(collada){
+        twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
             twistedTree.castShadow = true;
