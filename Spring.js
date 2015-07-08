@@ -38,6 +38,10 @@ function Spring(yOffset) {
         audio.playTrack(audioURL, scene);
     };
 
+    this.getSeasonSpotlight = function(){
+        return springSpotLight;
+    };
+
     this.remove = function(scene){
         scene.remove(ground);
         scene.remove(springSpotLight);

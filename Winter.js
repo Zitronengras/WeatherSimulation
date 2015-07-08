@@ -109,6 +109,10 @@ function Winter(yOffset) {
         audio.playTrack(audioURL, scene);
     };
 
+    this.getSeasonSpotlight = function(){
+        return winterSpotLight;
+    };
+
     this.remove = function(scene){
         scene.remove(ground);
         scene.remove(winterGround);
