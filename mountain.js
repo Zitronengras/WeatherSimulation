@@ -27,11 +27,11 @@ function Mountain(yOffset) {
         var seaCoast;
         var seaCoastLoader = new THREE.ColladaLoader();
         seaCoastLoader.options.convertUpAxis = true;
-        seaCoastLoader.load('dae/SeaCoastIced.dae', function(collada){
+        seaCoastLoader.load('dae/SeaCoast.dae', function(collada){
             seaCoast = collada.scene;
             console.log('seaCoast loaded');
             seaCoast.castShadow = true;
-            seaCoast.position.set(50, 15+yOffset, -650);
+            seaCoast.position.set(50, 10+yOffset, -650);
             seaCoast.updateMatrix();
             scene.add(seaCoast);
         });
