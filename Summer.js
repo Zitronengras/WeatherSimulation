@@ -8,6 +8,8 @@ function Summer(yOffset) {
     var ground = new Ground(yOffset);
     var summerGround;
     var summerGroundColor= "#D2D92C";
+    var springSkybox = new Skybox();
+    var skyboxImagePrefix = "images/summer/skybox-";
     var cloud;
     var cloudLoader;
     var grassStalk;
@@ -27,6 +29,9 @@ function Summer(yOffset) {
 
     this.load = function(scene){
         console.log('summer');
+
+        //skybox
+        springSkybox.load(scene, skyboxImagePrefix);
 
         //winterLight
         summerSpotLight = new THREE.SpotLight(0xF5CB03);
@@ -136,6 +141,8 @@ function Summer(yOffset) {
 
     this.remove = function(scene){
         scene.remove(summerGround);
+        scene.remove(springSkybox);
+        springSkybox.remove(scene);
         scene.remove(cloudLoader);
         scene.remove(cloud);
         scene.remove(grassStalk);

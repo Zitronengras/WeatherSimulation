@@ -4,12 +4,8 @@
 
 
 function Ground(yOffset) {
-    /*var summerGroundColor= "#ff0000";
-    //summerGround
-    var summerGround = doGround(doGroundGeometry(500, 500), summerGroundColor);
-    scene.add(summerGround);*/
 
-    this.doGroundGeometry = function(widthSegments, heightSegments) {
+    this.doGroundGeometry = function() {
         var groundGeometry = new THREE.PlaneGeometry(500, 800, 60, 80);
         var heightI = 1;
         for (var i = 0; i < groundGeometry.vertices.length; i++) {
