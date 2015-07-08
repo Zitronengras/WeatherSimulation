@@ -38,6 +38,7 @@ function Winter(yOffset) {
         scene.add(winterGround);
 
         console.log('winter');
+        /*
         
         //twisted snow tree 1
         twistedTreeLoader = new THREE.ColladaLoader();
@@ -46,7 +47,7 @@ function Winter(yOffset) {
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree);
-            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
+            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 1;
 
             // shadow
             twistedTree.traverse(function (child){
@@ -54,9 +55,54 @@ function Winter(yOffset) {
                     e.castShadow = true;
                 })
             });
-            twistedTree.position.set(10, 20+yOffset, 80);
+            twistedTree.position.set(10, 100+yOffset, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
+        });*/
+        
+        //Twisted Tree 1 with Snow 
+        twistedTreeLoader1 = new THREE.ColladaLoader();
+        twistedTreeLoader1.options.convertUpAxis = true;
+        twistedTreeLoader1.load('dae/winter/trees/twisted-snow-small1.dae', function(collada){
+            twistedTree1 = collada.scene;
+            console.log('twistedTree loaded');
+            shadow.addShadow(twistedTree1);
+            twistedTree1.scale.x = twistedTree1.scale.y = twistedTree1.scale.z = 1;
+			
+			twistedTree1.position.set(10, 100+yOffset, 80);
+            twistedTree1.updateMatrix();
+            scene.add(twistedTree1);
+          	shadow.addShadow(twistedTree1);
+        });
+        
+         //Twisted Tree 2 with Snow 
+        twistedTreeLoader2 = new THREE.ColladaLoader();
+        twistedTreeLoader2.options.convertUpAxis = true;
+        twistedTreeLoader2.load('dae/winter/trees/twisted-snow-small2.dae', function(collada){
+            twistedTree2 = collada.scene;
+            console.log('twistedTree loaded');
+            shadow.addShadow(twistedTree2);
+            twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 1;
+
+			twistedTree2.position.set(20, 100+yOffset, 70);
+            twistedTree2.updateMatrix();
+            scene.add(twistedTree2);
+          	shadow.addShadow(twistedTree2);
+        });
+        
+        //Twisted Tree 3 without Snow 
+        twistedTreeLoader3 = new THREE.ColladaLoader();
+        twistedTreeLoader3.options.convertUpAxis = true;
+        twistedTreeLoader3.load('dae/winter/trees/twisted-snow-small3.dae', function(collada){
+            twistedTree3 = collada.scene;
+            console.log('twistedTree loaded');
+            shadow.addShadow(twistedTree3);
+            twistedTree3.scale.x = twistedTree3.scale.y = twistedTree3.scale.z = 1;
+
+			twistedTree3.position.set(30, 100+yOffset, 70);
+            twistedTree3.updateMatrix();
+            scene.add(twistedTree3);
+          	shadow.addShadow(twistedTree3);
         });
 
         //audio
