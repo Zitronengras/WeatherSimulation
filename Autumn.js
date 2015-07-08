@@ -37,7 +37,7 @@ function Autumn(yOffset) {
      	//Twisted Tree 1 (red/orange)
         twistedTreeLoader1 = new THREE.ColladaLoader();
         twistedTreeLoader1.options.convertUpAxis = true;
-        twistedTreeLoader1.load('dae/winter/trees/twisted-autumn1.dae', function(collada){
+        twistedTreeLoader1.load('dae/autumn/trees/twisted-autumn1.dae', function(collada){
             twistedTree1 = collada.scene;
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree1);
@@ -56,7 +56,7 @@ function Autumn(yOffset) {
     this.remove = function(scene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
-        scene.remove(twistedTree);
+        scene.remove(twistedTree1);
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
         scene.remove(shadow);
