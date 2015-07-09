@@ -38,7 +38,7 @@ function LetItSnow(){
    
         particleSystem = new THREE.PointCloud(particles, particleMaterial);
         scene.add(particleSystem); 
-      console.log("Snow loaded and se mauntin");
+      console.log("Snow loaded");
   };
     this.remove = function(scene){
         scene.remove(particleSystem);
