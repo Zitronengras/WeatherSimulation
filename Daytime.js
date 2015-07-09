@@ -36,6 +36,6 @@ function Daytime(){
         mainSpotlight.position.add(direction);
         optSpotlight.position.add(direction);
         sunHigh += sunGoesDown;
-        console.log('move' + sunHigh);
+        //console.log('move' + sunHigh);
     }
 }
