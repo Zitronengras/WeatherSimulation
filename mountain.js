@@ -19,7 +19,6 @@ function Mountain(yOffset) {
         mountainLoader.load('dae/mountain.dae', function(collada){
             mountain = collada.scene;
             console.log('mountain loaded');
-            mountain.castShadow = true;
             mountain.position.set(-80, 24+yOffset, 470);
             mountain.updateMatrix();
             scene.add(mountain);
@@ -32,7 +31,6 @@ function Mountain(yOffset) {
         seaCoastLoader.load('dae/SeaCoast.dae', function(collada){
             seaCoast = collada.scene;
             console.log('seaCoast loaded');
-            seaCoast.castShadow = true;
             seaCoast.position.set(50, 10+yOffset, -650);
             shadow.addShadow(seaCoast);
             seaCoast.updateMatrix();

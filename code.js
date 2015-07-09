@@ -19,29 +19,19 @@ function init() {
     scene.position.set(0,0,0);
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
-    //camera.position.set(0,100,0);
     camera.lookAt(new THREE.Vector3(0,0,-1));
-    //camera.position.set(0,50,0);
-    //camera.up = new THREE.Vector3(0,1,0);
-    //scene.add(camera);
-    //var cameraPerspectiveHelper = new THREE.CameraHelper( camera );
-    //scene.add( cameraPerspectiveHelper );
-
-    /*camera.position.x = 300;
-    camera.position.y = 100;
-    camera.position.z = 300;*/
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
-    spotLight.position.x = 900; //red axis
+    spotLight.position.x = 0; //red axis
     spotLight.position.y = 900; //green axis
-    spotLight.position.z = -1500;
+    spotLight.position.z = -1400; //-1500
     spotLight.intensity = 1.3;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-    var daytime = new Daytime(scene);
+    var daytime = new Daytime();
 
 
     //shows vertexNormals

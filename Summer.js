@@ -37,9 +37,9 @@ function Summer(yOffset) {
         //winterLight
         summerSpotLight = new THREE.SpotLight(0xF5CB03);
         summerSpotLight.castShadow = true;
-        summerSpotLight.position.x = 900; //red axis
+        summerSpotLight.position.x = 0; //red axis
         summerSpotLight.position.y = 900; //green axis
-        summerSpotLight.position.z = -1500 + yOffset;
+        summerSpotLight.position.z = -1400;
         summerSpotLight.intensity = 0.5; //1.2;
         summerSpotLight.lookAt(0, 0, 0);
         scene.add(summerSpotLight);
