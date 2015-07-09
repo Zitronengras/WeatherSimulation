@@ -3,7 +3,7 @@ diff a/index.html b/index.html	(rejected hunks)
      <script src="Audio.js"></script>
      <script src="LetItSnow.js"></script>
      <script src="Daytime.js"></script>
-+      <script src="river.js"></script>
+
    </head>
    <body style="margin:0; overflow:hidden;">
      <div id="output"></div>
