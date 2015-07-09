@@ -24,9 +24,9 @@ function Winter(yOffset) {
         //winterLight
         winterSpotLight = new THREE.SpotLight(0x0058CC);
         shadow.addShadow(winterSpotLight);
-        winterSpotLight.position.x = 900; //red axis
+        winterSpotLight.position.x =  0; //red axis
         winterSpotLight.position.y = 900; //green axis
-        winterSpotLight.position.z = -1500 + yOffset;
+        winterSpotLight.position.z = -1400; //-1500
         winterSpotLight.intensity = 0.5; //1.2;
         winterSpotLight.lookAt(0, 0, 0);
         scene.add(winterSpotLight);

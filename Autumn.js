@@ -22,9 +22,9 @@ function Autumn(yOffset) {
          //autumnLight
         autumnSpotLight = new THREE.SpotLight(0xe3c8aa);
         shadow.addShadow(autumnSpotLight);
-        autumnSpotLight.position.x = 900; //red axis
+        autumnSpotLight.position.x = 0; //red axis
         autumnSpotLight.position.y = 900; //green axis
-        autumnSpotLight.position.z = -1500 + yOffset;
+        autumnSpotLight.position.z = -1400; //-1500
         autumnSpotLight.intensity = 0.7;
         autumnSpotLight.lookAt(0, 0, 0);
         scene.add(autumnSpotLight);

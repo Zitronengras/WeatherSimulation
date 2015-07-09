@@ -22,9 +22,9 @@ function Spring(yOffset) {
         //springLight
         springSpotLight = new THREE.SpotLight(0xbdd7cb);
         shadow.addShadow(springSpotLight);
-        springSpotLight.position.x = 900; //red axis
+        springSpotLight.position.x = 0; //red axis
         springSpotLight.position.y = 900; //green axis
-        springSpotLight.position.z = -1500 + yOffset;
+        springSpotLight.position.z = -1400; //-1500
         springSpotLight.intensity = 0.6;
         springSpotLight.lookAt(0, 0, 0);
         scene.add(springSpotLight);
