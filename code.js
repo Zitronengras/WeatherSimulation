@@ -2,33 +2,47 @@
  * Created by Caro on 10.06.2015.
  */
 
-function init(){
+
+var orbitControls;
+var orbitControlsActive = false;
+var cubemapControl;
+var yOffset = -30;
+
+function init() {
 
     var renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(new THREE.Color(0x8DC0F4));
+    renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
 
     var scene = new THREE.Scene();
+    scene.position.set(0,0,0);
 
-    var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
-    camera.position.x = 300;
-    camera.position.y = 300;
-    camera.position.z = 299;
-    //camera.lookAt(scene.position);
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
+    //camera.position.set(0,100,0);
+    camera.lookAt(new THREE.Vector3(0,0,-1));
+    //camera.position.set(0,50,0);
+    //camera.up = new THREE.Vector3(0,1,0);
+    //scene.add(camera);
+    //var cameraPerspectiveHelper = new THREE.CameraHelper( camera );
+    //scene.add( cameraPerspectiveHelper );
+
+    /*camera.position.x = 300;
+    camera.position.y = 100;
+    camera.position.z = 300;*/
 
     //light
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.castShadow = true;
     spotLight.position.x = 900; //red axis
-    spotLight.position.y = 700; //green axis
-    spotLight.position.z = 1;
-    spotLight.intensity = 1.2;
+    spotLight.position.y = 900; //green axis
+    spotLight.position.z = -1500;
+    spotLight.intensity = 1.3;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-    /*var ambientLight = new THREE.AmbientLight(0x222222);
-     scene.add(ambientLight);*/
+    var daytime = new Daytime(scene);
+
 
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
@@ -40,31 +54,69 @@ function init(){
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Spring();
+    seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
+    var optSpotlight = seasonObject.getSeasonSpotlight();
+
 
     //GUI
     var seasons = function() {
+
+        var mountain = new Mountain(yOffset);
+        mountain.load(scene);
+        
+// SCHNEE TEST
+       /* var snow = new Snow();
+       snow.load(scene);*/
+
         this.spring = function() {
             seasonObject.remove(scene);
-            seasonObject = new Spring();
+            seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
             seasonObject.remove(scene);
-            seasonObject = new Summer();
+            seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
-            seasonObject = new Autumn();
+            seasonObject = new Autumn(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
             seasonObject.remove(scene);
-            seasonObject = new Winter();
+            seasonObject = new Winter(yOffset);
             seasonObject.load(scene);
+            optSpotlight = seasonObject.getSeasonSpotlight();
         };
+        this.orbitControlGUI = function(){
+         //mouse Control
+         orbitControlsActive = true;
+         camera.position.x = 300;
+         camera.position.y = 500;
+         camera.position.z = 300;
+         orbitControls = new THREE.OrbitControls(camera);
+         orbitControls.damping = 0.2;
+         //orbitControls.addEventListener('change', render);
+         console.log('orbitControls');
+         };
+         //cubemapControl
+         this.cubemapControlGUI = function(){
+         //remove orbitControls
+         if(orbitControlsActive){
+             orbitControls.removeEventListener('change', render);
+             orbitControlsActive = false;
+             console.log('remove orbitControl');
+         }
+         camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
+         //camera.position.y = 50;
+         cubemapControl = new CubemapControl(camera, render);
+         console.log('cubemapControl');
+         };
     };
 
     var seasonsGUI = new seasons();
@@ -73,71 +125,35 @@ function init(){
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
+    gui.add(seasonsGUI, 'orbitControlGUI');
+    gui.add(seasonsGUI, 'cubemapControlGUI');
 
     //manager
     var manager = new THREE.LoadingManager();
-    manager.onProgress = function ( item, loaded, total ) {
-        console.log( item, loaded, total );
+    manager.onProgress = function (item, loaded, total) {
+        console.log(item, loaded, total);
     };
-
-    var elem = document.getElementById("output");
-        elem.appendChild(renderer.domElement);
-
-    //mouse Control
-    var orbitControls = new THREE.OrbitControls(camera);
-    orbitControls.damping = 0.2;
-    orbitControls.addEventListener('change', render );
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
-    window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
 
-    callback = function(){
-        renderer.render(scene, camera);
+
+    var elem = document.getElementById("output");
+    elem.appendChild(renderer.domElement);
+
+    render = function(){
+        daytime.moveSun(spotLight, optSpotlight);
+        requestAnimationFrame(function(){
+            renderer.render(scene, camera);
+        });
     };
-    requestAnimationFrame(render);
+    setInterval(render, 20);
 
-    orbitControls.update();
 };
 
-<<<<<<< HEAD
-function render(){
-    callback();
-    requestAnimationFrame(render);
-};
-=======
-var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
-    var groundGeometry = new THREE.PlaneGeometry(width, height, 60, 50);
-    for (var i = 0; i < groundGeometry.vertices.length; i++) {
-        groundGeometry.vertices[i].x += Math.random() * 3; //red axis
-        groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-        groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
-    }
-    groundGeometry.dynamic = true;
-    groundGeometry.computeFaceNormals();
-    groundGeometry.computeVertexNormals();
-    groundGeometry.normalsNeedUpdate = true;
-    return groundGeometry;
-};
-
-function render(){
-    callback();
-    requestAnimationFrame(render);
-}
-
-var doGround = function(groundGeometry) {
-    var groundMaterial = new THREE.MeshLambertMaterial({color: 0x91D94A, shading: THREE.FlatShading});
-    var ground = new THREE.Mesh(groundGeometry, groundMaterial);
-    ground.rotation.x = -0.5*Math.PI;
-    ground.receiveShadow = true;
-    return ground;
-};
-
-
-
->>>>>>> feature/add_Sea_Mountain
 
 window.onload = init;

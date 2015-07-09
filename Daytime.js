@@ -5,23 +5,23 @@
 function Daytime(scene){
 
     var direction;
-    var sunHigh = 900;
+    var sunHigh = 900; //ändern
     var sunGoesDown = -1;
     console.log('DAYTIME');
 
     this.moveSun = function(mainSpotlight, optSpotlight){
 
         if(sunHigh == 0){
-            direction = new THREE.Vector3(0,1,0);//ändern
+            direction = new THREE.Vector3(0,1,0);
             sunGoesDown = +1;
         }
         if(sunHigh == 900){
-            direction = new THREE.Vector3(0,-1,0);//ändern
+            direction = new THREE.Vector3(0,-1,0);
             sunGoesDown = -1;
         }
         mainSpotlight.position.add(direction);
         optSpotlight.position.add(direction);
         sunHigh += sunGoesDown;
-        console.log('move' + sunHigh);
+        //console.log('move' + sunHigh);
     }
 }
