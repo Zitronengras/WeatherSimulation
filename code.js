@@ -14,7 +14,7 @@ function init(){
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 1000);
     camera.position.x = 300;
     camera.position.y = 300;
-    camera.position.z = 300;
+    camera.position.z = 299;
     //camera.lookAt(scene.position);
 
     //light
@@ -103,9 +103,41 @@ function init(){
     orbitControls.update();
 };
 
+<<<<<<< HEAD
 function render(){
     callback();
     requestAnimationFrame(render);
 };
+=======
+var doGroundGeometry = function(width, height, widthSegments, heightSegments) {
+    var groundGeometry = new THREE.PlaneGeometry(width, height, 60, 50);
+    for (var i = 0; i < groundGeometry.vertices.length; i++) {
+        groundGeometry.vertices[i].x += Math.random() * 3; //red axis
+        groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
+        groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
+    }
+    groundGeometry.dynamic = true;
+    groundGeometry.computeFaceNormals();
+    groundGeometry.computeVertexNormals();
+    groundGeometry.normalsNeedUpdate = true;
+    return groundGeometry;
+};
+
+function render(){
+    callback();
+    requestAnimationFrame(render);
+}
+
+var doGround = function(groundGeometry) {
+    var groundMaterial = new THREE.MeshLambertMaterial({color: 0x91D94A, shading: THREE.FlatShading});
+    var ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    ground.rotation.x = -0.5*Math.PI;
+    ground.receiveShadow = true;
+    return ground;
+};
+
+
+
+>>>>>>> feature/add_Sea_Mountain
 
 window.onload = init;
