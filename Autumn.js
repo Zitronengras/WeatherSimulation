@@ -7,6 +7,8 @@ function Autumn(yOffset) {
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
+    var leave1 = new Leave1();
+    var leave2 = new Leave2();
     var autumnSkybox = new Skybox();
     var skyboxImagePrefix = "images/autumn/skybox-";
     var shadow = new Shadow();
@@ -92,7 +94,12 @@ function Autumn(yOffset) {
             scene.add(twistedTree4);
           	shadow.addShadow(twistedTree4);
         });
-
+        
+        // load leaves particle systems
+        
+           leave1.load(scene);
+			leave2.load(scene);
+			
         //audio
         audio.playTrack(audioURL, scene);
     };
@@ -105,6 +112,9 @@ function Autumn(yOffset) {
     this.remove = function(scene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
+        
+        scene.remove(leave1);
+        scene.remove(leave2);
 
         scene.remove(twistedTree);
 
