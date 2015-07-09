@@ -1,0 +1,55 @@
+diff a/code.js b/code.js	(rejected hunks)
+@@ -75,30 +75,30 @@
+             seasonObject.load(scene);
+         };
+         /*this.orbitControl = function(){
+-            //mouse Control
+-            orbitControlsActive = true;
+-            camera.position.x = 300;
+-            camera.position.y = 500;
+-            camera.position.z = 300;
+-            orbitControls = new THREE.OrbitControls(camera);
+-            orbitControls.damping = 0.2;
+-            orbitControls.addEventListener('change', callback);
+-            console.log('orbitControls');
+-        };
+-        //cubemapControl
+-        this.cubemapControlGUI = function(){
+-            //remove orbitControls
+-            if(orbitControlsActive){
+-                orbitControls.removeEventListener('change', callback);
+-                orbitControlsActive = false;
+-            }
+-
+-            camera.lookAt(new THREE.Vector3(0,0,1)); //�ndern!!!
+-            cubemapControl = new CubemapControl(camera, callback);
+-            console.log('cubemapControl');
+-        };*/
++         //mouse Control
++         orbitControlsActive = true;
++         camera.position.x = 300;
++         camera.position.y = 500;
++         camera.position.z = 300;
++         orbitControls = new THREE.OrbitControls(camera);
++         orbitControls.damping = 0.2;
++         orbitControls.addEventListener('change', callback);
++         console.log('orbitControls');
++         };
++         //cubemapControl
++         this.cubemapControlGUI = function(){
++         //remove orbitControls
++         if(orbitControlsActive){
++         orbitControls.removeEventListener('change', callback);
++         orbitControlsActive = false;
++         }
++
++         camera.lookAt(new THREE.Vector3(0,0,1)); //�ndern!!!
++         cubemapControl = new CubemapControl(camera, callback);
++         console.log('cubemapControl');
++         };*/
+     };
+-    
++
+ 
+     var seasonsGUI = new seasons();
+     var gui = new dat.GUI();
