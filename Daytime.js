@@ -5,7 +5,7 @@
 function Daytime(){
 
     var direction;
-    var sunHigh = 900; //ändern
+    var sunHigh = 1800; //ändern
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;
@@ -14,7 +14,7 @@ function Daytime(){
     this.moveSun = function(mainSpotlight, optSpotlight){
 
         if(sunHigh == -300){
-            direction = new THREE.Vector3(0,1,0);
+            direction = new THREE.Vector3(0,0.5,0);
             sunGoesDown = 1;
             goesDown = false;
         }
@@ -28,8 +28,8 @@ function Daytime(){
             optSpotlight.intensity += intensityGoesDown;
             console.log('intensity high');
         }
-        if(sunHigh == 900){
-            direction = new THREE.Vector3(0,-1,0);
+        if(sunHigh == 1800){
+            direction = new THREE.Vector3(0,-0.5,0);
             sunGoesDown = -1;
             goesDown = true;
         }
