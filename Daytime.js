@@ -9,13 +9,11 @@ function Daytime(scene){
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;
-    var opacityGoesDown = 1/900;
+    var opacityGoesDown = 1/5000;
     var nightOpacity = 0;
     console.log('DAYTIME');
 
     var skybox = new Skybox();
-    skybox.renderOrder = 1;
-    //skybox.makeNight(scene, 1);
     this.moveSun = function(mainSpotlight, optSpotlight){
 
         if(sunHigh == -300){
@@ -35,16 +33,15 @@ function Daytime(scene){
             console.log('intensity high');
         }
         //opacity nightSkybox
-        if(sunHigh == 400){//goesDown == true && sunHigh <= 400){
-            //if(nightOpacity >= 0 && nightOpacity <= 1){
-                nightOpacity = 1; //+= opacityGoesDown;
+        if(goesDown == true && sunHigh <= 400){
+            if(nightOpacity >= 0 && nightOpacity <= 1){
+                nightOpacity += opacityGoesDown;
                 skybox.makeNight(scene, nightOpacity);
-            //}
+            }
         }
         if(goesDown == false && sunHigh <= 400){
             if(nightOpacity >= 0 && nightOpacity <= 1){
-                nightOpacity = 0; //-= opacityGoesDown;
-                console.log("opacity 1!!!!!!!!!!!!!!!");
+                nightOpacity -= opacityGoesDown;
                 skybox.makeNight(scene, nightOpacity);
             }
         }

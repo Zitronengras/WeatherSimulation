@@ -14,7 +14,6 @@ function init() {
     renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
-    //renderer.sortObjects = false;
     renderer.autoClear = false;
 
     var scene = new THREE.Scene();
