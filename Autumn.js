@@ -15,6 +15,7 @@ function Autumn(yOffset) {
     var audio = new Audio();
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
     var cloud = new Cloud();
+    var grass = new Grass();
 
     this.load = function(scene){
         console.log('Autumn');
@@ -35,6 +36,9 @@ function Autumn(yOffset) {
         //autumnGround
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
+
+        //grass
+        grass.load(scene);
 
         //clouds
         cloud.load(scene, 5);
