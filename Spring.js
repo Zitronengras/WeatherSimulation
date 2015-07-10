@@ -12,6 +12,7 @@ function Spring(yOffset) {
     var shadow = new Shadow();
     var audio = new Audio();
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
+    var cloud = new Cloud();
 
     this.load = function(scene){
         console.log('spring');
@@ -33,6 +34,8 @@ function Spring(yOffset) {
         springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
         scene.add(springGround);
 
+        //clouds
+        cloud.load(scene, 5);
 
         //audio
         audio.playTrack(audioURL, scene);
@@ -50,6 +53,7 @@ function Spring(yOffset) {
         scene.remove(springSkybox);
         springSkybox.remove(scene);
         scene.remove(shadow);
+        cloud.remove(scene);
         audio.stopTrack();
 
         console.log('removed spring');

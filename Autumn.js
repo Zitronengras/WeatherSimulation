@@ -14,7 +14,6 @@ function Autumn(yOffset) {
     var shadow = new Shadow();
     var audio = new Audio();
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
-
     var cloud = new Cloud();
 
     this.load = function(scene){
@@ -117,18 +116,19 @@ function Autumn(yOffset) {
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
         
-       leave1.remove(scene);
-       leave2.remove(scene);
+        leave1.remove(scene);
+        leave2.remove(scene);
 
         scene.remove(twistedTree);
 
         scene.remove(twistedTree2);
-         scene.remove(twistedTree3);
-          scene.remove(twistedTree4);
+        scene.remove(twistedTree3);
+        scene.remove(twistedTree4);
 
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
         scene.remove(shadow);
+        cloud.remove(scene);
         audio.stopTrack();
 
         console.log('removed autumn');
