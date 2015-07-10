@@ -14,9 +14,16 @@ function init() {
     renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
+    //renderer.sortObjects = false;
+    renderer.autoClear = false;
 
     var scene = new THREE.Scene();
     scene.position.set(0,0,0);
+
+    var pointCloudScene = new THREE.Scene();
+    pointCloudScene.position.set(0,0,0);
+    console.log('pointcloud scene');
+
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
     camera.lookAt(new THREE.Vector3(0,0,-1));
@@ -45,42 +52,37 @@ function init() {
     //defaultSeason = Spring
     var seasonObject;
     seasonObject = new Autumn(yOffset);
-    seasonObject.load(scene);
+    seasonObject.load(scene, pointCloudScene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
-
 
     //GUI
     var seasons = function() {
 
         var mountain = new Mountain(yOffset);
         mountain.load(scene);
-        
-// SCHNEE TEST
-       /* var snow = new Snow();
-       snow.load(scene);*/
 
         this.spring = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Autumn(yOffset);
-            seasonObject.load(scene);
+            seasonObject.load(scene, pointCloudScene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Winter(yOffset);
-            seasonObject.load(scene);
+            seasonObject.load(scene, pointCloudScene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.orbitControlGUI = function(){
@@ -138,7 +140,10 @@ function init() {
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
         requestAnimationFrame(function(){
+            renderer.clear();
             renderer.render(scene, camera);
+            renderer.clearDepth();
+            renderer.render(pointCloudScene, camera);
         });
     };
     setInterval(render, 20);

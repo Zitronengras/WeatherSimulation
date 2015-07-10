@@ -23,7 +23,7 @@ function Summer(yOffset) {
     var audioURL = 'music/09 What You Wanted.mp3';
     var grass = new Grass();
 
-    this.load = function(scene){
+    this.load = function(scene, pointCloudScene){
         console.log('summer');
 
         //skybox
@@ -93,7 +93,7 @@ function Summer(yOffset) {
         return summerSpotLight;
     };
 
-    this.remove = function(scene){
+    this.remove = function(scene, pointCloudScene){
         scene.remove(summerGround);
         scene.remove(summerSkybox);
         summerSkybox.remove(scene);

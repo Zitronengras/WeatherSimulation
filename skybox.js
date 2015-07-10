@@ -31,7 +31,7 @@ function Skybox(){
         skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
         skyMaterial.needsUpdate = true;
 
-        scene.add( skyBox );
+        scene.add(skyBox);
     };
     this.remove = function(scene){
         scene.remove(skyBox);
@@ -39,13 +39,14 @@ function Skybox(){
 
     this.makeNight = function(scene, amount){
         var nightSkyboxGeo = new THREE.BoxGeometry(500, 550, 2500);
-        var nightSkyboxMat = new THREE.MeshBasicMaterial({color: 0xff0000,
+        var nightSkyboxMat = new THREE.MeshBasicMaterial({color: 0x01031C,
             transparent: true,
             opacity: amount,
             side: THREE.BackSide
-        }); //0x02093E
+        }); //0x02042B
         var nightSkybox = new THREE.Mesh(nightSkyboxGeo, nightSkyboxMat);
         nightSkybox.scale.set(0.9, 0.9, 0.9);
+        nightSkybox.renderOrder = 1;
         scene.add(nightSkybox);
     }
 }

@@ -15,7 +15,7 @@ function Spring(yOffset) {
     var cloud = new Cloud();
     var grass = new Grass();
 
-    this.load = function(scene){
+    this.load = function(scene, pointCloudScene){
         console.log('spring');
         
         //skybox
@@ -49,7 +49,7 @@ function Spring(yOffset) {
         return springSpotLight;
     };
 
-    this.remove = function(scene){
+    this.remove = function(scene, pointCloudScene){
         scene.remove(ground);
         scene.remove(springSpotLight);
         scene.remove(springGround);

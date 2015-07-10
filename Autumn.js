@@ -17,7 +17,7 @@ function Autumn(yOffset) {
     var cloud = new Cloud();
     var grass = new Grass();
 
-    this.load = function(scene){
+    this.load = function(scene, pointCloudScene){
         console.log('Autumn');
         
         //skybox
@@ -107,8 +107,8 @@ function Autumn(yOffset) {
         
         // load leaves particle systems
         
-           leave1.load(scene);
-			leave2.load(scene);
+           leave1.load(pointCloudScene);
+			leave2.load(pointCloudScene);
 			
         //audio
         audio.playTrack(audioURL, scene);
@@ -119,11 +119,11 @@ function Autumn(yOffset) {
     };
 
 
-    this.remove = function(scene){
+    this.remove = function(scene, pointCloudScene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
-        leave1.remove(scene);
-        leave2.remove(scene);
+        leave1.remove(pointCloudScene);
+        leave2.remove(pointCloudScene);
         twistedTrees.remove(scene);
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);

@@ -4,8 +4,8 @@ function Leave2(){
         var particle;
         var particleSystem;
     
-    this.load = function(scene){
-  
+    this.load = function(pointCloudScene){
+
 
     //Animation
         var redraw = function() {
@@ -38,11 +38,11 @@ function Leave2(){
        var particleMaterial = new THREE.PointCloudMaterial({ color: 0xEEEEEE, size: 6 ,map: texture,transparent: true});
    
         particleSystem = new THREE.PointCloud(particles, particleMaterial);
-        scene.add(particleSystem); 
+        pointCloudScene.add(particleSystem);
       console.log("Particle System (leave2) loaded ");
   };
-    this.remove = function(scene){
-        scene.remove(particleSystem);
+    this.remove = function(pointCloudScene){
+        pointCloudScene.remove(particleSystem);
     };
    var render = this.render;
 }
