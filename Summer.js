@@ -10,8 +10,6 @@ function Summer(yOffset) {
     var summerGroundColor= "#D2D92C";
     var summerSkybox = new Skybox();
     var skyboxImagePrefix = "images/summer/skybox-";
-    var cloud;
-    var cloudLoader;
     var grassStalk;
     var grassStalkLoader;
     var grassArray;
@@ -26,7 +24,6 @@ function Summer(yOffset) {
     var shadow = new Shadow();
     var audio = new Audio();
     var audioURL = 'music/09 What You Wanted.mp3';
-
 
     this.load = function(scene){
         console.log('summer');
@@ -47,19 +44,6 @@ function Summer(yOffset) {
         //summerGround
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
-
-        //cloud loader
-        cloudLoader = new THREE.ColladaLoader();
-        cloudLoader.options.convertUpAxis = true;
-        cloudLoader.load('dae/Wolken.dae', function(collada){
-            cloud = collada.scene;
-            console.log('cloud loaded');
-            cloud.scale.x = cloud.scale.y = cloud.scale.z = 0.5;
-            cloud.position.set(1, 100, 1);
-            shadow.addShadow(cloud);
-            cloud.updateMatrix();
-            scene.add(cloud);
-        });
 
         //grass loader
         grassStalkLoader = new THREE.ColladaLoader();
@@ -148,8 +132,6 @@ function Summer(yOffset) {
         scene.remove(summerGround);
         scene.remove(summerSkybox);
         summerSkybox.remove(scene);
-        scene.remove(cloudLoader);
-        scene.remove(cloud);
         scene.remove(grassStalk);
         scene.remove(grassStalkLoader);
         for(i = 0; i < grassArray.length; i++){
