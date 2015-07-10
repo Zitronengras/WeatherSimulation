@@ -10,6 +10,8 @@ function Autumn(yOffset) {
      var twistedTree;
     var twistedTreeLoader;
     var twistedTreeArray;
+    var i;
+    var shadow = new Shadow();
     var leave1 = new Leave1();
     var leave2 = new Leave2();
     var autumnSkybox = new Skybox();
@@ -36,7 +38,7 @@ function Autumn(yOffset) {
         
         //autumnGround
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
-        scene.add(autumnGround);
+        //scene.add(autumnGround);
         
           //Twisted r-o clones
        twistedTreeLoader = new THREE.ColladaLoader();
@@ -47,24 +49,30 @@ function Autumn(yOffset) {
             twistedTree = collada.scene;
             //store mesh
             var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 20; i++) {
+            for (i = 0; i < 50; i++) {
                 newTwistedTree = new THREE.Object3D();
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
+                    
                 }
+                console.log('twistedTree Clones loaded');
+                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 100;
+                newTwistedTree.position.set(50, -50, 50);
+
+               //newTwistedTree.rotation.z = -110 * Math.PI / 180;
+
+                //newTwistedTree.position.y += getRandomArbitrary(0, 70);
+                //newTwistedTree.position.x += getRandomArbitrary(-120, 120);
+                //newTwistedTree.position.z += getRandomArbitrary(250, 350);
                 
-                newTwistedTree.position.set(0,yOffset,0);
+                
                 shadow.addShadow(newTwistedTree);
                 newTwistedTree.updateMatrix();
                 twistedTreeArray.push(newTwistedTree);
                 scene.add(newTwistedTree);
             }
            
-            twistedTree.position.set(0,yOffset,0);
-            shadow.addShadow(twistedTree);
-            twistedTree.updateMatrix();
-            scene.add(twistedTree);
-            console.log('twistedTree Clones loaded');
+            
         });
         
 
@@ -162,4 +170,8 @@ function Autumn(yOffset) {
 
         console.log('removed autumn');
     };
+    
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 }
