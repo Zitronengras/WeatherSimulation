@@ -38,7 +38,7 @@ function Autumn(yOffset) {
         scene.add(autumnGround);
 
         //grass
-        grass.load(scene, 0x00ffff);
+        grass.load(scene, 0xF76428);
 
         //clouds
         cloud.load(scene, 5);
