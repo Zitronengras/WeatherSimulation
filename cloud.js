@@ -33,7 +33,7 @@ function Cloud(){
 
                 newCloud.position.y += getRandomArbitrary(0, 70);
                 newCloud.position.x += getRandomArbitrary(-120, 120);
-                newCloud.position.z += getRandomArbitrary(250, 350);
+                newCloud.position.z += getRandomArbitrary(300, 400);
 
 
                 shadow.addShadow(newCloud);
