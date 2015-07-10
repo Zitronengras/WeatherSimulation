@@ -36,4 +36,16 @@ function Skybox(){
     this.remove = function(scene){
         scene.remove(skyBox);
     };
+
+    this.makeNight = function(scene, amount){
+        var nightSkyboxGeo = new THREE.BoxGeometry(500, 550, 2500);
+        var nightSkyboxMat = new THREE.MeshBasicMaterial({color: 0xff0000,
+            transparent: true,
+            opacity: amount,
+            side: THREE.BackSide
+        }); //0x02093E
+        var nightSkybox = new THREE.Mesh(nightSkyboxGeo, nightSkyboxMat);
+        nightSkybox.scale.set(0.9, 0.9, 0.9);
+        scene.add(nightSkybox);
+    }
 }

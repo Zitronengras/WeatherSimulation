@@ -137,8 +137,4 @@ function Autumn(yOffset) {
 
         console.log('removed autumn');
     };
-    
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
 }

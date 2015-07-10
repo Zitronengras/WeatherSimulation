@@ -31,7 +31,7 @@ function init() {
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-    var daytime = new Daytime();
+    var daytime = new Daytime(scene);
 
 
     //shows vertexNormals

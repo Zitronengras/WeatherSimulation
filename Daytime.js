@@ -2,15 +2,18 @@
  * Created by Caro on 08.07.2015.
  */
 
-function Daytime(){
+function Daytime(scene){
 
     var direction;
     var sunHigh = 1800; //ändern
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;
+    var opacityGoesDown = 1/300;
     console.log('DAYTIME');
 
+    var skybox = new Skybox();
+    skybox.makeNight(scene, 0);
     this.moveSun = function(mainSpotlight, optSpotlight){
 
         if(sunHigh == -300){
@@ -21,11 +24,13 @@ function Daytime(){
         if(goesDown == true && sunHigh <= 0){
             mainSpotlight.intensity -= intensityGoesDown;
             optSpotlight.intensity -= intensityGoesDown;
+            //nightSkybox.opacity -= opacityGoesDown;
             console.log('intensity low');
         }
         if(goesDown == false && sunHigh <= 0){
             mainSpotlight.intensity += intensityGoesDown;
             optSpotlight.intensity += intensityGoesDown;
+            //nightSkyboxybox.opacity += opacityGoesDown;
             console.log('intensity high');
         }
         if(sunHigh == 1800){
