@@ -91,6 +91,7 @@ function Autumn(yOffset) {
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
           	shadow.addShadow(twistedTree4);
+            
         });
 
         //audio
