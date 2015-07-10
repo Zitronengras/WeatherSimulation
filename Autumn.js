@@ -7,10 +7,7 @@ function Autumn(yOffset) {
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
-     var twistedTree;
-    var twistedTreeLoader;
-    var twistedTreeArray;
-    var i;
+    var twistedTrees = new TwistedTrees();
     var shadow = new Shadow();
     var leave1 = new Leave1();
     var leave2 = new Leave2();
@@ -75,7 +72,7 @@ function Autumn(yOffset) {
             
         });*/
         
-        TwistedTrees.load(scene);
+        twistedTrees.load(scene);
                 
 
         //Twisted red-orange

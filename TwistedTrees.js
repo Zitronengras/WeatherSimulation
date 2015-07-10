@@ -26,19 +26,19 @@ function TwistedTrees(){
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
                 }
-                newTwistedTree.scale.x = newCloud.scale.y = newCloud.scale.z = 0.6;
-                newTwistedTree.position.set(0, 100, 0);
+                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 10;
+                newTwistedTree.position.set(0, 10, 0);
 
-                newTwistedTree.rotation.z = -110 * Math.PI / 180;
+                //newTwistedTree.rotation.z = -110 * Math.PI / 180;
 
-                newTwistedTree.position.y += getRandomArbitrary(0, 70);
+                /*newTwistedTree.position.y += getRandomArbitrary(0, 70);
                 newTwistedTree.position.x += getRandomArbitrary(-120, 120);
                 newTwistedTree.position.z += getRandomArbitrary(300, 400);
-
+*/
 
                 shadow.addShadow(newTwistedTree);
                 newTwistedTree.updateMatrix();
-                twistedTeeArray.push(newTwistedTree);
+                twistedTreeArray.push(newTwistedTree);
                 scene.add(newTwistedTree);
             }
             console.log('twisted tree loaded');
