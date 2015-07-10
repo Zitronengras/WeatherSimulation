@@ -44,7 +44,7 @@ function Autumn(yOffset) {
        twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
         
-        twistedTreeArray = [];
+        /*twistedTreeArray = [];
          twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
             twistedTree = collada.scene;
             //store mesh
@@ -73,8 +73,10 @@ function Autumn(yOffset) {
             }
            
             
-        });
+        });*/
         
+        TwistedTrees.load(scene);
+                
 
         //Twisted red-orange
         /*
@@ -156,6 +158,7 @@ function Autumn(yOffset) {
         
        leave1.remove(scene);
        leave2.remove(scene);
+       twistedTrees.remove(scene);
 
         scene.remove(twistedTree);
 

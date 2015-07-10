@@ -1,0 +1,58 @@
+/**
+ * Created by Karo on 10.07.2015.
+ */
+
+function TwistedTrees(){
+
+    var shadow = new Shadow();
+    var twistedTreeArray;
+    var twistedTree;
+    var twistedTreeLoader;
+    var i;
+
+
+    this.load = function(scene) {
+
+        twistedTreeLoader = new THREE.ColladaLoader();
+           twistedTreeLoader.options.convertUpAxis = true;
+        twistedTreeArray = [];
+       twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function (collada) {
+            twistedTree = collada.scene;
+
+            var colladaObj = collada.scene.children[0];
+            for (i = 0; i < 20; i++) {
+                var newTwistedTree = new THREE.Object3D();
+
+                for (var j = 0; j < colladaObj.children.length; j++) {
+                    newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
+                }
+                newTwistedTree.scale.x = newCloud.scale.y = newCloud.scale.z = 0.6;
+                newTwistedTree.position.set(0, 100, 0);
+
+                newTwistedTree.rotation.z = -110 * Math.PI / 180;
+
+                newTwistedTree.position.y += getRandomArbitrary(0, 70);
+                newTwistedTree.position.x += getRandomArbitrary(-120, 120);
+                newTwistedTree.position.z += getRandomArbitrary(300, 400);
+
+
+                shadow.addShadow(newTwistedTree);
+                newTwistedTree.updateMatrix();
+                twistedTeeArray.push(newTwistedTree);
+                scene.add(newTwistedTree);
+            }
+            console.log('twisted tree loaded');
+        });
+    };
+
+    this.remove = function(scene){
+        scene.remove(twistedTreeLoader);
+        for(i = 0; i < twistedTreeArray.length; i++){
+            scene.remove(twistedTreeArray[i]);
+        }
+    };
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+}
