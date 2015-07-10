@@ -7,6 +7,9 @@ function Autumn(yOffset) {
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
+     var twistedTree;
+    var twistedTreeLoader;
+    var twistedTreeArray;
     var leave1 = new Leave1();
     var leave2 = new Leave2();
     var autumnSkybox = new Skybox();
@@ -35,8 +38,38 @@ function Autumn(yOffset) {
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
         
+          //Twisted r-o clones
+       twistedTreeLoader = new THREE.ColladaLoader();
+        twistedTreeLoader.options.convertUpAxis = true;
+        
+        twistedTreeArray = [];
+         twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
+            twistedTree = collada.scene;
+            //store mesh
+            var colladaObj = collada.scene.children[0];
+            for (i = 0; i < 20; i++) {
+                newTwistedTree = new THREE.Object3D();
+                for (var j = 0; j < colladaObj.children.length; j++) {
+                    newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
+                }
+                
+                newTwistedTree.position.set(0,yOffset,0);
+                shadow.addShadow(newTwistedTree);
+                newTwistedTree.updateMatrix();
+                twistedTreeArray.push(newTwistedTree);
+                scene.add(newTwistedTree);
+            }
+           
+            twistedTree.position.set(0,yOffset,0);
+            shadow.addShadow(twistedTree);
+            twistedTree.updateMatrix();
+            scene.add(twistedTree);
+            console.log('twistedTree Clones loaded');
+        });
+        
 
         //Twisted red-orange
+        /*
         twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
         twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
@@ -49,7 +82,7 @@ function Autumn(yOffset) {
             twistedTree.updateMatrix();
             scene.add(twistedTree);
 
-        });
+        });*/
         
          //Twisted orange-red
         twistedTreeLoader2 = new THREE.ColladaLoader();
