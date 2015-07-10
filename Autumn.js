@@ -7,7 +7,7 @@ function Autumn(yOffset) {
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
-    var twistedTrees = new TwistedTrees();
+    //var twistedTrees = new TwistedTrees();
     var shadow = new Shadow();
     var leave1 = new Leave1();
     var leave2 = new Leave2();
@@ -44,11 +44,11 @@ function Autumn(yOffset) {
         //scene.add(autumnGround);
         
           //Twisted r-o clones
-          /*
+        /*  
        twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
         
-        /*twistedTreeArray = [];
+        twistedTreeArray = [];
          twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
             twistedTree = collada.scene;
             //store mesh
