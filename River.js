@@ -1,12 +1,18 @@
-function Mountain(yOffset) {
-
-    var shadow = new Shadow();
+function River () {
 
     this.load = function(scene) {
-        console.log('mountain');
+   
+        
+       
+    var sphereGeometry = new THREE.SphereGeometry(50);
+    
+    var sphereMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.set(0,0,0);    
+scene.add(sphere);
         
         
-  var A = new THREE.Vector3(60, 80, 0);
+ /* var A = new THREE.Vector3(60, 80, 0);
   var B = new THREE.Vector3(0,  80,  60);
   var C = new THREE.Vector3( 0,  80,  0);
   var D = new THREE.Vector3( 60,  80, 60);
@@ -30,6 +36,8 @@ function Mountain(yOffset) {
     color: 0x00FF00
   });
   var mesh = new THREE.Mesh(geo, mat);
-  scene.add(mesh);
+  scene.add(mesh);*/
+        
+             console.log('river');
     }
 }

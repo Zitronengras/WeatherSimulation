@@ -53,7 +53,10 @@ function init() {
     var seasonObject;
     seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
-
+	
+	var river = new River();
+	river.load(scene);
+	
     //GUI
     var seasons = function() {
 
