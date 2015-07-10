@@ -2,30 +2,35 @@
  * Created by Caro on 10.07.2015.
  */
 
-function Grass (){
+function Grass (color){
 
 
     var grassStalk;
     var grassStalkLoader;
     var grassArray;
     var i;
+    var shadow = new Shadow();
 
-    this.load = function(scene){
+
+    this.load = function(scene, color){
         //grass loader
         grassStalkLoader = new THREE.ColladaLoader();
         grassStalkLoader.options.convertUpAxis = true;
         grassArray = [];
         grassStalkLoader.load('dae/Grashalm.dae', function(collada){
+
+            var grassMaterial = new THREE.MeshLambertMaterial({color: color});
             grassStalk = collada.scene;
-            //store mesh
+
             var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 20; i++) {
-                newGrassStalk = new THREE.Object3D();
+            for (i = 0; i < 200; i++) {
+                var newGrassStalk = new THREE.Object3D();
+
                 for (var j = 0; j < colladaObj.children.length; j++) {
-                    newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
+                    newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, grassMaterial));
                 }
                 newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.01;
-                newGrassStalk.position.set(0,yOffset,0);
+                newGrassStalk.position.set(0,0,0);
 
                 newGrassStalk.rotation.x = -90*Math.PI/180;
                 newGrassStalk.rotation.y = 65*Math.PI/180;
@@ -34,7 +39,9 @@ function Grass (){
                 newGrassStalk.rotation.z = ((getRandomArbitrary(0, 2)*30)*Math.PI/180);
                 newGrassStalk.rotation.x = 240*Math.PI/180;
 
-                newGrassStalk.position.set((i*3), 5, (i*3));
+                newGrassStalk.position.x += getRandomArbitrary(0, -125);
+                newGrassStalk.position.z += getRandomArbitrary(0, 300);
+
                 shadow.addShadow(newGrassStalk);
                 newGrassStalk.updateMatrix();
                 grassArray.push(newGrassStalk);
