@@ -2,15 +2,13 @@
  * Created by Caro on 10.07.2015.
  */
 
-function Grass (color){
-
+function Grass(){
 
     var grassStalk;
     var grassStalkLoader;
     var grassArray;
     var i;
     var shadow = new Shadow();
-
 
     this.load = function(scene, color){
         //grass loader

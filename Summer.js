@@ -21,6 +21,7 @@ function Summer(yOffset) {
     var shadow = new Shadow();
     var audio = new Audio();
     var audioURL = 'music/09 What You Wanted.mp3';
+    var grass = new Grass();
 
     this.load = function(scene){
         console.log('summer');
@@ -41,6 +42,9 @@ function Summer(yOffset) {
         //summerGround
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
+
+        //grass
+        grass.load(scene, 0xff0000);
 
         //twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
@@ -102,6 +106,7 @@ function Summer(yOffset) {
         scene.remove(summerSpotLight);
         scene.remove(shadow);
         audio.stopTrack();
+        grass.remove(scene);
 
         console.log('removed summer');
     };
