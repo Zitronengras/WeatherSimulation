@@ -18,7 +18,6 @@ function Cloud(){
         cloudArray = [];
         cloudLoader.load('dae/Wolken.dae', function (collada) {
             cloud = collada.scene;
-
             var colladaObj = collada.scene.children[0];
             for (i = 0; i < amount; i++) {
                 var newCloud = new THREE.Object3D();
@@ -34,7 +33,6 @@ function Cloud(){
                 newCloud.position.y += getRandomArbitrary(0, 70);
                 newCloud.position.x += getRandomArbitrary(-120, 120);
                 newCloud.position.z += getRandomArbitrary(300, 400);
-
 
                 shadow.addShadow(newCloud);
                 newCloud.updateMatrix();

@@ -5,7 +5,6 @@
 function Autumn(yOffset) {
     var ground = new Ground(yOffset);
     var autumnGround;
-    //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
     var twistedTrees = new TwistedTrees();
     var shadow = new Shadow();
@@ -13,10 +12,10 @@ function Autumn(yOffset) {
     var leave2 = new Leave2();
     var autumnSkybox = new Skybox();
     var skyboxImagePrefix = "images/autumn/skybox-";
-    var shadow = new Shadow();
     var audio = new Audio();
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
     var cloud = new Cloud();
+    var grass = new Grass();
 
     this.load = function(scene){
         console.log('Autumn');
@@ -38,50 +37,13 @@ function Autumn(yOffset) {
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
 
+        //grass
+        grass.load(scene, 0xF76428);
+
         //clouds
         cloud.load(scene, 5);
 
-        //scene.add(autumnGround);
-        
-          //Twisted r-o clones
-        /*  
-       twistedTreeLoader = new THREE.ColladaLoader();
-        twistedTreeLoader.options.convertUpAxis = true;
-        
-        twistedTreeArray = [];
-         twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function(collada){
-            twistedTree = collada.scene;
-            //store mesh
-            var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 50; i++) {
-                newTwistedTree = new THREE.Object3D();
-                for (var j = 0; j < colladaObj.children.length; j++) {
-                    newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
-                    
-                }
-                console.log('twistedTree Clones loaded');
-                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 100;
-                newTwistedTree.position.set(50, -50, 50);
-
-               //newTwistedTree.rotation.z = -110 * Math.PI / 180;
-
-                //newTwistedTree.position.y += getRandomArbitrary(0, 70);
-                //newTwistedTree.position.x += getRandomArbitrary(-120, 120);
-                //newTwistedTree.position.z += getRandomArbitrary(250, 350);
-                
-                
-                shadow.addShadow(newTwistedTree);
-                newTwistedTree.updateMatrix();
-                twistedTreeArray.push(newTwistedTree);
-                scene.add(newTwistedTree);
-            }
-           
-            
-        });*/
-        
         twistedTrees.load(scene);
-                
-
 
         //Twisted red-orange
         /*
@@ -160,23 +122,17 @@ function Autumn(yOffset) {
     this.remove = function(scene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
-        
-
-       leave1.remove(scene);
-       leave2.remove(scene);
-       twistedTrees.remove(scene);
-
-
-        //scene.remove(twistedTree);
-
+        leave1.remove(scene);
+        leave2.remove(scene);
+        twistedTrees.remove(scene);
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);
         scene.remove(twistedTree4);
-
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
         scene.remove(shadow);
         cloud.remove(scene);
+        grass.remove(scene);
         audio.stopTrack();
 
         console.log('removed autumn');
