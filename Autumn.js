@@ -7,7 +7,7 @@ function Autumn(yOffset) {
     var autumnGround;
     //var autumnGroundColor = "#6C6632";
     var autumnGroundColor = "#FDD25C";
-    //var twistedTrees = new TwistedTrees();
+    var twistedTrees = new TwistedTrees();
     var shadow = new Shadow();
     var leave1 = new Leave1();
     var leave2 = new Leave2();
@@ -167,7 +167,7 @@ function Autumn(yOffset) {
        twistedTrees.remove(scene);
 
 
-        scene.remove(twistedTree);
+        //scene.remove(twistedTree);
 
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);
