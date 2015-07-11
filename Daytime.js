@@ -5,7 +5,7 @@
 function Daytime(){
 
     var direction;
-    var sunHigh = 1800; //ändern
+    var sunHigh = 1800; //Ã¤ndern
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;

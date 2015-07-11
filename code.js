@@ -102,7 +102,7 @@ function init() {
              orbitControlsActive = false;
              console.log('remove orbitControl');
          }
-         camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
+         camera.lookAt(new THREE.Vector3(0,0,-1)); //Ã¤ndern!!!
          //camera.position.y = 50;
          cubemapControl = new CubemapControl(camera, render);
          console.log('cubemapControl');
