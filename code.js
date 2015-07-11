@@ -48,7 +48,12 @@ function init() {
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
-
+	//water
+	//water
+	var water = new Water();
+	var waterWater;
+	waterWater = water.doWater(water.doWaterGeometry());
+       scene.add(waterWater);
     //GUI
     var seasons = function() {
 
