@@ -55,8 +55,8 @@ function init() {
     seasonObject.load(scene);
 	
 	//river
-	//var river = new River();
-	//river.load(scene);
+	var river = new River();
+	river.load(scene);
 	
 
 	

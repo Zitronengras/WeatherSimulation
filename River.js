@@ -3,7 +3,7 @@ function River () {
     this.load = function(scene) {
     
             
-    // geometry
+// geometry
 var riverGeometry = new THREE.Geometry();
 riverGeometry.vertices.push( new THREE.Vector3(-250, 0, -150 ) );
 riverGeometry.vertices.push( new THREE.Vector3(-250, 0, -100 ) );
@@ -124,14 +124,19 @@ riverGeometry.vertices.push( new THREE.Vector3( 200, 0, 250 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 250, 0, 250 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 250, 0, 300 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 200, 0, 250 ) ); // close the loop 24
-     
-       
+ /*    
+riverGeometry.faces=faces;
+riverGeometry.vertices=vertices;
+        
+riverGeometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
+        
+ */  
 // material
-var material = new THREE.MeshPhongMaterial( { color: 0xffffff } );
+var material = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth:2 } );
 
 // line
 var line = new THREE.Line( riverGeometry, material );
-scene.add( line ); 
+scene.add( line ); */
         
   console.log('river loaded');
     }
