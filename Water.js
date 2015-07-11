@@ -38,11 +38,31 @@ function Water(yOffset) {
         water.receiveShadow = true;
         return water;
     };
+    var max = 20;
+    var min = 1;
     
     this.animateWater = function (sea){
+      var before=1;
         sea.geometry.vertices.forEach(function(vertex){
-       vertex.setZ += Math.random() * 3;
-            console.log(sea+'Water Animation');
+          
+            var diff = Math.random() * (1 -(- 1)) + (-1);
+            while(Math.abs(diff-before)>0.2){
+                diff = Math.random() * (1 -(- 1)) + (-1)}
+            before =diff;
+            if(vertex.z > max){
+            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)*(-1)));
+            } 
+            else if(vertex.z < min){
+            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)));
+            }
+            else{
+            vertex.add(new THREE.Vector3 (0,0, diff));
+            }
+           sea.geometry.verticesNeedUpdate = true;
+            
+            
+            
+            console.log(diff+'Water Animation');
     });
 }
 }

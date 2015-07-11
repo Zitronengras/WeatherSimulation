@@ -52,10 +52,8 @@ function init() {
 	
 	//water
 	var water = new Water(yOffset);
-	
 	sea = water.doWater(water.doWaterGeometry());
-       scene.add(sea);
-	   
+	  scene.add(sea); 
 	   
     //GUI
     var seasons = function() {
