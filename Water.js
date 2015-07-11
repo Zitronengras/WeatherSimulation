@@ -1,4 +1,4 @@
-function Water() {
+function Water(yOffset) {
 
     this.doWaterGeometry = function() {
         var waterGeometry = new THREE.PlaneGeometry(500, 400, 120, 100);
@@ -6,12 +6,12 @@ function Water() {
         for (var i = 0; i < waterGeometry.vertices.length; i++) {
             if(i > 13000 && i < 20900){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
-                waterGeometry.vertices[i].y += Math.random() * 2; //blue axis
+                waterGeometry.vertices[i].y += Math.random() * 4; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 3; //green axis: height 11
             }
             else if(i > 20900){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
-                waterGeometry.vertices[i].y += Math.random() * 6; //blue axis
+                waterGeometry.vertices[i].y += Math.random() * 8; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 4; //green axis: height 9
             }
             else{
@@ -45,10 +45,12 @@ function Water() {
         return waterGeometry;
     };
     this.doWater = function(waterGeometry) {
-        var waterMaterial = new THREE.MeshLambertMaterial({color: 0xFF0000, shading: THREE.FlatShading}); //color: 0x91D94A
+        var waterMaterial = new THREE.MeshLambertMaterial({color: 0x54BFC3, shading: THREE.FlatShading}); 
         var water = new THREE.Mesh(waterGeometry, waterMaterial);
         water.rotation.x = -0.5*Math.PI;
         water.position.z = -750;
+        water.position.y = yOffset;
+        
         water.receiveShadow = true;
         return water;
     };

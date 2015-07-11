@@ -50,7 +50,7 @@ function init() {
 
 	//water
 	//water
-	var water = new Water();
+	var water = new Water(yOffset);
 	var waterWater;
 	waterWater = water.doWater(water.doWaterGeometry());
        scene.add(waterWater);
