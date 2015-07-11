@@ -124,7 +124,10 @@ riverGeometry.vertices.push( new THREE.Vector3( 200, 0, 250 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 250, 0, 250 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 250, 0, 300 ) );
 riverGeometry.vertices.push( new THREE.Vector3( 200, 0, 250 ) ); // close the loop 24
- /*    
+
+        /*    
+        
+        
 riverGeometry.faces=faces;
 riverGeometry.vertices=vertices;
         
