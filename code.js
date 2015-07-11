@@ -7,6 +7,7 @@ var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
 var yOffset = -30;
+var sea;
 
 function init() {
 
@@ -48,12 +49,14 @@ function init() {
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
-	//water
+	
 	//water
 	var water = new Water(yOffset);
-	var waterWater;
-	waterWater = water.doWater(water.doWaterGeometry());
-       scene.add(waterWater);
+	
+	sea = water.doWater(water.doWaterGeometry());
+       scene.add(sea);
+	   
+	   
     //GUI
     var seasons = function() {
 
@@ -142,8 +145,11 @@ function init() {
 
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
+		water.animateWater(sea);
+		console.log(sea + 'sea init');
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
+			
         });
     };
     setInterval(render, 20);
