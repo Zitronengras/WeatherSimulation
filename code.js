@@ -54,8 +54,15 @@ function init() {
     seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
 	
-	var river = new River();
-	river.load(scene);
+	//river
+	//var river = new River();
+	//river.load(scene);
+	
+	//water
+	var water = new Water();
+	var waterWater;
+	waterWater = water.doWater(water.doWaterGeometry());
+       scene.add(waterWater);
 	
     //GUI
     var seasons = function() {
