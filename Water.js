@@ -1,6 +1,6 @@
 function Water(yOffset) {
     var water;
-    var waterGeometry = new THREE.PlaneGeometry(500, 500, 40, 80);
+    var waterGeometry = new THREE.PlaneGeometry(500, 150, 40, 80);
     this.doWaterGeometry = function() {
        
         for (var i = 0; i < waterGeometry.vertices.length; i++) {
@@ -32,7 +32,7 @@ function Water(yOffset) {
             {color: 0x6EFAFF, shading: THREE.FlatShading, transparent: true, opacity: 0.9}); 
         water = new THREE.Mesh(waterGeometry, waterMaterial);
         water.rotation.x = -0.5*Math.PI;
-        water.position.z = -850;
+        water.position.z = -650;
         water.position.y = -5+yOffset;
         
         water.receiveShadow = true;
@@ -60,9 +60,7 @@ function Water(yOffset) {
             }
            sea.geometry.verticesNeedUpdate = true;
             
-            
-            
-            console.log(diff+'Water Animation');
+        console.log(diff+'Water Animation');
     });
 }
 }
