@@ -20,7 +20,7 @@ function Summer(yOffset) {
     var summerSpotLight;
     var shadow = new Shadow();
     var audio = new Audio();
-    var audioURL = 'music/09 What You Wanted.mp3';
+    var audioURL = 'music/summer-Waves.mp3';
     var grass = new Grass();
 
     this.load = function(scene){

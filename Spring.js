@@ -11,7 +11,7 @@ function Spring(yOffset) {
     var skyboxImagePrefix = "images/spring/skybox-";
     var shadow = new Shadow();
     var audio = new Audio();
-    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
+    var audioURL = 'music/spring-birds.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
 
