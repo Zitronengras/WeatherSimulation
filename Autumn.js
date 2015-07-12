@@ -41,10 +41,7 @@ function Autumn(yOffset) {
         autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
         
-        //water
-	   var water = new Water(yOffset);
-	   sea = water.doWater(water.doWaterGeometry());
-        scene.add(sea); 
+       
 	   
 
         //grass

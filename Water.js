@@ -60,7 +60,9 @@ function Water(yOffset) {
             }
            sea.geometry.verticesNeedUpdate = true;
             
-        console.log(diff+'Water Animation');
+            
+            
+            console.log(diff+'Water Animation');
     });
 }
 }
