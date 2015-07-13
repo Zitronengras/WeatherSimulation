@@ -44,7 +44,7 @@ function Summer(yOffset) {
         scene.add(summerGround);
 
         //grass
-        grass.load(scene, 0x809B05);
+        grass.load(scene, 0x809B05, summerGround);
 
         //twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();

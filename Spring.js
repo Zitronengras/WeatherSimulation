@@ -36,7 +36,7 @@ function Spring(yOffset) {
         scene.add(springGround);
 
         //grass
-        grass.load(scene, 0x267302);
+        grass.load(scene, 0x267302, springGround);
 
         //clouds
         cloud.load(scene, 5);

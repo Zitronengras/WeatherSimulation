@@ -63,36 +63,39 @@ function doGroundGeometry(){
     return groundGeometry;
 };
 
-function setPosition(object, ground, array, xPos, yPos){
+function setPosition(object, ground, array, xPos, zPos){
 
-    object.position.x = 30;
-    object.position.z = 30;
+    if(xPos != null){
+        object.position.x = xPos;
+    }
+    if(zPos != null){
+        object.position.z = zPos;
+    }
 
-    var minX = xPos - 10;
-    var maxX = xPos + 10;
-    var minY = yPos - 10;
-    var maxY = yPos + 10;
+    var range = 4;
+    var minX = xPos - range;
+    var maxX = xPos + range;
+    var minZ = zPos - range;
+    var maxZ = zPos + range;
 
-    var xValue;
-    var yValue;
-    var zValue;
-
-    //array = getVerticesArray();
+    var xCo;
+    var yCo;
+    var zCo;
 
     for(var i=0; i < array.length; i++) {
         if(Math.round(array[i].x) > minX && Math.round(array[i].x) < maxX
-            && Math.round(array[i].y) > minY && Math.round(array[i].y) < maxY){
-            yValue = Math.round(array[i].y);
-            xValue = Math.round(array[i].x);
-            zValue = Math.round(array[i].z);
+            && Math.round(array[i].y) > minZ && Math.round(array[i].y) < maxZ){
+            yCo = Math.round(array[i].y);
+            xCo = Math.round(array[i].x);
+            zCo = Math.round(array[i].z);
         }
     }
 
     ground.updateMatrixWorld();
-    yValue = yValue/2;
-    var p = new THREE.Vector3(xValue, yValue, zValue);
+    yCo = yCo/2;
+    var p = new THREE.Vector3(xCo, yCo, zCo);
     ground.localToWorld(p);
-    console.log(p);
+    //console.log(p);
 
     //move height/2 on y axis
     var box = new THREE.Box3().setFromObject(object); //creates boundingbox
@@ -107,9 +110,8 @@ function setPosition(object, ground, array, xPos, yPos){
     //calculate height/2
     var offset = (boxMax - boxMin)/2;
     p.setY((p.y + offset));
-    //sphere.position.copy(p);
+    console.log(p);
 
-    //scene.add(sphere);
     return object.position.copy(p);
 }
 
