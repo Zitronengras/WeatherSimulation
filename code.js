@@ -8,6 +8,7 @@ var orbitControlsActive = false;
 var cubemapControl;
 var yOffset = -30;
 var sea;
+var waterAnimation = false;
 
 function init() {
 
@@ -64,7 +65,7 @@ function init() {
 // SCHNEE TEST
        /* var snow = new Snow();
        snow.load(scene);*/
-		var waterAnimation = false;
+		
         this.spring = function() {
             seasonObject.remove(scene);
             seasonObject = new Spring(yOffset);

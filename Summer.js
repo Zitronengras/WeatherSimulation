@@ -42,15 +42,9 @@ function Summer(yOffset) {
         //summerGround
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
-		
-		//Water
-		var water = new Water(yOffset);
-		sea = water.doWater(water.doWaterGeometry());
-		water.animateWater(sea);
-		scene.add(sea)
-		
-	  
-        //grass
+	
+			  
+      //grass
         grass.load(scene, 0x809B05);
 
         //twisted tree loader

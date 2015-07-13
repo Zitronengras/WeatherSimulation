@@ -50,7 +50,7 @@ function Water(yOffset) {
                 diff = Math.random() * (1 -(- 1)) + (-1)}
             before =diff;
             if(vertex.z > max){
-            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)*(-0.5)));
+            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)*(-1)));
             } 
             else if(vertex.z < min){
             vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)));
