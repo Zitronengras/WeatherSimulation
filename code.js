@@ -143,7 +143,7 @@ function init() {
 
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
-		water.animateWater(sea);
+		//water.animateWater(sea);
 		console.log(sea + 'sea init');
         requestAnimationFrame(function(){
             renderer.render(scene, camera);

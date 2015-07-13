@@ -19,7 +19,7 @@ function Mountain(yOffset) {
         mountainLoader.load('dae/mountain.dae', function(collada){
             mountain = collada.scene;
             console.log('mountain loaded');
-            mountain.position.set(-80, 40+yOffset, 470);
+            mountain.position.set(-80, 15+yOffset, 470);
             mountain.updateMatrix();
             scene.add(mountain);
         });

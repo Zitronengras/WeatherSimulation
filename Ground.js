@@ -25,21 +25,21 @@ function Ground(yOffset) {
                 groundGeometry.vertices[i].z += Math.random() * 6; //green axis: height
             }
             //height
-            if(i > 4500 && i <= 5500){
+            if(i > 5500 && i <= 6500){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
                 heightI += 0.01;
             }
-            else if(i > 5500 && i <= 6000){
+            else if(i > 6500 && i <= 7000){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.025;
+                heightI += 0.019;
             }
-            else if(i > 6000 && i <= 7500){
+            else if(i > 7000 && i <= 8500){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.015;
+                heightI += 0.02;
             }
-            else if(i > 7500){
+            else if(i > 8500){
                 groundGeometry.vertices[i].z += heightI; //green axis: height
-                heightI += 0.005;
+                heightI += 0.03;
             }
         }
         groundGeometry.dynamic = true;
