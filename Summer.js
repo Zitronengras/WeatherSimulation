@@ -43,6 +43,8 @@ function Summer(yOffset) {
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
+        ground.setPosition(summerGround,ground.doGroundGeometry(), scene);
+
         //grass
         grass.load(scene, 0x809B05);
 
@@ -86,7 +88,7 @@ function Summer(yOffset) {
         });
 
         //audio
-        audio.playTrack(audioURL, scene);
+        //audio.playTrack(audioURL, scene);
     };
 
     this.getSeasonSpotlight = function(){

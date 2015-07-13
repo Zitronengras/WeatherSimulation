@@ -16,7 +16,7 @@ function Autumn(yOffset) {
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
-    var setPosition();
+    //var setPosition();
     this.load = function(scene){
         console.log('Autumn');
         

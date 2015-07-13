@@ -1,4 +1,4 @@
-function setPosition(float xPos, float zPos){
+/*var setPosition = function(float xPos, float zPos){
         
     
     
@@ -18,6 +18,6 @@ function setPosition(float xPos, float zPos){
       });
     
 
-         }
+}*/
  
  

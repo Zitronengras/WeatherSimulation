@@ -45,7 +45,7 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Autumn(yOffset);
+    seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 

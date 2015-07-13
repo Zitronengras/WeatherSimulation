@@ -57,4 +57,29 @@ function Ground(yOffset) {
         ground.receiveShadow = true;
         return ground;
     };
+    this.setPosition = function(geometry, scene){
+        var sphereGeometry = new THREE.SphereGeometry(10, 50, 50);
+        var sphereMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere.position.x = 20;
+        sphere.position.z = 30;
+
+        var yValue;
+
+        for(var i=0 ; i < geometry.vertices.length; i++) {
+                /*console.log(' x ' + Math.round(geometry.vertices[i].x)// vertices coordinates do not update to new position
+                   + ' y ' + Math.round(geometry.vertices[i].y)
+                   + ' z ' + Math.round(geometry.vertices[i].z));*/
+            if( Math.round(geometry.vertices[i].x) == 0 && Math.round(geometry.vertices[i].y) == 0){
+                console.log('yValue' + Math.round(geometry.vertices[i].z));
+                yValue = Math.round(geometry.vertices[i].z);
+            }
+
+        }
+        console.log('yValue' + yValue);
+        sphere.position.y = yValue;
+
+        scene.add(sphere);
+    }
+
 }
