@@ -60,7 +60,7 @@ function Ground(yOffset) {
         return ground;
     };
     this.setPosition = function(ground, geometry, scene, xPos, yPos){
-        var sphereGeometry = new THREE.BoxGeometry(10, 10, 10);
+        var sphereGeometry = new THREE.BoxGeometry(10, 100, 10); //width, height, depth
         var sphereMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
         var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
@@ -97,12 +97,54 @@ function Ground(yOffset) {
          }
          }*/
 
+
+
+
+
         ground.updateMatrixWorld();
+        yValue = yValue/2;
         var p = new THREE.Vector3(xValue, yValue, zValue);
         ground.localToWorld(p);
         console.log(p);
 
-        scene.position.copy(p);
+        sphere.position.copy(p);
+
+        //move height/2 on y axis
+        var box = new THREE.Box3().setFromObject(sphere); //creates boundingbox
+        var boxMin = box.min.y;
+        var boxMax = box.max.y;
+        console.log(box.min, box.max, box.size() );
+        console.log('box.min' + box.min.y);
+        console.log('box.max' + box.max.y);
+        /*//calculate amount
+        if(boxMin < 0){
+            boxMin = boxMin * (-1);
+        }
+        if(boxMax < 0){
+            boxMax = boxMax * (-1);
+        }*/
+        console.log(' min ' + boxMin + ' max ' + boxMax);
+
+        //calculate min of numbers
+        /*if(boxMin > boxMax){
+            var something = boxMin;
+            boxMin = boxMax;
+            boxMax = something;
+        }*/
+
+        //calculate heigt/2
+        var offset = (boxMax - boxMin)/2;
+        console.log('offset' + offset);
+        //sphere.position.y = yValue; //+offset;
+        p.setY((p.y + offset));
+        console.log(p);
+        sphere.position.copy(p);
+
+
+
+
+
+
 
         scene.add(sphere);
         return sphere;
