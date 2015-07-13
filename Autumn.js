@@ -23,6 +23,10 @@ function Autumn(yOffset) {
         //skybox
         autumnSkybox.load(scene, skyboxImagePrefix);
         
+        
+        
+        
+        
          //autumnLight
         autumnSpotLight = new THREE.SpotLight(0xe3c8aa);
         shadow.addShadow(autumnSpotLight);
@@ -36,6 +40,9 @@ function Autumn(yOffset) {
         //autumnGround
         autumnGround = ground.doGround(doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
+        
+       
+	   
 
         //grass
         grass.load(scene, 0xF76428, autumnGround);

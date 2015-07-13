@@ -8,6 +8,7 @@ var orbitControlsActive = false;
 var cubemapControl;
 var yOffset = -30;
 var sea;
+var waterAnimation = false;
 
 function init() {
 
@@ -53,7 +54,7 @@ function init() {
 	//water
 	var water = new Water(yOffset);
 	sea = water.doWater(water.doWaterGeometry());
-	  scene.add(sea); 
+	  scene.add(sea);
 	   
     //GUI
     var seasons = function() {
@@ -64,29 +65,33 @@ function init() {
 // SCHNEE TEST
        /* var snow = new Snow();
        snow.load(scene);*/
-
+		
         this.spring = function() {
             seasonObject.remove(scene);
             seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
+			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
             seasonObject.remove(scene);
             seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
+			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
             seasonObject = new Autumn(yOffset);
             seasonObject.load(scene);
+			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
             seasonObject.remove(scene);
             seasonObject = new Winter(yOffset);
             seasonObject.load(scene);
+			waterAnimation = false;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.orbitControlGUI = function(){
@@ -143,9 +148,16 @@ function init() {
 
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
+<<<<<<< HEAD
 		water.animateWater(sea);
 		//console.log(sea + 'sea init');
         
+=======
+		if (waterAnimation == true){
+			water.animateWater(sea);
+		}
+		//console.log(sea + 'sea init');
+>>>>>>> feature/seaAnimation
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
 			

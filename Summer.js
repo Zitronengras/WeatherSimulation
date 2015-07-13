@@ -42,9 +42,16 @@ function Summer(yOffset) {
         //summerGround
         summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
+<<<<<<< HEAD
 
         //grass
         grass.load(scene, 0x809B05, summerGround);
+=======
+	
+			  
+      //grass
+        grass.load(scene, 0x809B05);
+>>>>>>> feature/seaAnimation
 
         //twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
