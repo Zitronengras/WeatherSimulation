@@ -34,7 +34,7 @@ function Autumn(yOffset) {
         scene.add(autumnSpotLight);
         
         //autumnGround
-        autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
+        autumnGround = ground.doGround(doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
 
         //grass

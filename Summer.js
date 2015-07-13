@@ -94,7 +94,7 @@ function Summer(yOffset) {
         });
 
         //audio
-        //audio.playTrack(audioURL, scene);
+        audio.playTrack(audioURL, scene);
     };
 
     this.getSeasonSpotlight = function(){
