@@ -67,7 +67,7 @@ function Summer(yOffset) {
             console.log('twistedTree 2 loaded');
             shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
-            setPosition(twistedTree, summerGround, getVerticesArray(), 20, 120);
+            setPosition(twistedTree2, summerGround, getVerticesArray(), 20, 120);
             twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
@@ -81,7 +81,7 @@ function Summer(yOffset) {
             console.log('longtree loaded');
             shadow.addShadow(longTree);
             longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
-            setPosition(twistedTree, summerGround, getVerticesArray(), 10, -100);
+            setPosition(longTree, summerGround, getVerticesArray(), 10, -100);
             longTree.updateMatrix();
             scene.add(longTree);
         });
