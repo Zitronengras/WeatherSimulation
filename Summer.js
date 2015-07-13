@@ -43,7 +43,7 @@ function Summer(yOffset) {
         summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
-        ground.setPosition(summerGround,ground.doGroundGeometry(), scene);
+        ground.setPosition(summerGround, ground.doGroundGeometry(), scene, 30, 30);
 
         //grass
         grass.load(scene, 0x809B05);

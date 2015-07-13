@@ -57,27 +57,62 @@ function Ground(yOffset) {
         ground.receiveShadow = true;
         return ground;
     };
-    this.setPosition = function(geometry, scene){
+    this.setPosition = function(ground, geometry, scene, xPos, yPos){
         var sphereGeometry = new THREE.SphereGeometry(10, 50, 50);
         var sphereMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
         var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        sphere.position.x = 20;
-        sphere.position.z = 30;
 
+        scene.updateMatrixWorld();
+
+        sphere.position.x = xPos;
+        sphere.position.z = yPos;
+
+        var minX = xPos - 10;
+        var maxX = xPos + 10;
+        var minY = yPos - 10;
+        var maxY = yPos + 10;
+
+
+        var vector = new THREE.Vector3();
+        vector.setFromMatrixPosition(ground.matrixWorld);
+
+        var xValue;
         var yValue;
+        var zValue;
 
-        for(var i=0 ; i < geometry.vertices.length; i++) {
+        for(var i=0; i < geometry.vertices.length; i++) {
                 /*console.log(' x ' + Math.round(geometry.vertices[i].x)// vertices coordinates do not update to new position
                    + ' y ' + Math.round(geometry.vertices[i].y)
                    + ' z ' + Math.round(geometry.vertices[i].z));*/
-            if( Math.round(geometry.vertices[i].x) == 0 && Math.round(geometry.vertices[i].y) == 0){
-                console.log('yValue' + Math.round(geometry.vertices[i].z));
-                yValue = Math.round(geometry.vertices[i].z);
+            if(Math.round(geometry.vertices[i].x) > minX && Math.round(geometry.vertices[i].x) < maxX
+                && Math.round(geometry.vertices[i].y) > minY && Math.round(geometry.vertices[i].y) < maxY){
+                    /*console.log('zValue(height)' + Math.round(geometry.vertices[i].z)
+                    + ' x ' + Math.round(geometry.vertices[i].x)
+                    + ' y ' + Math.round(geometry.vertices[i].y));*/
+                    //Math.round(geometry.vertices[i].x), Math.round(geometry.vertices[i].y), Math.round(geometry.vertices[i].z));
+                    yValue = Math.round(geometry.vertices[i].y);
+                    xValue = Math.round(geometry.vertices[i].x);
+                    zValue = Math.round(geometry.vertices[i].z);
+                console.log('zWert' + zValue);
+                vector.setFromMatrixPosition(ground.matrixWorld);
+
+                vector.set(xValue, yValue, zValue);
+                vector.setFromMatrixPosition(ground.matrixWorld);
+
             }
 
         }
-        console.log('yValue' + yValue);
-        sphere.position.y = yValue;
+        //ground.localToWorld(vector);
+        vector.setFromMatrixPosition(ground.matrixWorld);
+
+        vector = ground.localToWorld(sphere.position.clone());
+        //yValue = 2; //vector.z;
+        console.log('vector' + vector);
+
+
+
+        /*console.log('yValue for sphere' + yValue);
+        sphere.position.y = yValue;*/
 
         scene.add(sphere);
     }
