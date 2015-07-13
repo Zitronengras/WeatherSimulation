@@ -8,7 +8,7 @@ var orbitControlsActive = false;
 var cubemapControl;
 var yOffset = -30;
 var sea;
-var waterAnimation = false;
+var waterAnimation = true;
 
 function init() {
 
@@ -148,16 +148,12 @@ function init() {
 
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
-<<<<<<< HEAD
 		water.animateWater(sea);
 		//console.log(sea + 'sea init');
-        
-=======
-		if (waterAnimation == true){
+        if (waterAnimation == true){
 			water.animateWater(sea);
 		}
 		//console.log(sea + 'sea init');
->>>>>>> feature/seaAnimation
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
 			

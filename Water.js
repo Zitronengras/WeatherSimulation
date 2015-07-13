@@ -60,15 +60,12 @@ function Water(yOffset) {
             }
            sea.geometry.verticesNeedUpdate = true;
             
-<<<<<<< HEAD
+
             
             
             //console.log(diff+'Water Animation');
     });
 }
-=======
+
           //  console.log(diff+'Water Animation');
-    	});
-	}
->>>>>>> feature/seaAnimation
-}
+    	}
