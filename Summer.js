@@ -43,7 +43,13 @@ function Summer(yOffset) {
         summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
-        ground.setPosition(summerGround, getVerticesArray(), scene, 30, 30);
+        var sphereGeometry = new THREE.BoxGeometry(10, 100, 10); //width, height, depth
+        var sphereMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+
+        setPosition(sphere, summerGround, getVerticesArray(), 30, 30);
+        scene.add(sphere);
+
 
         //grass
         grass.load(scene, 0x809B05);
