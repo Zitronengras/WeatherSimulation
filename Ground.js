@@ -12,17 +12,17 @@ function Ground(yOffset) {
             if(i > 3500){
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 11; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
             }
             else if(i > 2000){
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 6; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 9; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 7; //green axis: height
             }
             else{
                 groundGeometry.vertices[i].x += Math.random() * 3; //red axis
                 groundGeometry.vertices[i].y += Math.random() * 2; //blue axis
-                groundGeometry.vertices[i].z += Math.random() * 8; //green axis: height
+                groundGeometry.vertices[i].z += Math.random() * 6; //green axis: height
             }
             //height
             if(i > 4500 && i <= 5500){
