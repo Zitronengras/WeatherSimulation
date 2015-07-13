@@ -28,10 +28,10 @@ function Mountain(yOffset) {
         var seaCoast;
         var seaCoastLoader = new THREE.ColladaLoader();
         seaCoastLoader.options.convertUpAxis = true;
-        seaCoastLoader.load('dae/coast/SeaCoast_V3.dae', function(collada){
+        seaCoastLoader.load('dae/SeaCoast_V3.dae', function(collada){
             seaCoast = collada.scene;
             console.log('seaCoast loaded');
-            seaCoast.position.set(50, 8+yOffset, -660);
+            seaCoast.position.set(50, 10+yOffset, -660);
             shadow.addShadow(seaCoast);
             seaCoast.updateMatrix();
             scene.add(seaCoast);
