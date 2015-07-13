@@ -1,15 +1,15 @@
 function Water(yOffset) {
     var water;
-    var waterGeometry = new THREE.PlaneGeometry(500, 180, 40, 80);
+    var waterGeometry = new THREE.PlaneGeometry(500, 180, 40, 50);
     this.doWaterGeometry = function() {
        
         for (var i = 0; i < waterGeometry.vertices.length; i++) {
-            if(i > 13000 && i < 20900){
+            if(i > 1000 && i < 100){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
                 waterGeometry.vertices[i].y += Math.random() * 2; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 20; //green axis
             }
-            else if(i > 20900){
+            else if(i > 2000){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
                 waterGeometry.vertices[i].y += Math.random() * 6; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 28; //green axis
@@ -50,7 +50,7 @@ function Water(yOffset) {
                 diff = Math.random() * (1 -(- 1)) + (-1)}
             before =diff;
             if(vertex.z > max){
-            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)*(-1)));
+            vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)*(-0.5)));
             } 
             else if(vertex.z < min){
             vertex.add(new THREE.Vector3 (0,0, Math.abs(diff)));
@@ -61,6 +61,6 @@ function Water(yOffset) {
            sea.geometry.verticesNeedUpdate = true;
             
           //  console.log(diff+'Water Animation');
-    });
-}
+    	});
+	}
 }
