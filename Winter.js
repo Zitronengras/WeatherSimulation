@@ -35,7 +35,7 @@ function Winter(yOffset) {
         scene.fog = new THREE.FogExp2( 0xffffff, 0.0029 );
 
         //winterGround
-        winterGround = ground.doGround(ground.doGroundGeometry(), winterGroundColor);
+        winterGround = ground.doGround(doGroundGeometry(), winterGroundColor);
         scene.add(winterGround);
 
         console.log('winter');
@@ -69,8 +69,7 @@ function Winter(yOffset) {
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree1);
             twistedTree1.scale.x = twistedTree1.scale.y = twistedTree1.scale.z = 1;
-			
-			twistedTree1.position.set(10, 100+yOffset, 80);
+            setPosition(twistedTree1, winterGround, getVerticesArray(), 10, 80);
             twistedTree1.updateMatrix();
             scene.add(twistedTree1);
           	shadow.addShadow(twistedTree1);
@@ -84,8 +83,7 @@ function Winter(yOffset) {
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 1;
-
-			twistedTree2.position.set(20, 100+yOffset, 70);
+            setPosition(twistedTree2, winterGround, getVerticesArray(), 20, 70);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
           	shadow.addShadow(twistedTree2);
@@ -99,8 +97,7 @@ function Winter(yOffset) {
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree3);
             twistedTree3.scale.x = twistedTree3.scale.y = twistedTree3.scale.z = 1;
-
-			twistedTree3.position.set(30, 100+yOffset, 70);
+            setPosition(twistedTree3, winterGround, getVerticesArray(), 30, 70);
             twistedTree3.updateMatrix();
             scene.add(twistedTree3);
           	shadow.addShadow(twistedTree3);

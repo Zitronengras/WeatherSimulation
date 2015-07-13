@@ -40,11 +40,11 @@ function Summer(yOffset) {
         scene.add(summerSpotLight);
 
         //summerGround
-        summerGround = ground.doGround(ground.doGroundGeometry(), summerGroundColor);
+        summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
         //grass
-        grass.load(scene, 0x809B05);
+        grass.load(scene, 0x809B05, summerGround);
 
         //twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
@@ -54,7 +54,7 @@ function Summer(yOffset) {
             console.log('twistedTree loaded');
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
             shadow.addShadow(twistedTree);
-            twistedTree.position.set(10, 20 + yOffset, 80);
+            setPosition(twistedTree, summerGround, getVerticesArray(), 10, 80);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
@@ -67,6 +67,7 @@ function Summer(yOffset) {
             console.log('twistedTree 2 loaded');
             shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
+            setPosition(twistedTree2, summerGround, getVerticesArray(), 20, 120);
             twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
@@ -80,7 +81,7 @@ function Summer(yOffset) {
             console.log('longtree loaded');
             shadow.addShadow(longTree);
             longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
-            longTree.position.set(10, 20+yOffset, -100);
+            setPosition(longTree, summerGround, getVerticesArray(), 10, -100);
             longTree.updateMatrix();
             scene.add(longTree);
         });
@@ -110,8 +111,4 @@ function Summer(yOffset) {
 
         console.log('removed summer');
     };
-
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
 }

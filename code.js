@@ -45,7 +45,7 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Autumn(yOffset);
+    seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
@@ -143,8 +143,9 @@ function init() {
 
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
-		//water.animateWater(sea);
-		console.log(sea + 'sea init');
+		water.animateWater(sea);
+		//console.log(sea + 'sea init');
+        
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
 			

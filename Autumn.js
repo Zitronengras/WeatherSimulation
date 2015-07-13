@@ -16,7 +16,7 @@ function Autumn(yOffset) {
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
-
+    //var setPosition();
     this.load = function(scene){
         console.log('Autumn');
         
@@ -34,11 +34,11 @@ function Autumn(yOffset) {
         scene.add(autumnSpotLight);
         
         //autumnGround
-        autumnGround = ground.doGround(ground.doGroundGeometry(), autumnGroundColor);
+        autumnGround = ground.doGround(doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
 
         //grass
-        grass.load(scene, 0xF76428);
+        grass.load(scene, 0xF76428, autumnGround);
 
         //clouds
         cloud.load(scene, 5);
@@ -70,9 +70,9 @@ function Autumn(yOffset) {
             twistedTree2.castShadow = true;
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 1;
             shadow.addShadow(twistedTree2);
-            twistedTree2.position.set(30, 100+yOffset, 80);
+            setPosition(twistedTree2, autumnGround, getVerticesArray(), 30, 80);
             twistedTree2.updateMatrix();
-            scene.add(twistedTree2);
+        //    scene.add(twistedTree2);
         });
 
  	//Twisted Orange
@@ -83,10 +83,9 @@ function Autumn(yOffset) {
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree3);
             twistedTree3.scale.x = twistedTree3.scale.y = twistedTree3.scale.z = 1;
-
-			twistedTree3.position.set(40, 100+yOffset, 70);
+            setPosition(twistedTree3, autumnGround, getVerticesArray(), 40, 70);
             twistedTree3.updateMatrix();
-            scene.add(twistedTree3);
+            //scene.add(twistedTree3);
           	shadow.addShadow(twistedTree3);
         });
         
@@ -98,17 +97,17 @@ function Autumn(yOffset) {
             console.log('twistedTree loaded');
             shadow.addShadow(twistedTree4);
             twistedTree4.scale.x = twistedTree4.scale.y = twistedTree4.scale.z = 1;
+            setPosition(twistedTree4, autumnGround, getVerticesArray(), 0, 00);
 
-			twistedTree4.position.set(50, 100+yOffset, 70);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
           	shadow.addShadow(twistedTree4);
+            console.log('setPosition');
         });
         
         // load leaves particle systems
-        
-           leave1.load(scene);
-			leave2.load(scene);
+        leave1.load(scene);
+		leave2.load(scene);
 			
         //audio
         audio.playTrack(audioURL, scene);

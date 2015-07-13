@@ -32,11 +32,11 @@ function Spring(yOffset) {
         scene.add(springSpotLight);
         
         //springGround
-        springGround = ground.doGround(ground.doGroundGeometry(), springGroundColor);
+        springGround = ground.doGround(doGroundGeometry(), springGroundColor);
         scene.add(springGround);
 
         //grass
-        grass.load(scene, 0x267302);
+        grass.load(scene, 0x267302, springGround);
 
         //clouds
         cloud.load(scene, 5);
