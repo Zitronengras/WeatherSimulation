@@ -16,7 +16,7 @@ function Autumn(yOffset) {
     var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
-
+    var setPosition();
     this.load = function(scene){
         console.log('Autumn');
         
@@ -72,7 +72,7 @@ function Autumn(yOffset) {
             shadow.addShadow(twistedTree2);
             twistedTree2.position.set(30, 100+yOffset, 80);
             twistedTree2.updateMatrix();
-            scene.add(twistedTree2);
+        //    scene.add(twistedTree2);
         });
 
  	//Twisted Orange
@@ -86,7 +86,7 @@ function Autumn(yOffset) {
 
 			twistedTree3.position.set(40, 100+yOffset, 70);
             twistedTree3.updateMatrix();
-            scene.add(twistedTree3);
+            //scene.add(twistedTree3);
           	shadow.addShadow(twistedTree3);
         });
         
@@ -99,10 +99,11 @@ function Autumn(yOffset) {
             shadow.addShadow(twistedTree4);
             twistedTree4.scale.x = twistedTree4.scale.y = twistedTree4.scale.z = 1;
 
-			twistedTree4.position.set(50, 100+yOffset, 70);
+			twistedTree4.setPosition(0, 0);//position.set(50, 100+yOffset, 70);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
           	shadow.addShadow(twistedTree4);
+            console.log('setPosition');
         });
         
         // load leaves particle systems
