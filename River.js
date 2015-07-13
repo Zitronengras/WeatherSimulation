@@ -4,7 +4,7 @@ function River () {
     
             
 // geometry
-var riverGeometry = new THREE.Geometry();
+var riverShapes = new THREE.Shape();
 riverGeometry.vertices.push( new THREE.Vector3(-250, 0, -150 ) );
 riverGeometry.vertices.push( new THREE.Vector3(-250, 0, -100 ) );
 riverGeometry.vertices.push( new THREE.Vector3(-200, 0, -100 ) );
@@ -134,13 +134,30 @@ riverGeometry.vertices=vertices;
 riverGeometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
         
  */  
-// material
-var material = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth:2 } );
+        
+        
+        var riverMaterial = new THREE.MeshLambertMaterial({color: 0xFF0000, shading: THREE.FlatShading}); 
+        var ground = new THREE.Mesh(groundGeometry, groundMaterial);
+
+        
+    /*    // material
+var material = new THREE.MeshPhongMaterial( { color: 0xff0000, linewidth:2 } );
 
 // line
 var line = new THREE.Line( riverGeometry, material );
-scene.add( line ); */
+scene.add( line ); 
         
   console.log('river loaded');
+        
+        var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+
+					var mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial( { color: color } ) );
+					mesh.position.set( x, y, z - 75 );
+					mesh.rotation.set( rx, ry, rz );
+					mesh.scale.set( s, s, s );
+					group.add( mesh );
+        */
+        
+        
     }
 }
