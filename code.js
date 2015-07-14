@@ -151,15 +151,12 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
-<<<<<<< HEAD
         daytime.moveSun(spotLight, optSpotlight);
         if (waterAnimation == true){
-			water.animateWater(sea);}
+			water.animateWater(sea);
+        }
 		//console.log(sea + 'sea init');
-=======
-		 
 		river.animateRiver(riv);
->>>>>>> feature/river
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
 			
