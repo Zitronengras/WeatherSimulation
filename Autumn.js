@@ -20,10 +20,10 @@ function Autumn(yOffset) {
     this.load = function(scene, pointCloudScene){
         console.log('Autumn');
         
-        //skybox
+        //skybox for autumn
         autumnSkybox.load(scene, skyboxImagePrefix);
         
-         //autumnLight
+        //autumnLight
         autumnSpotLight = new THREE.SpotLight(0xe3c8aa);
         shadow.addShadow(autumnSpotLight);
         autumnSpotLight.position.x = 0; //red axis
@@ -106,9 +106,8 @@ function Autumn(yOffset) {
         });
         
         // load leaves particle systems
-        
-           leave1.load(pointCloudScene);
-			leave2.load(pointCloudScene);
+        leave1.load(pointCloudScene);
+		leave2.load(pointCloudScene);
 			
         //audio
         audio.playTrack(audioURL, scene);
