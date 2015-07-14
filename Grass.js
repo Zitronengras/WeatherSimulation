@@ -63,7 +63,7 @@ function Grass(){
             shadow.addShadow(grassStalk);
             setGrassPosition(grassStalk, ground, getVerticesArray(), 0, -100);
             grassStalk.updateMatrix();
-            console.log('grassStalk loaded');
+            //console.log('grassStalk loaded');
 
 
             scene.add(grassStalk);
@@ -87,22 +87,22 @@ function Grass(){
 
 
 function setGrassPosition(object, ground, array, xPos, zPos){
-    console.log('vor zurodung position');
-    console.log(object.position);
+    //console.log('vor zurodung position');
+    //console.log(object.position);
 
     if(xPos != null){
         object.position.x = xPos;
-        console.log('zuordnung position x');
-        console.log(object.x);
+        //console.log('zuordnung position x');
+        //console.log(object.x);
     }
     if(zPos != null){
         object.position.z = zPos;
 
-        console.log('zuordnung position z');
-        console.log(object.z);
+        //console.log('zuordnung position z');
+        //console.log(object.z);
     }
-    console.log('nach zurodung position');
-    console.log(object.position);
+    //console.log('nach zurodung position');
+    //console.log(object.position);
 
     var range = 4;
     var minX = xPos - range;
@@ -124,11 +124,10 @@ function setGrassPosition(object, ground, array, xPos, zPos){
     }
 
     ground.updateMatrixWorld();
-    //yGround = yGround/2;
     var worldCo = new THREE.Vector3(xGround, yGround, zGround);
     ground.localToWorld(worldCo);
-    console.log('worldCo');
-    console.log(worldCo);
+    //console.log('worldCo');
+    //console.log(worldCo);
 
     //move height/2 on y axis
     var box = new THREE.Box3().setFromObject(object); //creates boundingbox
@@ -136,39 +135,39 @@ function setGrassPosition(object, ground, array, xPos, zPos){
     var boxMax = box.max.y;
 
     //console.log(box.min, box.max, box.size() );
-    console.log('box size');
+    /*console.log('box size');
     console.log(box.size());
     console.log('box.min' + box.min.y);
     console.log('box.min');
     console.log(box.min.y);
     console.log('box.max' + box.max.y);
     console.log('worldCo.y');
-    console.log(worldCo.y);
+    console.log(worldCo.y);*/
 
 
     //console.log(' min ' + boxMin + ' max ' + boxMax);*/
 
     //calculate height/2
     var offset = boxMax - boxMin;
-    console.log('max - min' + offset);
+    //console.log('max - min' + offset);
     if(offset < 0){
         offset = offset * (-1);
-        console.log('mal - 1' + offset);
+        //console.log('mal - 1' + offset);
     }
     offset = offset/2;
-    console.log('offset / 2', offset);
+    //console.log('offset / 2', offset);
 
     offset = worldCo.y + offset;
-    console.log('wolrd.y + offset');
-    console.log(offset);
+    //console.log('wolrd.y + offset');
+    //console.log(offset);
 
     offset -= 10;
 
 
     worldCo.setY(offset);
 
-    console.log('worldCo.SetY');
-    console.log(worldCo.y);
+    //console.log('worldCo.SetY');
+    //console.log(worldCo.y);
     /*
      console.log('worldCo.y');
      console.log(worldCo.y);
@@ -188,11 +187,7 @@ function setGrassPosition(object, ground, array, xPos, zPos){
 
     object.position.copy(worldCo);
 
-    object.updateMatrix();
+    //console.log('object position');
+    //console.log(object.position);
 
-    console.log('object position');
-    console.log(object.position);
-
-
-    //return object.position.copy(worldCo);
 }

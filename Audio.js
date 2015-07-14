@@ -19,11 +19,11 @@ function Audio(){
         //scene.add(audio);
         track.play();
 
-        console.log('add audio');
+        //console.log('add audio');
     };
 
     this.stopTrack = function(){
         track.stop();
-        console.log('stop audio');
+        //console.log('stop audio');
     };
 }

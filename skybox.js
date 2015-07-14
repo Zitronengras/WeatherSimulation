@@ -40,7 +40,7 @@ function Skybox(){
 
     this.removeNight = function(scene){
         scene.remove(nightSkybox);
-        console.log('remove night');
+        //console.log('remove night');
     };
 
     this.makeNight = function(scene){

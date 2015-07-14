@@ -39,7 +39,7 @@ function Cloud(){
                 cloudArray.push(newCloud);
                 scene.add(newCloud);
             }
-            console.log('cloud loaded');
+            //console.log('cloud loaded');
         });
     };
 

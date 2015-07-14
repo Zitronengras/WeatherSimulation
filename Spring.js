@@ -17,7 +17,7 @@ function Spring(yOffset) {
     var grass = new Grass();
 
     this.load = function(scene, pointCloudScene){
-        console.log('spring');
+        //console.log('spring');
 
         //skybox
         springSkybox.load(scene, skyboxImagePrefix);
@@ -43,7 +43,7 @@ function Spring(yOffset) {
             setTreePosition(bFlower, springGround, getVerticesArray(), 0, 0);
             bFlower.updateMatrix();
             scene.add(bFlower);
-            console.log('bFlower loaded');
+            //console.log('bFlower loaded');
         });
         
         // first twisted tree loader
@@ -57,7 +57,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree, springGround, getVerticesArray(), 170, -240);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
-            console.log('twistedTree loaded');
+            //console.log('twistedTree loaded');
         });
 
         //second twisted tree loader
@@ -72,7 +72,7 @@ function Spring(yOffset) {
             //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
-            console.log('twistedTree 2 loaded');
+            //console.log('twistedTree 2 loaded');
         });
         
        ///third twisted tree loader
@@ -86,7 +86,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree3, springGround, getVerticesArray(), 150, -200);
             twistedTree3.updateMatrix();
             scene.add(twistedTree3);
-            console.log('twistedTree 3 loaded');
+            //console.log('twistedTree 3 loaded');
         });
         
           ///fourth twisted tree loader
@@ -114,7 +114,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree5, springGround, getVerticesArray(), 180, -200);
             twistedTree5.updateMatrix();
             scene.add(twistedTree5);
-            console.log('twistedTree 5 loaded');
+            //console.log('twistedTree 5 loaded');
         });
         ///sixth twisted tree loader
         twistedTree6Loader = new THREE.ColladaLoader();
@@ -126,7 +126,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree6, springGround, getVerticesArray(), 80, -240);
             twistedTree6.updateMatrix();
             scene.add(twistedTree6);
-            console.log('twistedTree 6 loaded');
+            //console.log('twistedTree 6 loaded');
         });
         ///sixth twisted tree loader
         twistedTree7Loader = new THREE.ColladaLoader();
@@ -138,7 +138,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree7, springGround, getVerticesArray(), 50, -200);
             twistedTree7.updateMatrix();
             scene.add(twistedTree7);
-            console.log('twistedTree 7 loaded');
+            //console.log('twistedTree 7 loaded');
         });
         ///eigth twisted tree loader
         twistedTree8Loader = new THREE.ColladaLoader();
@@ -150,7 +150,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree8, springGround, getVerticesArray(), 20, -200);
             twistedTree8.updateMatrix();
             scene.add(twistedTree8);
-            console.log('twistedTree 8 loaded');
+            //console.log('twistedTree 8 loaded');
         });
         ///sixth twisted tree loader
         twistedTree9Loader = new THREE.ColladaLoader();
@@ -162,7 +162,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree9, springGround, getVerticesArray(), 80, -150);
             twistedTree9.updateMatrix();
             scene.add(twistedTree9);
-            console.log('twistedTree 7 loaded');
+            //console.log('twistedTree 7 loaded');
         });
         ///eigth twisted tree loader
         twistedTree10Loader = new THREE.ColladaLoader();
@@ -174,7 +174,7 @@ function Spring(yOffset) {
             setTreePosition(twistedTree10, springGround, getVerticesArray(), 120, -300);
             twistedTree10.updateMatrix();
             scene.add(twistedTree10);
-            console.log('twistedTree 8 loaded');
+            //console.log('twistedTree 8 loaded');
         });
 
         //springGround
@@ -219,10 +219,8 @@ function Spring(yOffset) {
         scene.remove(twistedTree8);
         scene.remove(twistedTree9);
         scene.remove(twistedTree10);
-
         audio.stopTrack();
 
-
-        console.log('removed spring');
+        //console.log('removed spring');
     };
 }

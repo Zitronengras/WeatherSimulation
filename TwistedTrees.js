@@ -18,35 +18,35 @@ function TwistedTrees(){
 
     this.load = function(scene, amount) {
 
-        twistedTreeLoader = new THREE.ColladaLoader();
-           twistedTreeLoader.options.convertUpAxis = true;
-        twistedTreeArray = [];
-       twistedTreeLoader.load('dae/new_trees/testbaum.dae', function (collada) {
-            twistedTree = collada.scene;
+    twistedTreeLoader = new THREE.ColladaLoader();
+    twistedTreeLoader.options.convertUpAxis = true;
+    twistedTreeArray = [];
+    twistedTreeLoader.load('dae/new_trees/testbaum.dae', function (collada) {
+        twistedTree = collada.scene;
 
-            var colladaObj = collada.scene.children[0];
-            for (i = 0; i < amount; i++) {
-                var newTwistedTree = new THREE.Object3D();
+        var colladaObj = collada.scene.children[0];
+        for (i = 0; i < amount; i++) {
+            var newTwistedTree = new THREE.Object3D();
 
-                for (var j = 0; j < colladaObj.children.length; j++) {
-                    newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
-                }
-                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 1;
-                newTwistedTree.position.set(0, 10, 0);
+            for (var j = 0; j < colladaObj.children.length; j++) {
+                newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
+            }
+            newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 1;
+            newTwistedTree.position.set(0, 10, 0);
 
-                //newTwistedTree.rotation.z = -110 * Math.PI / 180;
+            //newTwistedTree.rotation.z = -110 * Math.PI / 180;
 
-                /*newTwistedTree.position.y += getRandomArbitrary(0, 70);
-                newTwistedTree.position.x += getRandomArbitrary(-120, 120);
-                newTwistedTree.position.z += getRandomArbitrary(300, 400);
+            /*newTwistedTree.position.y += getRandomArbitrary(0, 70);
+            newTwistedTree.position.x += getRandomArbitrary(-120, 120);
+            newTwistedTree.position.z += getRandomArbitrary(300, 400);
 */
 
-                shadow.addShadow(newTwistedTree);
-                newTwistedTree.updateMatrix();
-                twistedTreeArray.push(newTwistedTree);
-                scene.add(newTwistedTree);
+            shadow.addShadow(newTwistedTree);
+            newTwistedTree.updateMatrix();
+            twistedTreeArray.push(newTwistedTree);
+            scene.add(newTwistedTree);
             }
-            console.log('twisted tree loaded (clones)');
+            //console.log('twisted tree loaded (clones)');
         });
     };
 
@@ -56,8 +56,4 @@ function TwistedTrees(){
             scene.remove(twistedTreeArray[i]);
         }
     };
-
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
 }

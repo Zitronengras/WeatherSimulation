@@ -38,7 +38,7 @@ function Blossom(){
    
       particleSystem = new THREE.PointCloud(particles, particleMaterial);
       pointCloudScene.add(particleSystem);
-      console.log("Particle System (blossom) loaded ");
+      //console.log("Particle System (blossom) loaded ");
   };
     this.remove = function(pointCloudScene){
         pointCloudScene.remove(particleSystem);

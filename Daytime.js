@@ -9,7 +9,7 @@ function Daytime(){
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;
-    console.log('DAYTIME');
+    //console.log('DAYTIME');
 
     this.moveSun = function(mainSpotlight, optSpotlight){
 

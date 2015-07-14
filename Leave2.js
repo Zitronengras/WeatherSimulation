@@ -4,49 +4,46 @@
 
 function Leave2(){
     
-        var particles = new THREE.Geometry;
-        var particle;
-        var particleSystem;
+    var particles = new THREE.Geometry;
+    var particle;
+    var particleSystem;
     
     this.load = function(pointCloudScene){
 
-
     //Animation
-        var redraw = function() {
+    var redraw = function() {
          
         particles.vertices.forEach(function (child) {
         child.z -= 3;
-    
-            
-            if (child.z < -400)
-                child.z = Math.random()* 800;
-             
-        
+        if (child.z < -400)
+            child.z = Math.random()* 800;
         });
           
         particleSystem.geometry.verticesNeedUpdate = true;
         requestAnimationFrame(redraw);
-      }
+    }
    
    
         // Startposition
-        for (var p = 0; p < 300; p++) {
-            particle = new THREE.Vector3(Math.random() * 750 - 250, Math.random() * 400 - 250, Math.random() * 2000 - 800);
-            particles.vertices.push(particle);
-        }
+    for (var p = 0; p < 300; p++) {
+        particle = new THREE.Vector3(Math.random() * 750 - 250, Math.random() * 400 - 250, Math.random() * 2000 - 800);
+        particles.vertices.push(particle);
+    }
     
-        // Material
-        var texture = THREE.ImageUtils.loadTexture("images/particles/leave2.png", {},
-            function () { requestAnimationFrame(redraw); }
-        );
-       var particleMaterial = new THREE.PointCloudMaterial({ color: 0xEEEEEE, size: 6 ,map: texture,transparent: true});
-   
-        particleSystem = new THREE.PointCloud(particles, particleMaterial);
-        pointCloudScene.add(particleSystem);
-      console.log("Particle System (leave2) loaded ");
-  };
+    // Material
+    var texture = THREE.ImageUtils.loadTexture("images/particles/leave2.png", {},
+        function () { requestAnimationFrame(redraw); }
+    );
+    var particleMaterial = new THREE.PointCloudMaterial({ color: 0xEEEEEE, size: 6 ,map: texture,transparent: true});
+
+    particleSystem = new THREE.PointCloud(particles, particleMaterial);
+    pointCloudScene.add(particleSystem);
+    //console.log("Particle System (leave2) loaded ");
+    };
+
     this.remove = function(pointCloudScene){
         pointCloudScene.remove(particleSystem);
     };
-   var render = this.render;
+
+    var render = this.render;
 }

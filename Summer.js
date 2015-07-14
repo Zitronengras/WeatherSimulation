@@ -24,7 +24,7 @@ function Summer(yOffset) {
     var grass = new Grass();
 
     this.load = function(scene, pointCloudScene){
-        console.log('summer');
+        //console.log('summer');
 
         //skybox
         summerSkybox.load(scene, skyboxImagePrefix);
@@ -59,7 +59,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree, summerGround, getVerticesArray(), 170, -240);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
-            console.log('twistedTree loaded');
+            //console.log('twistedTree loaded');
         });
 
         //second twisted tree loader
@@ -74,7 +74,7 @@ function Summer(yOffset) {
             //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
-            console.log('twistedTree 2 loaded');
+            //console.log('twistedTree 2 loaded');
         });
         
        ///third twisted tree loader
@@ -88,7 +88,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree3, summerGround, getVerticesArray(), 150, -200);
             twistedTree3.updateMatrix();
             scene.add(twistedTree3);
-            console.log('twistedTree 3 loaded');
+            //console.log('twistedTree 3 loaded');
         });
         
           ///fourth twisted tree loader
@@ -102,7 +102,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree4, summerGround, getVerticesArray(), 130, -300);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
-            console.log('twistedTree 4 loaded');
+            //console.log('twistedTree 4 loaded');
         });
         
         
@@ -116,7 +116,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree5, summerGround, getVerticesArray(), 180, -200);
             twistedTree5.updateMatrix();
             scene.add(twistedTree5);
-            console.log('twistedTree 5 loaded');
+            //console.log('twistedTree 5 loaded');
 
         });
         
@@ -131,7 +131,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree6, summerGround, getVerticesArray(), 80, -240);
             twistedTree6.updateMatrix();
             scene.add(twistedTree6);
-            console.log('twistedTree 6 loaded');
+            //console.log('twistedTree 6 loaded');
         });
 
         //seventh twisted tree loader
@@ -146,7 +146,7 @@ function Summer(yOffset) {
             //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree7.updateMatrix();
             scene.add(twistedTree7);
-            console.log('twistedTree 7 loaded');
+            //console.log('twistedTree 7 loaded');
         });
         
        ///eigth twisted tree loader
@@ -160,7 +160,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree8, summerGround, getVerticesArray(), 20, -200);
             twistedTree8.updateMatrix();
             scene.add(twistedTree8);
-            console.log('twistedTree 8 loaded');
+            //console.log('twistedTree 8 loaded');
         });
         
           ///nineth twisted tree loader
@@ -174,7 +174,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree9, summerGround, getVerticesArray(), 80, -150);
             twistedTree9.updateMatrix();
             scene.add(twistedTree9);
-            console.log('twistedTree 9 loaded');
+            //console.log('twistedTree 9 loaded');
         });
         
         
@@ -188,7 +188,7 @@ function Summer(yOffset) {
             setTreePosition(twistedTree10, summerGround, getVerticesArray(), 120, -300);
             twistedTree10.updateMatrix();
             scene.add(twistedTree10);
-            console.log('twistedTree 10 loaded');
+            //console.log('twistedTree 10 loaded');
 
         });
 
@@ -237,6 +237,6 @@ function Summer(yOffset) {
         audio.stopTrack();
         grass.remove(scene);
 
-        console.log('removed summer');
+        //console.log('removed summer');
     };
 }

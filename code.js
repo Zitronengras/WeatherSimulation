@@ -23,7 +23,7 @@ function init() {
 
     var pointCloudScene = new THREE.Scene();
     pointCloudScene.position.set(0,0,0);
-    console.log('pointcloud scene');
+    //console.log('pointcloud scene');
 
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
@@ -128,7 +128,7 @@ function init() {
          orbitControls = new THREE.OrbitControls(camera);
          orbitControls.damping = 0.2;
          //orbitControls.addEventListener('change', render);
-         console.log('orbitControls');
+         //console.log('orbitControls');
          };
          //cubemapControl
          this.cubemapControlGUI = function(){
@@ -136,12 +136,12 @@ function init() {
          if(orbitControlsActive){
              orbitControls.removeEventListener('change', render);
              orbitControlsActive = false;
-             console.log('remove orbitControl');
+             //console.log('remove orbitControl');
          }
          camera.lookAt(new THREE.Vector3(0,0,-1)); //�ndern!!!
          //camera.position.y = 50;
          cubemapControl = new CubemapControl(camera, render);
-         console.log('cubemapControl');
+         //console.log('cubemapControl');
          };
     };
 
@@ -159,7 +159,7 @@ function init() {
     //manager
     var manager = new THREE.LoadingManager();
     manager.onProgress = function (item, loaded, total) {
-        console.log(item, loaded, total);
+        //console.log(item, loaded, total);
     };
 
     function onWindowResize() {
