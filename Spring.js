@@ -97,24 +97,84 @@ function Spring(yOffset) {
             shadow.addShadow(twistedTree4);
 
             twistedTree4.scale.x = twistedTree4.scale.y = twistedTree4.scale.z = 1;
-            setTreePosition(twistedTree4, springGround, getVerticesArray(), 230, -300);
+            setTreePosition(twistedTree4, springGround, getVerticesArray(), 130, -300);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
             console.log('twistedTree 4 loaded');
         });
         
         
-         ///fifth twisted tree loader
+        ///fifth twisted tree loader
         twistedTree5Loader = new THREE.ColladaLoader();
         twistedTree5Loader.options.convertUpAxis = true;
         twistedTree5Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
             twistedTree5 = collada.scene;
             shadow.addShadow(twistedTree5);
             twistedTree5.scale.x = twistedTree5.scale.y = twistedTree5.scale.z = 1;
-            setTreePosition(twistedTree5, springGround, getVerticesArray(), 180, -300);
+            setTreePosition(twistedTree5, springGround, getVerticesArray(), 180, -200);
             twistedTree5.updateMatrix();
             scene.add(twistedTree5);
             console.log('twistedTree 5 loaded');
+        });
+        ///sixth twisted tree loader
+        twistedTree6Loader = new THREE.ColladaLoader();
+        twistedTree6Loader.options.convertUpAxis = true;
+        twistedTree6Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
+            twistedTree6 = collada.scene;
+            shadow.addShadow(twistedTree6);
+            twistedTree6.scale.x = twistedTree6.scale.y = twistedTree6.scale.z = 1;
+            setTreePosition(twistedTree6, springGround, getVerticesArray(), 80, -240);
+            twistedTree6.updateMatrix();
+            scene.add(twistedTree6);
+            console.log('twistedTree 6 loaded');
+        });
+        ///sixth twisted tree loader
+        twistedTree7Loader = new THREE.ColladaLoader();
+        twistedTree7Loader.options.convertUpAxis = true;
+        twistedTree7Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
+            twistedTree7 = collada.scene;
+            shadow.addShadow(twistedTree7);
+            twistedTree7.scale.x = twistedTree7.scale.y = twistedTree7.scale.z = 1;
+            setTreePosition(twistedTree7, springGround, getVerticesArray(), 50, -200);
+            twistedTree7.updateMatrix();
+            scene.add(twistedTree7);
+            console.log('twistedTree 7 loaded');
+        });
+        ///eigth twisted tree loader
+        twistedTree8Loader = new THREE.ColladaLoader();
+        twistedTree8Loader.options.convertUpAxis = true;
+        twistedTree8Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
+            twistedTree8 = collada.scene;
+            shadow.addShadow(twistedTree8);
+            twistedTree8.scale.x = twistedTree8.scale.y = twistedTree8.scale.z = 1;
+            setTreePosition(twistedTree8, springGround, getVerticesArray(), 20, -200);
+            twistedTree8.updateMatrix();
+            scene.add(twistedTree8);
+            console.log('twistedTree 8 loaded');
+        });
+        ///sixth twisted tree loader
+        twistedTree9Loader = new THREE.ColladaLoader();
+        twistedTree9Loader.options.convertUpAxis = true;
+        twistedTree9Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
+            twistedTree9 = collada.scene;
+            shadow.addShadow(twistedTree9);
+            twistedTree9.scale.x = twistedTree9.scale.y = twistedTree9.scale.z = 1;
+            setTreePosition(twistedTree9, springGround, getVerticesArray(), 80, -150);
+            twistedTree9.updateMatrix();
+            scene.add(twistedTree9);
+            console.log('twistedTree 7 loaded');
+        });
+        ///eigth twisted tree loader
+        twistedTree10Loader = new THREE.ColladaLoader();
+        twistedTree10Loader.options.convertUpAxis = true;
+        twistedTree10Loader.load('dae/new_trees/spring_blossom2.dae', function(collada) {
+            twistedTree10 = collada.scene;
+            shadow.addShadow(twistedTree10);
+            twistedTree10.scale.x = twistedTree10.scale.y = twistedTree10.scale.z = 1;
+            setTreePosition(twistedTree10, springGround, getVerticesArray(), 120, -300);
+            twistedTree10.updateMatrix();
+            scene.add(twistedTree10);
+            console.log('twistedTree 8 loaded');
         });
 
         //springGround
@@ -154,6 +214,11 @@ function Spring(yOffset) {
         scene.remove(twistedTree3);
         scene.remove(twistedTree4);
         scene.remove(twistedTree5);
+        scene.remove(twistedTree6);
+        scene.remove(twistedTree7);
+        scene.remove(twistedTree8);
+        scene.remove(twistedTree9);
+        scene.remove(twistedTree10);
 
         audio.stopTrack();
 
