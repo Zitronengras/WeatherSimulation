@@ -18,7 +18,7 @@ function Mountain() {
         mountainLoader.options.convertUpAxis = true;
         mountainLoader.load('dae/mountain.dae', function(collada){
             mountain = collada.scene;
-            console.log('mountain loaded');
+            //console.log('mountain loaded');
             mountain.position.set(-80, -15, 470);
             mountain.updateMatrix();
             scene.add(mountain);
@@ -30,7 +30,7 @@ function Mountain() {
         seaCoastLoader.options.convertUpAxis = true;
         seaCoastLoader.load('dae/SeaCoast_V3.dae', function(collada){
             seaCoast = collada.scene;
-            console.log('seaCoast loaded');
+            //console.log('seaCoast loaded');
             seaCoast.position.set(50, -20, -660);
             shadow.addShadow(seaCoast);
             seaCoast.updateMatrix();

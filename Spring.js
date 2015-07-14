@@ -100,7 +100,7 @@ function Spring() {
             setTreePosition(twistedTree4, springGround, getVerticesArray(), 130, -300);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
-            console.log('twistedTree 4 loaded');
+            //console.log('twistedTree 4 loaded');
         });
         
         

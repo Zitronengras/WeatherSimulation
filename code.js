@@ -51,7 +51,7 @@ function init() {
     //defaultSeason = Spring
     var seasonObject;
     seasonObject = new Spring();
-    seasonObject.load(scene);
+    seasonObject.load(scene, pointCloudScene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
 	//water
