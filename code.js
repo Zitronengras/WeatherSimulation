@@ -52,7 +52,7 @@ function init() {
 
 	//water
 	var water = new Water(yOffset);
-	sea = water.doWater(water.doWaterGeometry({color: 0x6EFAFF }));
+	sea = water.doWater(water.doWaterGeometry());
 	  scene.add(sea);
 
 	//river
