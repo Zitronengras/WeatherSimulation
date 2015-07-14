@@ -6,7 +6,7 @@ function Autumn(yOffset) {
     var ground = new Ground(yOffset);
     var autumnGround;
     var autumnGroundColor = "#FDD25C";
-    var twistedTrees = new TwistedTrees();
+    var twistedTree = new TwistedTrees();
     var shadow = new Shadow();
     var leave1 = new Leave1();
     var leave2 = new Leave2();
@@ -50,7 +50,7 @@ function Autumn(yOffset) {
         //clouds
         cloud.load(scene, 5);
 
-        twistedTrees.load(scene);
+        twistedTree.load(scene, 5);
 
         //Twisted red-orange
         /*

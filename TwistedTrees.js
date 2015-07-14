@@ -11,7 +11,7 @@ function TwistedTrees(){
     var i;
 
 
-    this.load = function(scene) {
+    this.load = function(scene, amount) {
 
         twistedTreeLoader = new THREE.ColladaLoader();
            twistedTreeLoader.options.convertUpAxis = true;
@@ -20,7 +20,7 @@ function TwistedTrees(){
             twistedTree = collada.scene;
 
             var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 20; i++) {
+            for (i = 0; i < amount; i++) {
                 var newTwistedTree = new THREE.Object3D();
 
                 for (var j = 0; j < colladaObj.children.length; j++) {
@@ -41,7 +41,7 @@ function TwistedTrees(){
                 twistedTreeArray.push(newTwistedTree);
                 scene.add(newTwistedTree);
             }
-            console.log('twisted tree loaded');
+            console.log('twisted tree loaded (clones)');
         });
     };
 
