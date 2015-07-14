@@ -2,9 +2,10 @@
  * Created by Caro on 30.06.2015.
  */
 
+var skyBox;
+
 function Skybox(){
 
-    var skyBox;
     var materialVar;
 
     this.load = function(scene, imagePrefix){
@@ -27,13 +28,31 @@ function Skybox(){
             }
         }
         var skyGeometry = new THREE.BoxGeometry(500, 550, 2500);
-        var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+        var skyMaterial = new THREE.MeshFaceMaterial(materialArray);
         skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
         skyMaterial.needsUpdate = true;
-
-        scene.add( skyBox );
+        scene.add(skyBox);
     };
+
     this.remove = function(scene){
         scene.remove(skyBox);
+    };
+
+    this.removeNight = function(scene){
+        scene.remove(nightSkybox);
+        console.log('remove night');
+    };
+
+    this.makeNight = function(scene){
+        var nightSkyboxGeo = new THREE.BoxGeometry(500, 550, 2500);
+        var nightSkyboxMat = new THREE.MeshBasicMaterial({color: 0x01031C,
+            transparent: true,
+            opacity: 1,
+            side: THREE.BackSide
+        }); //0x02042B
+        nightSkybox = new THREE.Mesh(nightSkyboxGeo, nightSkyboxMat);
+        nightSkybox.scale.set(0.9, 0.9, 0.9);
+        nightSkybox.renderOrder = 1;
+        scene.add(nightSkybox);
     };
 }

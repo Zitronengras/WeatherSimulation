@@ -16,18 +16,14 @@ function Autumn(yOffset) {
     var audioURL = 'music/tree-strong-wind.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
-    //var setPosition();
-    this.load = function(scene){
+
+    this.load = function(scene, pointCloudScene){
         console.log('Autumn');
         
-        //skybox
+        //skybox for autumn
         autumnSkybox.load(scene, skyboxImagePrefix);
-        
-        
-        
-        
-        
-         //autumnLight
+
+        //autumnLight
         autumnSpotLight = new THREE.SpotLight(0xe3c8aa);
         shadow.addShadow(autumnSpotLight);
         autumnSpotLight.position.x = 0; //red axis
@@ -106,8 +102,7 @@ function Autumn(yOffset) {
             scene.add(twistedTree4);
             console.log('twistedTree 4 loaded');
         });
-        
-        
+
          ///fifth twisted tree loader
         twistedTree5Loader = new THREE.ColladaLoader();
         twistedTree5Loader.options.convertUpAxis = true;
@@ -194,10 +189,11 @@ function Autumn(yOffset) {
 
         });
         
+
         // load leaves particle systems
-        leave1.load(scene);
-		leave2.load(scene);
-			
+        leave1.load(pointCloudScene);
+		leave2.load(pointCloudScene);
+
         //audio
         audio.playTrack(audioURL, scene);
     };
@@ -207,13 +203,13 @@ function Autumn(yOffset) {
     };
 
 
-    this.remove = function(scene){
+    this.remove = function(scene, pointCloudScene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
-        leave1.remove(scene);
-        leave2.remove(scene);
         scene.remove(twistedTree);
-        scene.remove(twistedTree2)
+        leave1.remove(pointCloudScene);
+        leave2.remove(pointCloudScene);
+        scene.remove(twistedTree2);
         scene.remove(twistedTree3);
         scene.remove(twistedTree4);
         scene.remove(twistedTree5);
@@ -221,7 +217,7 @@ function Autumn(yOffset) {
         scene.remove(twistedTree7);
         scene.remove(twistedTree8);
         scene.remove(twistedTree9);
-        scene.remove(twistedtTree10);
+        scene.remove(twistedTree10);
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
         scene.remove(shadow);
@@ -231,8 +227,4 @@ function Autumn(yOffset) {
 
         console.log('removed autumn');
     };
-    
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
 }

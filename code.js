@@ -16,9 +16,15 @@ function init() {
     renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
+    renderer.autoClear = false;
 
     var scene = new THREE.Scene();
     scene.position.set(0,0,0);
+
+    var pointCloudScene = new THREE.Scene();
+    pointCloudScene.position.set(0,0,0);
+    console.log('pointcloud scene');
+
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
     camera.lookAt(new THREE.Vector3(0,0,-1));
@@ -33,7 +39,6 @@ function init() {
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-    var daytime = new Daytime();
 
 
     //shows vertexNormals
@@ -53,7 +58,14 @@ function init() {
 	//water
 	var water = new Water(yOffset);
 	sea = water.doWater(water.doWaterGeometry());
-	  scene.add(sea);
+	scene.add(sea);
+
+    //for moving the sun
+    var daytime = new Daytime(scene);
+
+    //for nightSky
+    var nightsky = new Skybox();
+    var isNight = false;
 
 	//river
 	var river = new River(yOffset);
@@ -65,39 +77,47 @@ function init() {
 
         var mountain = new Mountain(yOffset);
         mountain.load(scene);
-        
-// SCHNEE TEST
-       /* var snow = new Snow();
-       snow.load(scene);*/
-		
+
         this.spring = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Spring(yOffset);
             seasonObject.load(scene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Summer(yOffset);
             seasonObject.load(scene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Autumn(yOffset);
-            seasonObject.load(scene);
 			waterAnimation = true;
+            seasonObject.load(scene, pointCloudScene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
-            seasonObject.remove(scene);
+            seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Winter(yOffset);
-            seasonObject.load(scene);
 			waterAnimation = false;
-			
+            seasonObject.load(scene, pointCloudScene);
             optSpotlight = seasonObject.getSeasonSpotlight();
+        };
+        this.day = function() {
+            if(isNight == true){
+                nightsky.removeNight(scene);
+                isNight = false;
+            }
+        };
+        this.night = function() {
+            if(isNight == false){
+                nightsky.makeNight(scene);
+                isNight = true;
+            }
+
         };
         this.orbitControlGUI = function(){
          //mouse Control
@@ -118,7 +138,7 @@ function init() {
              orbitControlsActive = false;
              console.log('remove orbitControl');
          }
-         camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
+         camera.lookAt(new THREE.Vector3(0,0,-1)); //�ndern!!!
          //camera.position.y = 50;
          cubemapControl = new CubemapControl(camera, render);
          console.log('cubemapControl');
@@ -131,6 +151,8 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
+    gui.add(seasonsGUI, 'day');
+    gui.add(seasonsGUI, 'night');
     gui.add(seasonsGUI, 'orbitControlGUI');
     gui.add(seasonsGUI, 'cubemapControlGUI');
 
@@ -147,7 +169,6 @@ function init() {
     }
     window.addEventListener('resize', onWindowResize, false);
 
-
     var elem = document.getElementById("output");
     elem.appendChild(renderer.domElement);
 
@@ -159,8 +180,10 @@ function init() {
 		//console.log(sea + 'sea init');
 		river.animateRiver(riv);
         requestAnimationFrame(function(){
+            renderer.clear();
             renderer.render(scene, camera);
-			
+            renderer.clearDepth();
+            renderer.render(pointCloudScene, camera);
         });
     };
     setInterval(render, 20);

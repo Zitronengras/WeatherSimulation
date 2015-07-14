@@ -42,7 +42,7 @@ function Blossom(){
        var particleMaterial = new THREE.PointCloudMaterial({ color: 0xEEEEEE, size: 6 ,map: texture,transparent: true});
    
         particleSystem = new THREE.PointCloud(particles, particleMaterial);
-        scene.add(particleSystem); 
+        scene.add(particleSystem);
       console.log("Particle System (blossom) loaded ");
   };
     this.remove = function(scene){
