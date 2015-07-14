@@ -4,12 +4,12 @@ function Water(yOffset) {
     this.doWaterGeometry = function() {
        
         for (var i = 0; i < waterGeometry.vertices.length; i++) {
-            if(i > 1000 && i < 100){
+            if(i > 800 && i < 1000){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
                 waterGeometry.vertices[i].y += Math.random() * 2; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 20; //green axis
             }
-            else if(i > 2000){
+            else if(i > 1000){
                 waterGeometry.vertices[i].x += Math.random() * 3; //red axis
                 waterGeometry.vertices[i].y += Math.random() * 6; //blue axis
                 waterGeometry.vertices[i].z += Math.random() * 28; //green axis
