@@ -43,14 +43,22 @@ function Summer(yOffset) {
         summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
+        var geometry = new THREE.BoxGeometry(10, 100, 10);
+        var material = new THREE.MeshBasicMaterial({color: 0xff0000});
+        var box = new THREE.Mesh(geometry, material);
+        setPosition(box, summerGround, getVerticesArray(), 50, -50);
+        scene.add(box);
 
         //grass
         grass.load(scene, 0x809B05, summerGround);
 
-	
-			  
-      //grass
-        grass.load(scene, 0x809B05);
+        //setPosition(newGrassStalk, ground, getVerticesArray(), getGrassX(), getGrassY));
+        //positionGrass(getGrassArray());
+
+
+
+        //grass
+       // grass.load(scene, 0x809B05);
 
 
         //twisted tree loader
