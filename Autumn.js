@@ -212,11 +212,16 @@ function Autumn(yOffset) {
         scene.remove(autumnSpotLight);
         leave1.remove(scene);
         leave2.remove(scene);
-        twistedTree.remove(scene);
-        scene.remove(twistedTree2);
+        scene.remove(twistedTree);
+        scene.remove(twistedTree2)
         scene.remove(twistedTree3);
         scene.remove(twistedTree4);
         scene.remove(twistedTree5);
+        scene.remove(twistedTree6);
+        scene.remove(twistedTree7);
+        scene.remove(twistedTree8);
+        scene.remove(twistedTree9);
+        scene.remove(twistedtTree10);
         scene.remove(autumnSkybox);
         autumnSkybox.remove(scene);
         scene.remove(shadow);
