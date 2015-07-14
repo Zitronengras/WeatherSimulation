@@ -48,28 +48,19 @@ function init() {
     var seasonObject;
     seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
-<<<<<<< HEAD
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
-	
 	//water
 	var water = new Water(yOffset);
 	sea = water.doWater(water.doWaterGeometry());
 	  scene.add(sea);
-	   
-=======
-	
+
 	//river
-	
-	
 	var river = new River(yOffset);
 	riv = river.doRiver(river.doRiverGeometry());
 	scene.add(riv);
-	
 
-	
->>>>>>> feature/river
-    //GUI
+	//GUI
     var seasons = function() {
 
         var mountain = new Mountain(yOffset);
