@@ -9,7 +9,7 @@ function Daytime(scene){
     var sunGoesDown = -1;
     var goesDown = true;
     var intensityGoesDown = 1/375;
-    var opacityGoesDown = 1/5000;
+    var opacityGoesDown = 1/3000;
     var nightOpacity = 0;
     console.log('DAYTIME');
 
@@ -36,20 +36,25 @@ function Daytime(scene){
         if(goesDown == true && sunHigh <= 400){
             if(round2Dezimal(nightOpacity) == 0.03){
                 nightOpacity = 1;
-                console.log('nightOpacity = 1');
+                //console.log('nightOpacity = 1');
             }
             if(nightOpacity >= 0 && nightOpacity < 1){
                 nightOpacity += opacityGoesDown;
-                console.log('nightOpacity' + nightOpacity);
+                //console.log('nightOpacity' + nightOpacity);
                 skybox.makeNight(scene, nightOpacity);
             }
-            if(nightOpacity > 1){
+            /*if(nightOpacity > 1){
                 console.log('stop makenight');
-            }
+            }*/
         }
         if(goesDown == false && sunHigh <= 400){
-            if(nightOpacity >= 0 && nightOpacity <= 1){
+            if(round2Dezimal(nightOpacity) == 0.07){
+                nightOpacity = 0;
+                console.log('nightOpacity = 0');
+            }
+            if(nightOpacity > 0 && nightOpacity <= 1){
                 nightOpacity -= opacityGoesDown;
+                console.log('nightOpacity' + nightOpacity);
                 skybox.makeNight(scene, nightOpacity);
             }
         }
