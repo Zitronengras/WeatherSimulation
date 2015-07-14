@@ -4,6 +4,7 @@
 
 var skyBox;
 var materialArray = [];
+var nightSkyboxMat;
 
 function Skybox(){
 
@@ -38,10 +39,14 @@ function Skybox(){
     this.remove = function(scene){
         scene.remove(skyBox);
     };
+    this.removeNight = function(scene){
+        scene.remove(nightSkybox);
+        console.log('remove night');
+    };
 
-    this.makeNight = function(scene, amount, array){
+    this.makeNight = function(scene){
 
-        for (var i = 0; i < array.length; i++){
+        /*for (var i = 0; i < array.length; i++){
             if (i == 3) {
                 //materialArray.push(new THREE.MeshBasicMaterial({transparent: true, opacity: 0}));
             }
@@ -51,26 +56,25 @@ function Skybox(){
                         map: THREE.ImageUtils.loadTexture(imagePrefix + cubePages[cubePagesI] + imageSuffix),
                         side: THREE.BackSide
                     }));
-                cubePagesI += 1;*/
+                cubePagesI += 1;
                 skyBox.materials[i].opacity = amount;
                 //skyMaterial.needsUpdate = true;
 
 
             }
-        }
+        }*/
 
-
-        /*var nightSkyboxGeo = new THREE.BoxGeometry(500, 550, 2500);
+        var nightSkyboxGeo = new THREE.BoxGeometry(500, 550, 2500);
         var nightSkyboxMat = new THREE.MeshBasicMaterial({color: 0x01031C,
             transparent: true,
-            opacity: amount,
+            opacity: 1,
             side: THREE.BackSide
         }); //0x02042B
-        var nightSkybox = new THREE.Mesh(nightSkyboxGeo, nightSkyboxMat);
+        nightSkybox = new THREE.Mesh(nightSkyboxGeo, nightSkyboxMat);
         nightSkybox.scale.set(0.9, 0.9, 0.9);
         nightSkybox.renderOrder = 1;
-        scene.add(nightSkybox);*/
-    }
+        scene.add(nightSkybox);
+    };
 }
 
 function getMaterialArray(){

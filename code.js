@@ -37,7 +37,6 @@ function init() {
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
 
-    var daytime = new Daytime(scene);
 
 
     //shows vertexNormals
@@ -53,6 +52,13 @@ function init() {
     seasonObject = new Autumn(yOffset);
     seasonObject.load(scene, pointCloudScene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
+
+    //for moving the sun
+    var daytime = new Daytime(scene);
+
+    //for nightSky
+    var nightsky = new Skybox();
+    var isNight = false;
 
     //GUI
     var seasons = function() {
@@ -84,6 +90,19 @@ function init() {
             seasonObject.load(scene, pointCloudScene);
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
+        this.day = function() {
+            if(isNight == true){
+                nightsky.removeNight(scene);
+                isNight = false;
+            }
+        };
+        this.night = function() {
+            if(isNight == false){
+                nightsky.makeNight(scene);
+                isNight = true;
+            }
+
+        };
         this.orbitControlGUI = function(){
          //mouse Control
          orbitControlsActive = true;
@@ -103,7 +122,7 @@ function init() {
              orbitControlsActive = false;
              console.log('remove orbitControl');
          }
-         camera.lookAt(new THREE.Vector3(0,0,-1)); //ändern!!!
+         camera.lookAt(new THREE.Vector3(0,0,-1)); //ï¿½ndern!!!
          //camera.position.y = 50;
          cubemapControl = new CubemapControl(camera, render);
          console.log('cubemapControl');
@@ -116,6 +135,8 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
+    gui.add(seasonsGUI, 'day');
+    gui.add(seasonsGUI, 'night');
     gui.add(seasonsGUI, 'orbitControlGUI');
     gui.add(seasonsGUI, 'cubemapControlGUI');
 
