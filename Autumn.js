@@ -36,9 +36,6 @@ function Autumn(yOffset) {
         //autumnGround
         autumnGround = ground.doGround(doGroundGeometry(), autumnGroundColor);
         scene.add(autumnGround);
-        
-       
-	   
 
         //grass
         grass.load(scene, 0xF76428, autumnGround);
@@ -188,7 +185,6 @@ function Autumn(yOffset) {
             console.log('twistedTree 10 loaded');
 
         });
-        
 
         // load leaves particle systems
         leave1.load(pointCloudScene);

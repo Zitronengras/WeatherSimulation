@@ -81,7 +81,7 @@ function init() {
         this.spring = function() {
             seasonObject.remove(scene, pointCloudScene);
             seasonObject = new Spring(yOffset);
-            seasonObject.load(scene);
+            seasonObject.load(scene, pointCloudScene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
