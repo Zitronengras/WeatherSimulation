@@ -59,9 +59,9 @@ function Summer(yOffset) {
         twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
-            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
+            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.07;
             shadow.addShadow(twistedTree);
-            setPosition(twistedTree, summerGround, getVerticesArray(), 10, 80);
+            setPosition(twistedTree, summerGround, getVerticesArray(), 100, -400);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
@@ -73,13 +73,41 @@ function Summer(yOffset) {
             twistedTree2 = collada.scene;
             console.log('twistedTree 2 loaded');
             shadow.addShadow(twistedTree2);
-            twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
-            setPosition(twistedTree2, summerGround, getVerticesArray(), 20, 120);
-            twistedTree2.position.set(20, 20 + yOffset, 120);
+            twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.07;
+            setPosition(twistedTree2, summerGround, getVerticesArray(), 200, -350);
+            //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
         });
+        
+       ///third twisted tree loader
+        twistedTree3Loader = new THREE.ColladaLoader();
+        twistedTree3Loader.options.convertUpAxis = true;
+        twistedTree3Loader.load('dae/twisted_tree.dae', function(collada){
+            twistedTree3 = collada.scene;
+            console.log('twistedTree 3 loaded');
+            shadow.addShadow(twistedTree3);
+            twistedTree3.scale.x = twistedTree3.scale.y = twistedTree3.scale.z = 0.07;
+            setPosition(twistedTree3, summerGround, getVerticesArray(), 150, -400);
+            twistedTree3.updateMatrix();
+            scene.add(twistedTree3);
+        });
+        
+          ///fourth twisted tree loader
+        twistedTree4Loader = new THREE.ColladaLoader();
+        twistedTree4Loader.options.convertUpAxis = true;
+        twistedTree4Loader.load('dae/twisted_tree.dae', function(collada){
+            twistedTree4 = collada.scene;
+            console.log('twistedTree 3 loaded');
+            shadow.addShadow(twistedTree4);
+            twistedTree4.scale.x = twistedTree4.scale.y = twistedTree4.scale.z = 0.07;
+            setPosition(twistedTree4, summerGround, getVerticesArray(), 450, -400);
+            twistedTree3.updateMatrix();
+            scene.add(twistedTree3);
+        });
+        
 
+		/*
         //big/long tree loader
         longTreeLoader = new THREE.ColladaLoader();
         longTreeLoader.options.convertUpAxis = true;
@@ -91,7 +119,9 @@ function Summer(yOffset) {
             setPosition(longTree, summerGround, getVerticesArray(), 10, -100);
             longTree.updateMatrix();
             scene.add(longTree);
-        });
+        });*/
+        
+        
 
         //audio
         audio.playTrack(audioURL, scene);
