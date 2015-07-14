@@ -2,16 +2,17 @@
  * Created by Caro on 10.07.2015.
  */
 
+var grassArray = [];
+
 function Grass(){
 
     var grassStalk;
     var grassStalkLoader;
-    var grassArray;
     var i;
     var shadow = new Shadow();
 
-    var x = 0;
-    var z = 0;
+    var x;
+    var z;
 
     this.load = function(scene, color, ground){
         //grass loader
@@ -19,6 +20,7 @@ function Grass(){
         grassStalkLoader.options.convertUpAxis = true;
         grassArray = [];
         grassStalkLoader.load('dae/grass.dae', function(collada){
+
 
             var grassMaterial = new THREE.MeshLambertMaterial({color: color});
             grassStalk = collada.scene;
@@ -30,8 +32,9 @@ function Grass(){
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, grassMaterial));
                 }
-                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 5;
-                newGrassStalk.position.set(0,0,0);
+
+                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.09;
+                //newGrassStalk.position.set(0,0,0);
 
                 newGrassStalk.rotation.x = -90*Math.PI/180;
                 newGrassStalk.rotation.y = 65*Math.PI/180;
@@ -40,13 +43,15 @@ function Grass(){
                 newGrassStalk.rotation.z = ((getRandomArbitrary(0, 2)*30)*Math.PI/180);
                 newGrassStalk.rotation.x = 240*Math.PI/180;
 
-                /*x += getRandomArbitrary(0, -125);
-                z += getRandomArbitrary(0, 500);
-                setPosition(newGrassStalk, ground, getVerticesArray(), x, z);*/
+                //x = newGrassStalk.x;
+                //z = newGrassStalk.z;
+
+                //x += getRandomArbitrary(0, -125);
+                //z += getRandomArbitrary(0, -500);
 
                 newGrassStalk.position.x += getRandomArbitrary(0, -125);
                 newGrassStalk.position.z += getRandomArbitrary(10, 300);
-                //setPosition(newGrassStalk, ground, getVerticesArray(), null, null);
+                //setPosition(newGrassStalk, ground, getVerticesArray(), x, z);
 
 
                 /*newGrassStalk.position.x += getRandomArbitrary(0, -125);
@@ -58,14 +63,18 @@ function Grass(){
                 grassArray.push(newGrassStalk);
                 //scene.add(newGrassStalk);
             }
-            grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.05;
-            //grassStalk.position.set(-3,yOffset,-3);
+
+            //console.log('grassStalk loaded');
+            grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.09;
+            /*console.log('grass position');
+            console.log('grass X' + grassStalk.position.x);
+            console.log('grass X' + grassStalk.position.y);
+            console.log('grass X' + grassStalk.position.z);*/
+
             shadow.addShadow(grassStalk);
             setGrassPosition(grassStalk, ground, getVerticesArray(), 0, -100);
             grassStalk.updateMatrix();
             //console.log('grassStalk loaded');
-
-
             scene.add(grassStalk);
         });
 
@@ -189,5 +198,22 @@ function setGrassPosition(object, ground, array, xPos, zPos){
 
     //console.log('object position');
     //console.log(object.position);
+}
 
+function getGrassArray(){
+    return grassArray
+}
+
+function getGrassX(array){
+    for(var i = 0; i < array.length; i++){
+        x = array[i].x;
+    }
+    return x;
+}
+
+function getGrassY(array){
+    for(var i = 0; i < array.length; i++){
+        y = array[i].y;
+    }
+    return y;
 }

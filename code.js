@@ -6,7 +6,6 @@
 var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
-var yOffset = -30;
 var sea;
 var waterAnimation = true;
 
@@ -51,12 +50,12 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Summer(yOffset);
+    seasonObject = new Spring();
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
 	//water
-	var water = new Water(yOffset);
+	var water = new Water();
 	sea = water.doWater(water.doWaterGeometry());
 	scene.add(sea);
 
@@ -68,42 +67,42 @@ function init() {
     var isNight = false;
 
 	//river
-	var river = new River(yOffset);
+	var river = new River();
 	riv = river.doRiver(river.doRiverGeometry());
 	scene.add(riv);
 
 	//GUI
     var seasons = function() {
 
-        var mountain = new Mountain(yOffset);
+        var mountain = new Mountain();
         mountain.load(scene);
 
         this.spring = function() {
             seasonObject.remove(scene, pointCloudScene);
-            seasonObject = new Spring(yOffset);
+            seasonObject = new Spring();
             seasonObject.load(scene, pointCloudScene);
-			waterAnimation = true;
+            waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
             seasonObject.remove(scene, pointCloudScene);
-            seasonObject = new Summer(yOffset);
-            seasonObject.load(scene);
+            seasonObject = new Summer();
+            seasonObject.load(scene, pointCloudScene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
             seasonObject.remove(scene, pointCloudScene);
-            seasonObject = new Autumn(yOffset);
-			waterAnimation = true;
+            seasonObject = new Autumn();
             seasonObject.load(scene, pointCloudScene);
+            waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
             seasonObject.remove(scene, pointCloudScene);
-            seasonObject = new Winter(yOffset);
-			waterAnimation = false;
+            seasonObject = new Winter();
             seasonObject.load(scene, pointCloudScene);
+            waterAnimation = false;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.day = function() {

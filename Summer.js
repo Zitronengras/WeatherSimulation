@@ -3,9 +3,9 @@
 Edit by Karo
  */
 
-function Summer(yOffset) {
+function Summer() {
 
-    var ground = new Ground(yOffset);
+    var ground = new Ground();
     var summerGround;
     var summerGroundColor= "#D2D92C";
     var summerSkybox = new Skybox();
@@ -24,6 +24,7 @@ function Summer(yOffset) {
     var grass = new Grass();
 
     this.load = function(scene, pointCloudScene){
+
         //console.log('summer');
 
         //skybox
@@ -43,9 +44,17 @@ function Summer(yOffset) {
         summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
+        var geometry = new THREE.BoxGeometry(10, 100, 10);
+        var material = new THREE.MeshBasicMaterial({color: 0xff0000});
+        var box = new THREE.Mesh(geometry, material);
+        setPosition(box, summerGround, getVerticesArray(), 50, -50);
+        scene.add(box);
 
         //grass
-        grass.load(scene, 0xff0000, summerGround); //0x809B05
+        grass.load(scene, 0x809B05, summerGround);
+
+        //setPosition(newGrassStalk, ground, getVerticesArray(), getGrassX(), getGrassY));
+        //positionGrass(getGrassArray());
 
 
         //twisted tree loader
@@ -53,7 +62,6 @@ function Summer(yOffset) {
         twistedTreeLoader.options.convertUpAxis = true;
         twistedTreeLoader.load('dae/new_trees/summer1.dae', function(collada){
             twistedTree = collada.scene;
-
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 1;
             shadow.addShadow(twistedTree);
             setTreePosition(twistedTree, summerGround, getVerticesArray(), 170, -240);
@@ -198,7 +206,7 @@ function Summer(yOffset) {
         longTreeLoader.options.convertUpAxis = true;
         longTreeLoader.load('dae/long_tree.dae', function(collada){
             longTree = collada.scene;
-            console.log('longtree loaded');
+            //console.log('longtree loaded');
             shadow.addShadow(longTree);
             longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
             setPosition(longTree, summerGround, getVerticesArray(), 10, -100);

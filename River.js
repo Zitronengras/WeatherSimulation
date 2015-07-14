@@ -1,4 +1,4 @@
-function River(yOffset) {
+function River() {
     var river;
     var riverGeometry = new THREE.PlaneGeometry(500, 50, 30, 10);
     this.doRiverGeometry = function() {
@@ -33,7 +33,7 @@ function River(yOffset) {
         river = new THREE.Mesh(riverGeometry, riverMaterial);
         river.rotation.x = -0.5*Math.PI;
         river.position.z = 100;
-        river.position.y = yOffset;
+        river.position.y = -30;
 		//river.rotation.z = 0.3;
         river.receiveShadow = true;
         return river;

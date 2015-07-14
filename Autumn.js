@@ -2,8 +2,8 @@
  * Created by Caro on 24.06.2015.
  */
 
-function Autumn(yOffset) {
-    var ground = new Ground(yOffset);
+function Autumn() {
+    var ground = new Ground();
     var autumnGround;
     var autumnGroundColor = "#FDD25C";
     var twistedTree = new TwistedTrees();
