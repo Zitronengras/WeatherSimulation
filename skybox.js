@@ -50,3 +50,4 @@ function Skybox(){
         scene.add(nightSkybox);
     }
 }
+
