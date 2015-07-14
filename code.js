@@ -52,7 +52,7 @@ function init() {
 
 	//water
 	var water = new Water(yOffset);
-	sea = water.doWater(water.doWaterGeometry());
+	sea = water.doWater(water.doWaterGeometry({color: 0x6EFAFF }));
 	  scene.add(sea);
 
 	//river
@@ -96,6 +96,7 @@ function init() {
             seasonObject = new Winter(yOffset);
             seasonObject.load(scene);
 			waterAnimation = false;
+			
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.orbitControlGUI = function(){

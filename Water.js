@@ -1,5 +1,6 @@
 function Water(yOffset) {
     var water;
+    var color;
     var waterGeometry = new THREE.PlaneGeometry(500, 180, 40, 50);
     this.doWaterGeometry = function() {
        
@@ -29,7 +30,7 @@ function Water(yOffset) {
    
     this.doWater = function() {
         var waterMaterial = new THREE.MeshLambertMaterial(
-            {color: 0x6EFAFF, shading: THREE.FlatShading, transparent: true, opacity: 0.9}); 
+            {color: color, shading: THREE.FlatShading, transparent: true, opacity: 0.9}); 
         water = new THREE.Mesh(waterGeometry, waterMaterial);
         water.rotation.x = -0.5*Math.PI;
         water.position.z = -630;
