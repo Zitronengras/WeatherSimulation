@@ -32,6 +32,20 @@ function Spring(yOffset) {
         springSpotLight.lookAt(0, 0, 0);
         scene.add(springSpotLight);
         
+           // flower load test
+        BflowerLoader = new THREE.ColladaLoader();
+        BflowerLoader.options.convertUpAxis = true;
+        BflowerLoader.load('dae/flowers/flowerBlue.dae', function(collada){
+            bFlower = collada.scene;
+
+            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 10;
+            shadow.addShadow(bFlower);
+            setTreePosition(bFlower, springGround, getVerticesArray(), 0, 0);
+            bFlower.updateMatrix();
+            scene.add(bFlower);
+            console.log('bFlower loaded');
+        });
+        
         // first twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
         twistedTreeLoader.options.convertUpAxis = true;
