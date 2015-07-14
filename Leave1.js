@@ -1,3 +1,7 @@
+/**
+ * Created by Karo
+ */
+
 function Leave1(){
     
         
@@ -24,7 +28,7 @@ function Leave1(){
         
         particleSystem2.rotation.set(0, particleSystem2.rotation.y + 0.01, 0);
       
-            particles2.vertices[0].set(0, particles2.vertices[0].y + 0.1, 0);
+        particles2.vertices[0].set(0, particles2.vertices[0].y + 0.1, 0);
 
          particleSystem2.geometry.verticesNeedUpdate = true;
         requestAnimationFrame(redraw);

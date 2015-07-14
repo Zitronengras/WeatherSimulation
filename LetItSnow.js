@@ -1,3 +1,7 @@
+/**
+ * Created by Karo
+ */
+
 function LetItSnow(){
     
         var particles = new THREE.Geometry;

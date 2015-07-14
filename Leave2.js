@@ -1,3 +1,7 @@
+/**
+ * Created by Karo
+ */
+
 function Leave2(){
     
         var particles = new THREE.Geometry;

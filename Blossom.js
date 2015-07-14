@@ -1,3 +1,7 @@
+/**
+ * Created by Karo
+ */
+
 function Blossom(){
     
         var particles = new THREE.Geometry;

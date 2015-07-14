@@ -1,7 +1,12 @@
 /**
  * Created by Karo on 10.07.2015.
  */
-
+/**
+ * Created by Karo
+ */
+ 
+ // THIS CODE IS NOT USED, SINCE THERE ARE PROBLEMS WITH TEXTURES.
+ 
 function TwistedTrees(){
 
     var shadow = new Shadow();
