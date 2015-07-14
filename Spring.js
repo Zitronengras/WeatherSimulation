@@ -11,6 +11,7 @@ function Spring(yOffset) {
     var skyboxImagePrefix = "images/spring/skybox-";
     var shadow = new Shadow();
     var audio = new Audio();
+    var blossom = new Blossom();
     var audioURL = 'music/spring-birds.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
@@ -34,6 +35,9 @@ function Spring(yOffset) {
         //springGround
         springGround = ground.doGround(doGroundGeometry(), springGroundColor);
         scene.add(springGround);
+        
+        //blossom
+        blossom.load(scene);
 
         //grass
         grass.load(scene, 0x267302, springGround);
@@ -56,6 +60,7 @@ function Spring(yOffset) {
         scene.remove(springGroundColor);
         scene.remove(springSkybox);
         springSkybox.remove(scene);
+        blossom.remove(scene);
         scene.remove(shadow);
         cloud.remove(scene);
         grass.remove(scene);
