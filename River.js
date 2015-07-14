@@ -1,6 +1,6 @@
 function River(yOffset) {
     var river;
-    var riverGeometry = new THREE.PlaneGeometry(500, 50, 30, 10);
+    var riverGeometry = new THREE.PlaneGeometry(500, 50, 70, 10);
     this.doRiverGeometry = function() {
        
       for (var i = 0; i < riverGeometry.vertices.length; i++) {
@@ -28,13 +28,14 @@ function River(yOffset) {
         return riverGeometry;
     };
    
+
     this.doRiver = function() {
         var riverMaterial = new THREE.MeshLambertMaterial(
             {color: 0x6EFAFF, shading: THREE.FlatShading}); 
         river = new THREE.Mesh(riverGeometry, riverMaterial);
-        river.rotation.x = -0.6*Math.PI;
-        river.position.z = 150;
-        river.position.y = 5+yOffset;
+        river.rotation.x = -0.55*Math.PI;
+        river.position.z = 100;
+        river.position.y = 3+yOffset;
 		//river.rotation.z = 0.3;
         river.receiveShadow = true;
         return river;
@@ -44,9 +45,9 @@ function River(yOffset) {
     var max = 10;
     var min = 1;
     
-    this.animateRiver = function (sea){
+    this.animateRiver = function (riv){
       var before=1;
-        sea.geometry.vertices.forEach(function(vertex){
+        riv.geometry.vertices.forEach(function(vertex){
           
             var diff = Math.random() * (1 -(- 1)) + (-1);
             while(Math.abs(diff-before)>0.2){
@@ -61,7 +62,7 @@ function River(yOffset) {
             else{
             vertex.add(new THREE.Vector3 (0,0, diff));
             }
-           sea.geometry.verticesNeedUpdate = true;
+           riv.geometry.verticesNeedUpdate = true;
             
     	});	
 	}
