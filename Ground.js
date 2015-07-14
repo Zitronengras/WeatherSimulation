@@ -108,9 +108,15 @@ function setPosition(object, ground, array, xPos, zPos){
      console.log(' min ' + boxMin + ' max ' + boxMax);*/
 
     //calculate height/2
-    var offset = (boxMax - boxMin)/2;
+    var offset = boxMax - boxMin;
+    //console.log('max - min' + offset);
+    if(offset < 0){
+        offset = offset * (-1);
+        //console.log('mal - 1' + offset);
+    }
+    offset = offset/2;
     p.setY((p.y + offset));
-    console.log(p);
+    //console.log(p);
 
     return object.position.copy(p);
 }
