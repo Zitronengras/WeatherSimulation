@@ -55,9 +55,9 @@ function init() {
     seasonObject.load(scene);
 	
 	//river
-	var river = new River();
-	river.load(scene);
-	
+	var river = new River(yOffset);
+	riv = river.doRiver(river.doRiverGeometry());
+	  scene.add(riv);
 
 	
     //GUI
@@ -143,6 +143,8 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
+		 
+			river.animateRiver(riv);
         requestAnimationFrame(function(){
         renderer.render(scene, camera);
         });
