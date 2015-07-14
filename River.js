@@ -19,6 +19,23 @@ function River(yOffset) {
                 riverGeometry.vertices[i].y += Math.random() * 2; //blue axis
                 riverGeometry.vertices[i].z += Math.random() * 15; //green axis
             }
+		    //height
+            if(i > 18000 && i <= 21000){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.0015;
+            }
+            else if(i > 21000 && i <= 25000){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.0036;
+            }
+            else if(i > 25000 && i <= 26000) {
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.0045;
+            }
+            else if(i > 26000){
+                groundGeometry.vertices[i].z += heightI; //green axis: height
+                heightI += 0.0015;
+            }
         }
         riverGeometry.dynamic = true;
         riverGeometry.computeFaceNormals();
@@ -32,7 +49,7 @@ function River(yOffset) {
             {color: 0x6EFAFF, shading: THREE.FlatShading}); 
         river = new THREE.Mesh(riverGeometry, riverMaterial);
         river.rotation.x = -0.5*Math.PI;
-        river.position.z = 100;
+        river.position.z = 150;
         river.position.y = yOffset;
 		//river.rotation.z = 0.3;
         river.receiveShadow = true;
