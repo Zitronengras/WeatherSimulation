@@ -13,7 +13,7 @@ function Autumn(yOffset) {
     var autumnSkybox = new Skybox();
     var skyboxImagePrefix = "images/autumn/skybox-";
     var audio = new Audio();
-    var audioURL = 'music/little-mp3-wind-and-trees-and-snow.mp3';
+    var audioURL = 'music/tree-strong-wind.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
     //var setPosition();
