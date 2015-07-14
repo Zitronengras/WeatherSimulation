@@ -45,12 +45,7 @@ function Summer(yOffset) {
 
 
         //grass
-        grass.load(scene, 0x809B05, summerGround);
-
-	
-			  
-      //grass
-        grass.load(scene, 0x809B05);
+        grass.load(scene, 0xff0000, summerGround); //0x809B05
 
 
         //twisted tree loader
@@ -59,9 +54,9 @@ function Summer(yOffset) {
         twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
             twistedTree = collada.scene;
             console.log('twistedTree loaded');
-            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.07;
+            twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.3;
             shadow.addShadow(twistedTree);
-            setPosition(twistedTree, summerGround, getVerticesArray(), 100, -400);
+            setPosition(twistedTree, summerGround, getVerticesArray(), 111, -300);
             twistedTree.updateMatrix();
             scene.add(twistedTree);
         });
@@ -74,10 +69,10 @@ function Summer(yOffset) {
             console.log('twistedTree 2 loaded');
             shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.07;
-            setPosition(twistedTree2, summerGround, getVerticesArray(), 200, -350);
+            //setPosition(twistedTree2, summerGround, getVerticesArray(), 200, -350);
             //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
-            scene.add(twistedTree2);
+            //scene.add(twistedTree2);
         });
         
        ///third twisted tree loader
@@ -88,9 +83,9 @@ function Summer(yOffset) {
             console.log('twistedTree 3 loaded');
             shadow.addShadow(twistedTree3);
             twistedTree3.scale.x = twistedTree3.scale.y = twistedTree3.scale.z = 0.07;
-            setPosition(twistedTree3, summerGround, getVerticesArray(), 150, -400);
+            //setPosition(twistedTree3, summerGround, getVerticesArray(), 150, -400);
             twistedTree3.updateMatrix();
-            scene.add(twistedTree3);
+            //scene.add(twistedTree3);
         });
         
           ///fourth twisted tree loader
@@ -101,9 +96,9 @@ function Summer(yOffset) {
             console.log('twistedTree 3 loaded');
             shadow.addShadow(twistedTree4);
             twistedTree4.scale.x = twistedTree4.scale.y = twistedTree4.scale.z = 0.07;
-            setPosition(twistedTree4, summerGround, getVerticesArray(), 450, -400);
+            //setPosition(twistedTree4, summerGround, getVerticesArray(), 450, -400);
             twistedTree3.updateMatrix();
-            scene.add(twistedTree3);
+            //scene.add(twistedTree3);
         });
         
 

@@ -56,13 +56,17 @@ function Grass(){
                 shadow.addShadow(newGrassStalk);
                 newGrassStalk.updateMatrix();
                 grassArray.push(newGrassStalk);
-                scene.add(newGrassStalk);
+                //scene.add(newGrassStalk);
             }
-            //console.log('grassStalk loaded');
-            /*grassStalk.position.set(-3,yOffset,-3);
+            grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.05;
+            //grassStalk.position.set(-3,yOffset,-3);
             shadow.addShadow(grassStalk);
+            setPosition(grassStalk, ground, getVerticesArray(), 0, 0);
             grassStalk.updateMatrix();
-            scene.add(grassStalk);*/
+            console.log('grassStalk loaded');
+
+
+            scene.add(grassStalk);
         });
 
 

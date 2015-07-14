@@ -64,13 +64,22 @@ function doGroundGeometry(){
 };
 
 function setPosition(object, ground, array, xPos, zPos){
+    console.log('vor zurodung position');
+    console.log(object.position);
 
     if(xPos != null){
         object.position.x = xPos;
+        console.log('zuordnung position x');
+        console.log(object.x);
     }
     if(zPos != null){
         object.position.z = zPos;
+
+        console.log('zuordnung position z');
+        console.log(object.z);
     }
+    console.log('nach zurodung position');
+    console.log(object.position);
 
     var range = 4;
     var minX = xPos - range;
@@ -85,40 +94,82 @@ function setPosition(object, ground, array, xPos, zPos){
     for(var i=0; i < array.length; i++) {
         if(Math.round(array[i].x) > minX && Math.round(array[i].x) < maxX
             && Math.round(array[i].y) > minZ && Math.round(array[i].y) < maxZ){
-            yCo = Math.round(array[i].y);
-            xCo = Math.round(array[i].x);
-            zCo = Math.round(array[i].z);
+            yGround = Math.round(array[i].y);
+            xGround = Math.round(array[i].x);
+            zGround = Math.round(array[i].z);
         }
     }
 
     ground.updateMatrixWorld();
-    yCo = yCo/2;
-    var p = new THREE.Vector3(xCo, yCo, zCo);
-    ground.localToWorld(p);
-    //console.log(p);
+    //yGround = yGround/2;
+    var worldCo = new THREE.Vector3(xGround, yGround, zGround);
+    ground.localToWorld(worldCo);
+    console.log('worldCo');
+    console.log(worldCo);
 
     //move height/2 on y axis
     var box = new THREE.Box3().setFromObject(object); //creates boundingbox
     var boxMin = box.min.y;
     var boxMax = box.max.y;
-    /*
-     console.log(box.min, box.max, box.size() );
+
+     //console.log(box.min, box.max, box.size() );
+    console.log('box size');
+    console.log(box.size());
      console.log('box.min' + box.min.y);
-     console.log('box.max' + box.max.y);
-     console.log(' min ' + boxMin + ' max ' + boxMax);*/
+    console.log('box.min');
+    console.log(box.min.y);
+    console.log('box.max' + box.max.y);
+    console.log('worldCo.y');
+    console.log(worldCo.y);
+
+
+    //console.log(' min ' + boxMin + ' max ' + boxMax);*/
 
     //calculate height/2
     var offset = boxMax - boxMin;
-    //console.log('max - min' + offset);
+    console.log('max - min' + offset);
     if(offset < 0){
         offset = offset * (-1);
-        //console.log('mal - 1' + offset);
+        console.log('mal - 1' + offset);
     }
     offset = offset/2;
-    p.setY((p.y + offset));
-    //console.log(p);
+    console.log('offset / 2', offset);
 
-    return object.position.copy(p);
+    offset = worldCo.y + offset;
+    console.log('wolrd.y + offset');
+    console.log(offset);
+
+
+    worldCo.setY(offset);
+
+    console.log('worldCo.SetY');
+    console.log(worldCo.y);
+        /*
+    console.log('worldCo.y');
+    console.log(worldCo.y);
+    worldCo.setY((worldCo.y + offset));
+    console.log('worldCo');
+    console.log(worldCo);
+
+    object.updateMatrix();
+
+    object.position.copy(worldCo);
+    console.log('object position');
+    console.log(object.position);*/
+
+    //worldCo.setY();
+    object.updateMatrix();
+
+
+    object.position.copy(worldCo);
+
+    object.updateMatrix();
+
+    console.log('object position');
+    console.log(object.position);
+
+
+    //return object.position.copy(worldCo);
 }
 
 function getVerticesArray(){
