@@ -48,6 +48,7 @@ function init() {
     var seasonObject;
     seasonObject = new Summer(yOffset);
     seasonObject.load(scene);
+<<<<<<< HEAD
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
 	
@@ -56,6 +57,18 @@ function init() {
 	sea = water.doWater(water.doWaterGeometry());
 	  scene.add(sea);
 	   
+=======
+	
+	//river
+	
+	
+	var river = new River(yOffset);
+	riv = river.doRiver(river.doRiverGeometry());
+	scene.add(riv);
+	
+
+	
+>>>>>>> feature/river
     //GUI
     var seasons = function() {
 
@@ -147,10 +160,15 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
+<<<<<<< HEAD
         daytime.moveSun(spotLight, optSpotlight);
         if (waterAnimation == true){
 			water.animateWater(sea);}
 		//console.log(sea + 'sea init');
+=======
+		 
+		river.animateRiver(riv);
+>>>>>>> feature/river
         requestAnimationFrame(function(){
             renderer.render(scene, camera);
 			
