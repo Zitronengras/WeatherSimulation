@@ -3,13 +3,13 @@
  */
 
 
-function Ground(yOffset) {
+function Ground() {
 
     this.doGround = function(groundGeometry, color) {
         var groundMaterial = new THREE.MeshLambertMaterial({color: color, shading: THREE.FlatShading}); //color: 0x91D94A
         var ground = new THREE.Mesh(groundGeometry, groundMaterial);
         ground.rotation.x = -0.5*Math.PI;
-        ground.position.y = yOffset;
+        ground.position.y = -30;
         ground.receiveShadow = true;
         return ground;
     };

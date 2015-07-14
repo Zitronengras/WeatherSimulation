@@ -6,7 +6,6 @@
 var orbitControls;
 var orbitControlsActive = false;
 var cubemapControl;
-var yOffset = -30;
 var sea;
 var waterAnimation = true;
 
@@ -46,24 +45,24 @@ function init() {
 
     //defaultSeason = Spring
     var seasonObject;
-    seasonObject = new Summer(yOffset);
+    seasonObject = new Spring();
     seasonObject.load(scene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
 	//water
-	var water = new Water(yOffset);
+	var water = new Water();
 	sea = water.doWater(water.doWaterGeometry());
 	  scene.add(sea);
 
 	//river
-	var river = new River(yOffset);
+	var river = new River();
 	riv = river.doRiver(river.doRiverGeometry());
 	scene.add(riv);
 
 	//GUI
     var seasons = function() {
 
-        var mountain = new Mountain(yOffset);
+        var mountain = new Mountain();
         mountain.load(scene);
         
 // SCHNEE TEST
@@ -72,28 +71,28 @@ function init() {
 		
         this.spring = function() {
             seasonObject.remove(scene);
-            seasonObject = new Spring(yOffset);
+            seasonObject = new Spring();
             seasonObject.load(scene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.summer = function() {
             seasonObject.remove(scene);
-            seasonObject = new Summer(yOffset);
+            seasonObject = new Summer();
             seasonObject.load(scene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.autumn = function() {
             seasonObject.remove(scene);
-            seasonObject = new Autumn(yOffset);
+            seasonObject = new Autumn();
             seasonObject.load(scene);
 			waterAnimation = true;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
         this.winter = function() {
             seasonObject.remove(scene);
-            seasonObject = new Winter(yOffset);
+            seasonObject = new Winter();
             seasonObject.load(scene);
 			waterAnimation = false;
             optSpotlight = seasonObject.getSeasonSpotlight();

@@ -3,9 +3,9 @@
  Edit by Karo on 01.07.2015
  */
 
-function Winter(yOffset) {
+function Winter() {
 
-    var ground = new Ground(yOffset);
+    var ground = new Ground();
     var snow = new LetItSnow();
     var winterGround;
     var winterGroundColor = "#F8FFFF";

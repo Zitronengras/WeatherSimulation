@@ -3,9 +3,9 @@
 Edit by Karo
  */
 
-function Summer(yOffset) {
+function Summer() {
 
-    var ground = new Ground(yOffset);
+    var ground = new Ground();
     var summerGround;
     var summerGroundColor= "#D2D92C";
     var summerSkybox = new Skybox();
@@ -24,7 +24,7 @@ function Summer(yOffset) {
     var grass = new Grass();
 
     this.load = function(scene){
-        console.log('summer');
+        //console.log('summer');
 
         //skybox
         summerSkybox.load(scene, skyboxImagePrefix);
@@ -66,7 +66,7 @@ function Summer(yOffset) {
         twistedTreeLoader.options.convertUpAxis = true;
         twistedTreeLoader.load('dae/twisted_tree.dae', function(collada){
             twistedTree = collada.scene;
-            console.log('twistedTree loaded');
+            //console.log('twistedTree loaded');
             twistedTree.scale.x = twistedTree.scale.y = twistedTree.scale.z = 0.05;
             shadow.addShadow(twistedTree);
             setPosition(twistedTree, summerGround, getVerticesArray(), 10, 80);
@@ -79,11 +79,11 @@ function Summer(yOffset) {
         twistedTree2Loader.options.convertUpAxis = true;
         twistedTree2Loader.load('dae/twisted_tree.dae', function(collada){
             twistedTree2 = collada.scene;
-            console.log('twistedTree 2 loaded');
+            //console.log('twistedTree 2 loaded');
             shadow.addShadow(twistedTree2);
             twistedTree2.scale.x = twistedTree2.scale.y = twistedTree2.scale.z = 0.05;
             setPosition(twistedTree2, summerGround, getVerticesArray(), 20, 120);
-            twistedTree2.position.set(20, 20 + yOffset, 120);
+            //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
         });
@@ -93,7 +93,7 @@ function Summer(yOffset) {
         longTreeLoader.options.convertUpAxis = true;
         longTreeLoader.load('dae/long_tree.dae', function(collada){
             longTree = collada.scene;
-            console.log('longtree loaded');
+            //console.log('longtree loaded');
             shadow.addShadow(longTree);
             longTree.scale.x = longTree.scale.y = longTree.scale.z = 0.02;
             setPosition(longTree, summerGround, getVerticesArray(), 10, -100);

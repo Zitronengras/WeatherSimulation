@@ -1,4 +1,4 @@
-function Water(yOffset) {
+function Water() {
     var water;
     var waterGeometry = new THREE.PlaneGeometry(500, 180, 40, 50);
     this.doWaterGeometry = function() {
@@ -33,7 +33,7 @@ function Water(yOffset) {
         water = new THREE.Mesh(waterGeometry, waterMaterial);
         water.rotation.x = -0.5*Math.PI;
         water.position.z = -630;
-        water.position.y = -5+yOffset;
+        water.position.y = -35;
         
         water.receiveShadow = true;
         return water;
