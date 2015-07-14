@@ -92,7 +92,7 @@ function setPosition(object, ground, array, xPos, zPos){
     }
 
     ground.updateMatrixWorld();
-    //yCo = yCo/2;
+    yCo = yCo/2;
     var p = new THREE.Vector3(xCo, yCo, zCo);
     ground.localToWorld(p);
     //console.log(p);
@@ -101,29 +101,22 @@ function setPosition(object, ground, array, xPos, zPos){
     var box = new THREE.Box3().setFromObject(object); //creates boundingbox
     var boxMin = box.min.y;
     var boxMax = box.max.y;
-    console.log('boxsize');
-    console.log(box.size() );
-    console.log('box.min' + box.min.y);
-    console.log('box.max' + box.max.y);
-    //console.log(' min ' + boxMin + ' max ' + boxMax);
-    console.log('p ');
-    console.log(p);
+    /*
+     console.log(box.min, box.max, box.size() );
+     console.log('box.min' + box.min.y);
+     console.log('box.max' + box.max.y);
+     console.log(' min ' + boxMin + ' max ' + boxMax);*/
 
     //calculate height/2
     var offset = boxMax - boxMin;
-    console.log('max - min' + offset);
+    //console.log('max - min' + offset);
     if(offset < 0){
         offset = offset * (-1);
-        console.log('mal - 1' + offset);
+        //console.log('mal - 1' + offset);
     }
     offset = offset/2;
-    console.log('offset / 2  ' + offset);
-    console.log('box.min.y' + box.min.y);
-    offset = box.min.y + offset;
-    console.log('box.min.y + offset' + offset);
-    p.setY((offset));
-    console.log('p');
-    console.log(p);
+    p.setY((p.y + offset));
+    //console.log(p);
 
     return object.position.copy(p);
 }

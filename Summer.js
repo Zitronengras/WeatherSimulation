@@ -43,13 +43,6 @@ function Summer(yOffset) {
         summerGround = ground.doGround(doGroundGeometry(), summerGroundColor);
         scene.add(summerGround);
 
-        var geometry = new THREE.BoxGeometry(10, 100, 10);
-        var material = new THREE.MeshBasicMaterial({color: 0xff0000});
-        var box = new THREE.Mesh(geometry, material);
-        setPosition(box, summerGround, getVerticesArray, -20, 50);
-        scene.add(box);
-        console.log('box loaded');
-
         //grass
         grass.load(scene, 0x809B05, summerGround);
 
