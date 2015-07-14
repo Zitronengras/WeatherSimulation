@@ -186,7 +186,6 @@ function Winter(yOffset) {
 
         });
         // snow
-        
         snow.load(pointCloudScene);
 
         //audio
@@ -205,10 +204,10 @@ function Winter(yOffset) {
         scene.remove(twistedTree);
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);
-         scene.remove(twistedTree4);
+        scene.remove(twistedTree4);
         scene.remove(twistedTree5);
         scene.remove(twistedTree6);
-         scene.remove(twistedTree7);
+        scene.remove(twistedTree7);
         scene.remove(twistedTree8);
         scene.remove(twistedTree9);
         scene.remove(twistedTree10);

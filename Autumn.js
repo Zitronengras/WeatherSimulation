@@ -202,9 +202,9 @@ function Autumn(yOffset) {
     this.remove = function(scene, pointCloudScene){
         scene.remove(autumnGround);
         scene.remove(autumnSpotLight);
-        scene.remove(twistedTree);
         leave1.remove(pointCloudScene);
         leave2.remove(pointCloudScene);
+        scene.remove(twistedTree);
         scene.remove(twistedTree2);
         scene.remove(twistedTree3);
         scene.remove(twistedTree4);
