@@ -16,7 +16,7 @@ function TwistedTrees(){
         twistedTreeLoader = new THREE.ColladaLoader();
            twistedTreeLoader.options.convertUpAxis = true;
         twistedTreeArray = [];
-       twistedTreeLoader.load('dae/autumn/trees/twisted_autumn1.dae', function (collada) {
+       twistedTreeLoader.load('dae/new_trees/testbaum.dae', function (collada) {
             twistedTree = collada.scene;
 
             var colladaObj = collada.scene.children[0];
@@ -26,7 +26,7 @@ function TwistedTrees(){
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newTwistedTree.add(new THREE.Mesh(colladaObj.children[j].geometry, colladaObj.children[j].material));
                 }
-                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 10;
+                newTwistedTree.scale.x = newTwistedTree.scale.y = newTwistedTree.scale.z = 1;
                 newTwistedTree.position.set(0, 10, 0);
 
                 //newTwistedTree.rotation.z = -110 * Math.PI / 180;
