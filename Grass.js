@@ -26,7 +26,7 @@ function Grass(){
             grassStalk = collada.scene;
 
             var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 500; i++) {
+            for (i = 0; i < 400; i++) {
                 var newGrassStalk = new THREE.Object3D();
 
                 for (var j = 0; j < colladaObj.children.length; j++) {
@@ -187,22 +187,4 @@ function setGrassPosition(object, ground, array, xPos, zPos){
 
     //console.log('object position');
     //console.log(object.position);
-}
-
-function getGrassArray(){
-    return grassArray
-}
-
-function getGrassX(array){
-    for(var i = 0; i < array.length; i++){
-        x = array[i].x;
-    }
-    return x;
-}
-
-function getGrassY(array){
-    for(var i = 0; i < array.length; i++){
-        y = array[i].y;
-    }
-    return y;
 }

@@ -56,7 +56,7 @@ function Spring() {
             setFlowerPosition(bFlower, springGround, getVerticesArray(), x, z);
             bFlower.updateMatrix();
             scene.add(bFlower);
-            console.log('flower added');
+            //console.log('flower added');
         });
 
         //second loaded flower
@@ -77,7 +77,7 @@ function Spring() {
             setFlowerPosition(secondbFlower, springGround, getVerticesArray(), x, z);
             secondbFlower.updateMatrix();
             scene.add(secondbFlower);
-            console.log('second added');
+            //console.log('second added');
         });
         //third loaded flower
         thirdbFlowerLoader = new THREE.ColladaLoader();
