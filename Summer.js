@@ -46,7 +46,7 @@ function Summer() {
 
 
         //grass
-        grass.load(scene, 0x809B05, summerGround);
+        grass.load(scene, 0x82EB00, summerGround); //C6EB00 0x809B05
 
         //setPosition(newGrassStalk, ground, getVerticesArray(), getGrassX(), getGrassY));
         //positionGrass(getGrassArray());
