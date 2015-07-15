@@ -15,7 +15,6 @@ function Spring(yOffset) {
     var audioURL = 'music/spring-birds.mp3';
     var cloud = new Cloud();
     var grass = new Grass();
-
     this.load = function(scene){
         console.log('spring');
         
@@ -33,14 +32,21 @@ function Spring(yOffset) {
         scene.add(springSpotLight);
         
            // flower load test
+       
         BflowerLoader = new THREE.ColladaLoader();
         BflowerLoader.options.convertUpAxis = true;
-        BflowerLoader.load('dae/flowers/flowerBlue.dae', function(collada){
+        BflowerLoader.load('dae/flowers/flowerRed.dae', function(collada){
             bFlower = collada.scene;
 
-            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 10;
+            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.5;
+            //bFlower.color.setHex( 0xd5a2d5 );
+            //bFlower.children[5].material = new THREE.MeshBasicMaterial( {map: texture, color: 0xd5a2d5} );
+    
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: #0xd5a2d5});
+			bFlower.add(new THREE.Mesh(colladaObj.children[j].geometry, flowerMaterial));
+  
             shadow.addShadow(bFlower);
-            setTreePosition(bFlower, springGround, getVerticesArray(), 0, 0);
+           // bFlower.position.set(10, 10, 80);
             bFlower.updateMatrix();
             scene.add(bFlower);
             console.log('bFlower loaded');
