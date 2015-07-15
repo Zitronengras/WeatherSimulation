@@ -45,8 +45,8 @@ function init() {
     //scene.add(edges);
 
     //AxesHelper
-    var axes = new THREE.AxisHelper(500);
-    scene.add(axes);
+    //var axes = new THREE.AxisHelper(500);
+    //scene.add(axes);
 
     //defaultSeason = Spring
     var seasonObject;

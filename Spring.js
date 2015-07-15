@@ -33,6 +33,11 @@ function Spring() {
         springSpotLight.lookAt(0, 0, 0);
         scene.add(springSpotLight);
 
+        var flowerRangeXmin = 100;
+        var flowerRangeXmax = -25;
+        var flowerRangeZmin = -120;
+
+
         //first loaded flower
         bFlowerLoader = new THREE.ColladaLoader();
         bFlowerLoader.options.convertUpAxis = true;
@@ -40,8 +45,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //rose
             bFlower = collada.scene;
             bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             bFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -61,8 +66,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //red
             secondbFlower = collada.scene;
             secondbFlower.scale.x = secondbFlower.scale.y = secondbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             secondbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -81,8 +86,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF54997}); //yellow
             thirdbFlower = collada.scene;
             thirdbFlower.scale.x = thirdbFlower.scale.y = thirdbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             thirdbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -101,8 +106,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF54997}); //yellow
             fourthbFlower = collada.scene;
             fourthbFlower.scale.x = fourthbFlower.scale.y = fourthbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             fourthbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -120,8 +125,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xEBD609}); //yellow
             fifthbFlower = collada.scene;
             fifthbFlower.scale.x = fifthbFlower.scale.y = fifthbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             fifthbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -140,8 +145,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xEBD609}); //yellow
             sixthbFlower = collada.scene;
             sixthbFlower.scale.x = sixthbFlower.scale.y = sixthbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             sixthbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -159,8 +164,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
             seventhbFlower = collada.scene;
             seventhbFlower.scale.x = seventhbFlower.scale.y = seventhbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             seventhbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -179,8 +184,8 @@ function Spring() {
             var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
             eigthbFlower = collada.scene;
             eigthbFlower.scale.x = eigthbFlower.scale.y = eigthbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             eigthbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -196,11 +201,11 @@ function Spring() {
         ninthFlowerLoader = new THREE.ColladaLoader();
         ninthFlowerLoader.options.convertUpAxis = true;
         ninthFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
-            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //red
             ninthbFlower = collada.scene;
             ninthbFlower.scale.x = ninthbFlower.scale.y = ninthbFlower.scale.z = 0.004;
-            var x = getRandomArbitrary(70, -10);
-            var z = getRandomArbitrary(-150, -200);
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
             ninthbFlower.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
                     child.material = flowerMaterial;
@@ -210,6 +215,45 @@ function Spring() {
             setFlowerPosition(ninthbFlower, springGround, getVerticesArray(), x, z);
             ninthbFlower.updateMatrix();
             scene.add(ninthbFlower);
+        });
+        //tenth loaded flower
+        tenthFlowerLoader = new THREE.ColladaLoader();
+        tenthFlowerLoader.options.convertUpAxis = true;
+        tenthFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //red
+            tenthbFlower = collada.scene;
+            tenthbFlower.scale.x = tenthbFlower.scale.y = tenthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
+            tenthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(tenthbFlower);
+            setFlowerPosition(tenthbFlower, springGround, getVerticesArray(), x, z);
+            tenthbFlower.updateMatrix();
+            scene.add(tenthbFlower);
+        });
+
+        //eleventh loaded flower
+        eleventhFlowerLoader = new THREE.ColladaLoader();
+        eleventhFlowerLoader.options.convertUpAxis = true;
+        eleventhFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //red
+            eleventhbFlower = collada.scene;
+            eleventhbFlower.scale.x = eleventhbFlower.scale.y = eleventhbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(flowerRangeXmin, flowerRangeXmax);
+            var z = getRandomArbitrary(flowerRangeZmin, -200);
+            eleventhbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(eleventhbFlower);
+            setFlowerPosition(eleventhbFlower, springGround, getVerticesArray(), x, z);
+            eleventhbFlower.updateMatrix();
+            scene.add(eleventhbFlower);
         });
 
 
