@@ -67,9 +67,9 @@ function init() {
     var isNight = false;
 
 	//river
-	var river = new River();
-	riv = river.doRiver(river.doRiverGeometry());
-	scene.add(riv);
+	//var river = new River();
+	//riv = river.doRiver(river.doRiverGeometry());
+	//scene.add(riv);
 
 	//GUI
     var seasons = function() {
@@ -177,7 +177,7 @@ function init() {
 			water.animateWater(sea);
         }
 		//console.log(sea + 'sea init');
-		river.animateRiver(riv);
+		//river.animateRiver(riv);
         requestAnimationFrame(function(){
             renderer.clear();
             renderer.render(scene, camera);

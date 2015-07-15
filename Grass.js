@@ -26,15 +26,14 @@ function Grass(){
             grassStalk = collada.scene;
 
             var colladaObj = collada.scene.children[0];
-            for (i = 0; i < 250; i++) {
+            for (i = 0; i < 500; i++) {
                 var newGrassStalk = new THREE.Object3D();
 
                 for (var j = 0; j < colladaObj.children.length; j++) {
                     newGrassStalk.add(new THREE.Mesh(colladaObj.children[j].geometry, grassMaterial));
                 }
 
-                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.09;
-                //newGrassStalk.position.set(0,0,0);
+                newGrassStalk.scale.x = newGrassStalk.scale.y = newGrassStalk.scale.z = 0.018;
 
                 newGrassStalk.rotation.x = -90*Math.PI/180;
                 newGrassStalk.rotation.y = 65*Math.PI/180;
@@ -43,39 +42,29 @@ function Grass(){
                 newGrassStalk.rotation.z = ((getRandomArbitrary(0, 2)*30)*Math.PI/180);
                 newGrassStalk.rotation.x = 240*Math.PI/180;
 
-                //x = newGrassStalk.x;
-                //z = newGrassStalk.z;
+                posX = getRandomArbitrary(40, -150);
+                posZ = getRandomArbitrary(-150, -380);
 
-                //x += getRandomArbitrary(0, -125);
-                //z += getRandomArbitrary(0, -500);
-
-                newGrassStalk.position.x += getRandomArbitrary(0, -125);
-                newGrassStalk.position.z += getRandomArbitrary(10, 300);
-                //setPosition(newGrassStalk, ground, getVerticesArray(), x, z);
-
-
-                /*newGrassStalk.position.x += getRandomArbitrary(0, -125);
-                newGrassStalk.position.z += getRandomArbitrary(10, 300);
-                setPosition(newGrassStalk, ground, getVerticesArray(), null, null);*/
+                setGrassPosition(newGrassStalk, ground, getVerticesArray(), posX, posZ);
 
                 shadow.addShadow(newGrassStalk);
                 newGrassStalk.updateMatrix();
                 grassArray.push(newGrassStalk);
-                //scene.add(newGrassStalk);
+                scene.add(newGrassStalk);
             }
 
-            //console.log('grassStalk loaded');
-            grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.09;
+            /*console.log('grassStalk loaded');
+            //grassStalk.scale.x = grassStalk.scale.y = grassStalk.scale.z = 0.05;
             /*console.log('grass position');
             console.log('grass X' + grassStalk.position.x);
             console.log('grass X' + grassStalk.position.y);
-            console.log('grass X' + grassStalk.position.z);*/
+            console.log('grass X' + grassStalk.position.z);
 
             shadow.addShadow(grassStalk);
             setGrassPosition(grassStalk, ground, getVerticesArray(), 0, -100);
             grassStalk.updateMatrix();
             //console.log('grassStalk loaded');
-            scene.add(grassStalk);
+            //scene.add(grassStalk);*/
         });
 
 
@@ -170,7 +159,7 @@ function setGrassPosition(object, ground, array, xPos, zPos){
     //console.log('wolrd.y + offset');
     //console.log(offset);
 
-    offset -= 10;
+    offset -= 5;
 
 
     worldCo.setY(offset);
