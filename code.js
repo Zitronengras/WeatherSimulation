@@ -24,7 +24,6 @@ function init() {
     pointCloudScene.position.set(0,0,0);
     //console.log('pointcloud scene');
 
-
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
     camera.lookAt(new THREE.Vector3(0,0,-1));
 
@@ -37,8 +36,6 @@ function init() {
     spotLight.intensity = 1.3;
     spotLight.lookAt(0, 0, 0);
     scene.add(spotLight);
-
-
 
     //shows vertexNormals
     //var edges = new THREE.VertexNormalsHelper( defaultGround, 20, 0x00ff00, 1 );
@@ -54,7 +51,7 @@ function init() {
     seasonObject.load(scene, pointCloudScene);
     var optSpotlight = seasonObject.getSeasonSpotlight();
 
-	//water
+    //water
 	var water = new Water();
 	sea = water.doWater(water.doWaterGeometry());
 	scene.add(sea);
@@ -105,43 +102,27 @@ function init() {
             waterAnimation = false;
             optSpotlight = seasonObject.getSeasonSpotlight();
         };
-        this.day = function() {
+        this.daySky = function() {
             if(isNight == true){
                 nightsky.removeNight(scene);
                 isNight = false;
             }
         };
-        this.night = function() {
+        this.nightSky = function() {
             if(isNight == false){
                 nightsky.makeNight(scene);
                 isNight = true;
             }
-
         };
         this.orbitControlGUI = function(){
-         //mouse Control
-         orbitControlsActive = true;
-         camera.position.x = 300;
-         camera.position.y = 500;
-         camera.position.z = 300;
-         orbitControls = new THREE.OrbitControls(camera);
-         orbitControls.damping = 0.2;
-         //orbitControls.addEventListener('change', render);
-         //console.log('orbitControls');
-         };
-         //cubemapControl
-         this.cubemapControlGUI = function(){
-         //remove orbitControls
-         if(orbitControlsActive){
-             orbitControls.removeEventListener('change', render);
-             orbitControlsActive = false;
-             //console.log('remove orbitControl');
-         }
-         camera.lookAt(new THREE.Vector3(0,0,-1)); //�ndern!!!
-         //camera.position.y = 50;
-         cubemapControl = new CubemapControl(camera, render);
-         //console.log('cubemapControl');
-         };
+            //mouse Control
+            orbitControlsActive = true;
+            camera.position.x = 300;
+            camera.position.y = 500;
+            camera.position.z = 300;
+            orbitControls = new THREE.OrbitControls(camera);
+            orbitControls.damping = 0.2;
+        };
     };
 
     var seasonsGUI = new seasons();
@@ -150,10 +131,9 @@ function init() {
     gui.add(seasonsGUI, 'summer');
     gui.add(seasonsGUI, 'autumn');
     gui.add(seasonsGUI, 'winter');
-    gui.add(seasonsGUI, 'day');
-    gui.add(seasonsGUI, 'night');
+    gui.add(seasonsGUI, 'daySky');
+    gui.add(seasonsGUI, 'nightSky');
     gui.add(seasonsGUI, 'orbitControlGUI');
-    gui.add(seasonsGUI, 'cubemapControlGUI');
 
     //manager
     var manager = new THREE.LoadingManager();
@@ -174,9 +154,8 @@ function init() {
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
         if (waterAnimation == true){
-			//water.animateWater(sea);
+			water.animateWater(sea);
         }
-		//console.log(sea + 'sea init');
 		//river.animateRiver(riv);
         requestAnimationFrame(function(){
             renderer.clear();
@@ -186,6 +165,9 @@ function init() {
         });
     };
     setInterval(render, 20);
+
+    //default control
+    cubemapControl = new CubemapControl(camera, render);
 
 };
 
