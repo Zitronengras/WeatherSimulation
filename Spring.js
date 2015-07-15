@@ -36,16 +36,17 @@ function Spring() {
 
 
         // flower load test
-
+/*
         BflowerLoader = new THREE.ColladaLoader();
         BflowerLoader.options.convertUpAxis = true;
         BflowerLoader.load('dae/flowers/flowerRed.dae', function(collada){
             bFlower = collada.scene;
 
-            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.5;
+            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.1;
+            // die beiden ignorieren:
             //bFlower.color.setHex( 0xd5a2d5 );
             //bFlower.children[5].material = new THREE.MeshBasicMaterial( {map: texture, color: 0xd5a2d5} );
-    
+    		// was ist hier falsch?:
             var flowerMaterial = new THREE.MeshLambertMaterial({color: #0xd5a2d5});
 			bFlower.add(new THREE.Mesh(colladaObj.children[j].geometry, flowerMaterial));
   
@@ -54,7 +55,7 @@ function Spring() {
             bFlower.updateMatrix();
             scene.add(bFlower);
             //console.log('bFlower loaded');
-        });
+        });*/
         
         // first twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
