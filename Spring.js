@@ -16,8 +16,10 @@ function Spring() {
     var cloud = new Cloud();
     var grass = new Grass();
 
+
     this.load = function(scene, pointCloudScene){
         //console.log('spring');
+
 
         //skybox
         springSkybox.load(scene, skyboxImagePrefix);
@@ -32,15 +34,23 @@ function Spring() {
         springSpotLight.lookAt(0, 0, 0);
         scene.add(springSpotLight);
 
+
         // flower load test
+
         BflowerLoader = new THREE.ColladaLoader();
         BflowerLoader.options.convertUpAxis = true;
-        BflowerLoader.load('dae/flowers/flowerBlue.dae', function(collada){
+        BflowerLoader.load('dae/flowers/flowerRed.dae', function(collada){
             bFlower = collada.scene;
 
-            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 10;
+            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.5;
+            //bFlower.color.setHex( 0xd5a2d5 );
+            //bFlower.children[5].material = new THREE.MeshBasicMaterial( {map: texture, color: 0xd5a2d5} );
+    
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: #0xd5a2d5});
+			bFlower.add(new THREE.Mesh(colladaObj.children[j].geometry, flowerMaterial));
+  
             shadow.addShadow(bFlower);
-            setTreePosition(bFlower, springGround, getVerticesArray(), 0, 0);
+           // bFlower.position.set(10, 10, 80);
             bFlower.updateMatrix();
             scene.add(bFlower);
             //console.log('bFlower loaded');
@@ -72,7 +82,9 @@ function Spring() {
             //twistedTree2.position.set(20, 20 + yOffset, 120);
             twistedTree2.updateMatrix();
             scene.add(twistedTree2);
-            //console.log('twistedTree 2 loaded');
+
+           // console.log('twistedTree 2 loaded');
+
         });
         
        ///third twisted tree loader
@@ -86,7 +98,9 @@ function Spring() {
             setTreePosition(twistedTree3, springGround, getVerticesArray(), 150, -200);
             twistedTree3.updateMatrix();
             scene.add(twistedTree3);
+
             //console.log('twistedTree 3 loaded');
+
         });
         
           ///fourth twisted tree loader
@@ -100,7 +114,10 @@ function Spring() {
             setTreePosition(twistedTree4, springGround, getVerticesArray(), 130, -300);
             twistedTree4.updateMatrix();
             scene.add(twistedTree4);
+
             //console.log('twistedTree 4 loaded');
+
+
         });
         
         
@@ -114,7 +131,9 @@ function Spring() {
             setTreePosition(twistedTree5, springGround, getVerticesArray(), 180, -200);
             twistedTree5.updateMatrix();
             scene.add(twistedTree5);
+
             //console.log('twistedTree 5 loaded');
+
         });
         ///sixth twisted tree loader
         twistedTree6Loader = new THREE.ColladaLoader();
@@ -126,7 +145,9 @@ function Spring() {
             setTreePosition(twistedTree6, springGround, getVerticesArray(), 80, -240);
             twistedTree6.updateMatrix();
             scene.add(twistedTree6);
+
             //console.log('twistedTree 6 loaded');
+
         });
         ///sixth twisted tree loader
         twistedTree7Loader = new THREE.ColladaLoader();
@@ -138,7 +159,9 @@ function Spring() {
             setTreePosition(twistedTree7, springGround, getVerticesArray(), 50, -200);
             twistedTree7.updateMatrix();
             scene.add(twistedTree7);
+
             //console.log('twistedTree 7 loaded');
+
         });
         ///eigth twisted tree loader
         twistedTree8Loader = new THREE.ColladaLoader();
@@ -150,7 +173,9 @@ function Spring() {
             setTreePosition(twistedTree8, springGround, getVerticesArray(), 20, -200);
             twistedTree8.updateMatrix();
             scene.add(twistedTree8);
+
             //console.log('twistedTree 8 loaded');
+
         });
         ///sixth twisted tree loader
         twistedTree9Loader = new THREE.ColladaLoader();
@@ -162,7 +187,9 @@ function Spring() {
             setTreePosition(twistedTree9, springGround, getVerticesArray(), 80, -150);
             twistedTree9.updateMatrix();
             scene.add(twistedTree9);
+
             //console.log('twistedTree 7 loaded');
+
         });
         ///eigth twisted tree loader
         twistedTree10Loader = new THREE.ColladaLoader();
@@ -174,7 +201,9 @@ function Spring() {
             setTreePosition(twistedTree10, springGround, getVerticesArray(), 120, -300);
             twistedTree10.updateMatrix();
             scene.add(twistedTree10);
+
             //console.log('twistedTree 8 loaded');
+
         });
 
         //springGround
