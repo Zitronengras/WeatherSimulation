@@ -412,7 +412,7 @@ function Spring() {
         scene.add(springGround);
 
         //blossom
-        //blossom.load(pointCloudScene);
+        blossom.load(pointCloudScene);
 
         //grass
         grass.load(scene, 0x267302, springGround);
