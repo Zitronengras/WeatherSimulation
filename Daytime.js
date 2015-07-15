@@ -15,32 +15,32 @@ function Daytime(){
 
         //change move direction of sun
         if(sunHigh == -300){
-            direction = new THREE.Vector3(0,0.5,0);
+            direction = new THREE.Vector3(0,1,0);
             sunGoesDown = 1;
             goesDown = false;
         }
         //sun goes down: intensity light
-        if(goesDown == true && sunHigh <= 0){
+        if(goesDown == true && sunHigh <= 150){
             mainSpotlight.intensity -= intensityGoesDown;
             optSpotlight.intensity -= intensityGoesDown;
-            //console.log('intensity low');
+            console.log('intensity low');
         }
         //sun rising: intensity light
         if(goesDown == false && sunHigh <= 0){
             mainSpotlight.intensity += intensityGoesDown;
             optSpotlight.intensity += intensityGoesDown;
-            //console.log('intensity high');
+            console.log('intensity high');
         }
         //change move direction of sun
         if(sunHigh == 500){
-            direction = new THREE.Vector3(0,-0.5,0);
+            direction = new THREE.Vector3(0,-3 ,0);
             sunGoesDown = -1;
             goesDown = true;
         }
         mainSpotlight.position.add(direction);
         optSpotlight.position.add(direction);
         sunHigh += sunGoesDown;
-        //console.log('sunHigh' + sunHigh);
+        console.log('sunHigh' + sunHigh);
     }
 }
 

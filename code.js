@@ -174,7 +174,7 @@ function init() {
     render = function(){
         daytime.moveSun(spotLight, optSpotlight);
         if (waterAnimation == true){
-			water.animateWater(sea);
+			//water.animateWater(sea);
         }
 		//console.log(sea + 'sea init');
 		//river.animateRiver(riv);
