@@ -176,3 +176,69 @@ function setTreePosition(object, ground, array, xPos, zPos){
 
     //return object.position.copy(worldCo);
 }
+
+
+function setFlowerPosition(object, ground, array, xPos, zPos){
+    //console.log('vor zurodung position');
+    //console.log(object.position);
+
+    if(xPos != null){
+        object.position.x = xPos;
+        //console.log('zuordnung position x');
+        //console.log(object.x);
+    }
+    if(zPos != null){
+        object.position.z = zPos;
+
+        //console.log('zuordnung position z');
+        //console.log(object.z);
+    }
+    //console.log('nach zurodung position');
+    //console.log(object.position);
+
+    var range = 4;
+    var minX = xPos - range;
+    var maxX = xPos + range;
+    var minZ = zPos - range;
+    var maxZ = zPos + range;
+
+    var xCo;
+    var yCo;
+    var zCo;
+
+    for(var i=0; i < array.length; i++) {
+        if(Math.round(array[i].x) > minX && Math.round(array[i].x) < maxX
+            && Math.round(array[i].y) > minZ && Math.round(array[i].y) < maxZ){
+            yGround = Math.round(array[i].y);
+            xGround = Math.round(array[i].x);
+            zGround = Math.round(array[i].z);
+        }
+    }
+
+    ground.updateMatrixWorld();
+
+    var worldCo = new THREE.Vector3(xGround, yGround, zGround);
+    ground.localToWorld(worldCo);
+
+    //move height/2 on y axis
+    var box = new THREE.Box3().setFromObject(object); //creates boundingbox
+    var boxMin = box.min.y;
+    var boxMax = box.max.y;
+
+
+
+    var offset = boxMax - boxMin;
+    if(offset < 0){
+        offset = offset * (-1);
+    }
+    offset = offset/2;
+    offset = worldCo.y + offset;
+    //offset += 83;
+    worldCo.setY(offset);
+    object.updateMatrix();
+
+
+    object.position.copy(worldCo);
+
+    object.updateMatrix();
+}

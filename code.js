@@ -172,9 +172,9 @@ function init() {
     elem.appendChild(renderer.domElement);
 
     render = function(){
-        daytime.moveSun(spotLight, optSpotlight);
+        //daytime.moveSun(spotLight, optSpotlight);
         if (waterAnimation == true){
-			water.animateWater(sea);
+			//water.animateWater(sea);
         }
 		//console.log(sea + 'sea init');
 		//river.animateRiver(riv);

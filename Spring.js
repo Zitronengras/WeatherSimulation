@@ -20,7 +20,6 @@ function Spring() {
     this.load = function(scene, pointCloudScene){
         //console.log('spring');
 
-
         //skybox
         springSkybox.load(scene, skyboxImagePrefix);
 
@@ -34,36 +33,186 @@ function Spring() {
         springSpotLight.lookAt(0, 0, 0);
         scene.add(springSpotLight);
 
-
-        // flower load test
-
-        BflowerLoader = new THREE.ColladaLoader();
-        BflowerLoader.options.convertUpAxis = true;
-        BflowerLoader.load('dae/flowers/flowerRed.dae', function(collada){
+        //first loaded flower
+        bFlowerLoader = new THREE.ColladaLoader();
+        bFlowerLoader.options.convertUpAxis = true;
+        bFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //rose
             bFlower = collada.scene;
-
-            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.1;
-            // die beiden ignorieren:
-            //bFlower.color.setHex( 0xd5a2d5 );
-            //bFlower.children[5].material = new THREE.MeshBasicMaterial( {map: texture, color: 0xd5a2d5} );
-            
-    		// hmm, mal ein versuch...
-    		var colladaObj = collada.scene.children[0];
-    		var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xd5a2d5});
-    		for (i = 0; i < 250; i++) {
-                var bFlower = new THREE.Object3D();
-            
-              for (var j = 0; j < colladaObj.children.length; j++) {
-                    bFlower.add(new THREE.Mesh(colladaObj.children[j].geometry, flowerMaterial));
+            bFlower.scale.x = bFlower.scale.y = bFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            bFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
                 }
-
-  }
+            } );
             shadow.addShadow(bFlower);
-           // bFlower.position.set(10, 10, 80);
+            setFlowerPosition(bFlower, springGround, getVerticesArray(), x, z);
             bFlower.updateMatrix();
             scene.add(bFlower);
-            //console.log('bFlower loaded');
+            console.log('flower added');
         });
+
+        //second loaded flower
+        secondbFlowerLoader = new THREE.ColladaLoader();
+        secondbFlowerLoader.options.convertUpAxis = true;
+        secondbFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xA5021E}); //red
+            secondbFlower = collada.scene;
+            secondbFlower.scale.x = secondbFlower.scale.y = secondbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            secondbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(secondbFlower);
+            setFlowerPosition(secondbFlower, springGround, getVerticesArray(), x, z);
+            secondbFlower.updateMatrix();
+            scene.add(secondbFlower);
+            console.log('second added');
+        });
+        //third loaded flower
+        thirdbFlowerLoader = new THREE.ColladaLoader();
+        thirdbFlowerLoader.options.convertUpAxis = true;
+        thirdbFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF54997}); //yellow
+            thirdbFlower = collada.scene;
+            thirdbFlower.scale.x = thirdbFlower.scale.y = thirdbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            thirdbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(thirdbFlower);
+            setFlowerPosition(thirdbFlower, springGround, getVerticesArray(), x, z);
+            thirdbFlower.updateMatrix();
+            scene.add(thirdbFlower);
+        });
+
+        //fourth loaded flower
+        fourthbFlowerLoader = new THREE.ColladaLoader();
+        fourthbFlowerLoader.options.convertUpAxis = true;
+        fourthbFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF54997}); //yellow
+            fourthbFlower = collada.scene;
+            fourthbFlower.scale.x = fourthbFlower.scale.y = fourthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            fourthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(fourthbFlower);
+            setFlowerPosition(fourthbFlower, springGround, getVerticesArray(), x, z);
+            fourthbFlower.updateMatrix();
+            scene.add(fourthbFlower);
+        });
+        //fifth loaded flower
+        fifthbFlowerLoader = new THREE.ColladaLoader();
+        fifthbFlowerLoader.options.convertUpAxis = true;
+        fifthbFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xEBD609}); //yellow
+            fifthbFlower = collada.scene;
+            fifthbFlower.scale.x = fifthbFlower.scale.y = fifthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            fifthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(fifthbFlower);
+            setFlowerPosition(fifthbFlower, springGround, getVerticesArray(), x, z);
+            fifthbFlower.updateMatrix();
+            scene.add(fifthbFlower);
+        });
+
+        //sixth loaded flower
+        sixthbFlowerLoader = new THREE.ColladaLoader();
+        sixthbFlowerLoader.options.convertUpAxis = true;
+        sixthbFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xEBD609}); //yellow
+            sixthbFlower = collada.scene;
+            sixthbFlower.scale.x = sixthbFlower.scale.y = sixthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            sixthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(sixthbFlower);
+            setFlowerPosition(sixthbFlower, springGround, getVerticesArray(), x, z);
+            sixthbFlower.updateMatrix();
+            scene.add(sixthbFlower);
+        });
+        //seventh loaded flower
+        seventhFlowerLoader = new THREE.ColladaLoader();
+        seventhFlowerLoader.options.convertUpAxis = true;
+        seventhFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
+            seventhbFlower = collada.scene;
+            seventhbFlower.scale.x = seventhbFlower.scale.y = seventhbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            seventhbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(seventhbFlower);
+            setFlowerPosition(seventhbFlower, springGround, getVerticesArray(), x, z);
+            seventhbFlower.updateMatrix();
+            scene.add(seventhbFlower);
+        });
+
+        //eigth loaded flower
+        eigthFlowerLoader = new THREE.ColladaLoader();
+        eigthFlowerLoader.options.convertUpAxis = true;
+        eigthFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
+            eigthbFlower = collada.scene;
+            eigthbFlower.scale.x = eigthbFlower.scale.y = eigthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            eigthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(eigthbFlower);
+            setFlowerPosition(eigthbFlower, springGround, getVerticesArray(), x, z);
+            eigthbFlower.updateMatrix();
+            scene.add(eigthbFlower);
+        });
+
+        //ninth loaded flower
+        ninthFlowerLoader = new THREE.ColladaLoader();
+        ninthFlowerLoader.options.convertUpAxis = true;
+        ninthFlowerLoader.load('dae/flowers/flowerRed.dae', function(collada) {
+            var flowerMaterial = new THREE.MeshLambertMaterial({color: 0xF2630C}); //orange
+            ninthbFlower = collada.scene;
+            ninthbFlower.scale.x = ninthbFlower.scale.y = ninthbFlower.scale.z = 0.004;
+            var x = getRandomArbitrary(70, -10);
+            var z = getRandomArbitrary(-150, -200);
+            ninthbFlower.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material = flowerMaterial;
+                }
+            } );
+            shadow.addShadow(ninthbFlower);
+            setFlowerPosition(ninthbFlower, springGround, getVerticesArray(), x, z);
+            ninthbFlower.updateMatrix();
+            scene.add(ninthbFlower);
+        });
+
+
         
         // first twisted tree loader
         twistedTreeLoader = new THREE.ColladaLoader();
@@ -125,7 +274,6 @@ function Spring() {
             scene.add(twistedTree4);
 
             //console.log('twistedTree 4 loaded');
-
 
         });
         
@@ -220,7 +368,7 @@ function Spring() {
         scene.add(springGround);
 
         //blossom
-        blossom.load(pointCloudScene);
+        //blossom.load(pointCloudScene);
 
         //grass
         grass.load(scene, 0x267302, springGround);
@@ -261,4 +409,10 @@ function Spring() {
 
         //console.log('removed spring');
     };
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
 }
+
