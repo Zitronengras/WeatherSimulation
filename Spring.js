@@ -449,6 +449,19 @@ function Spring() {
         scene.remove(twistedTree8);
         scene.remove(twistedTree9);
         scene.remove(twistedTree10);
+
+        scene.remove(bFlower);
+        scene.remove(secondbFlower);
+        scene.remove(thirdbFlower);
+        scene.remove(fourthbFlower);
+        scene.remove(fifthbFlower);
+        scene.remove(sixthbFlower);
+        scene.remove(seventhbFlower);
+        scene.remove(eigthbFlower);
+        scene.remove(ninthbFlower);
+        scene.remove(tenthbFlower);
+        scene.remove(eleventhbFlower);
+
         audio.stopTrack();
 
         //console.log('removed spring');
